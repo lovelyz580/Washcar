@@ -1,0 +1,75 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<context:component-scan base-package="com.lovelyz.*" />
+	<!--2、开启基于注解的aop功能  -->
+	<aop:aspectj-autoproxy/>
+
+	<mvc:default-servlet-handler></mvc:default-servlet-handler>
+	<!-- 处理静态资源 -->
+	<mvc:resources location="/upload/" mapping="/upload/**" />
+	<mvc:resources location="/WEB-INF/html/" mapping="/**" cache-period="31556926" />
+
+	<!--拦截器-->
+	<mvc:interceptors>
+		<!--  使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求   -->
+		<!-- <bean class="com.bybo.aca.web.interceptor.Login"/> -->
+		<mvc:interceptor>
+			<!-- 进行拦截：/**表示拦截所有controller -->
+			<mvc:mapping path="/**" />
+			<!-- 不进行拦截 -->
+			<mvc:exclude-mapping path="/index.jsp"/>
+			<bean class="com.lovelyz.token.AuthorizationInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+	<!--解决乱码问题-->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- @ResponseBody乱码问题，将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+			<!-- 配置Fastjson支持 -->
+			<bean
+				class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="charset" value="UTF-8" />
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json</value>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+				<property name="features">
+					<list>
+						<value>WriteMapNullValue</value>
+						<value>QuoteFieldNames</value>
+						<value>WriteDateUseDateFormat</value>
+						<value>WriteEnumUsingToString</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!--上传文件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+
+</beans>

@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashRankMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashRank">
+    <id column="rank_id" jdbcType="VARCHAR" property="rankId" />
+    <result column="rank_name" jdbcType="VARCHAR" property="rankName" />
+    <result column="rank_images" jdbcType="VARCHAR" property="rankImages" />
+    <result column="rank_createtime" jdbcType="TIMESTAMP" property="rankCreatetime" />
+    <result column="rank_creatrebyid" jdbcType="VARCHAR" property="rankCreatrebyid" />
+    <result column="rank_isdel" jdbcType="INTEGER" property="rankIsdel" />
+    <result column="rank_other1" jdbcType="VARCHAR" property="rankOther1" />
+    <result column="rank_other2" jdbcType="VARCHAR" property="rankOther2" />
+    <result column="rank_other3" jdbcType="VARCHAR" property="rankOther3" />
+    <result column="rank_other4" jdbcType="VARCHAR" property="rankOther4" />
+    <result column="rank_other5" jdbcType="VARCHAR" property="rankOther5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rank_id, rank_name, rank_images, rank_createtime, rank_creatrebyid, rank_isdel, rank_other1, 
+    rank_other2, rank_other3, rank_other4, rank_other5
+  </sql>
+
+
+  <!--根据主键查询-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_rank
+    where rank_id = #{rankId,jdbcType=VARCHAR}
+    ORDER BY rank_createtime DESC
+  </select>
+  <!--根据主键查询-->
+
+
+  <!--根据主键删除-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_rank
+    where rank_id = #{rankId,jdbcType=VARCHAR}
+  </delete>
+  <!--根据主键删除-->
+
+
+
+ <!--根据实体添加-->
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashRank">
+    insert into wash_rank
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rankId != null">
+        rank_id,
+      </if>
+      <if test="rankName != null">
+        rank_name,
+      </if>
+      <if test="rankImages != null">
+        rank_images,
+      </if>
+      <if test="rankCreatetime != null">
+        rank_createtime,
+      </if>
+      <if test="rankCreatrebyid != null">
+        rank_creatrebyid,
+      </if>
+      <if test="rankIsdel != null">
+        rank_isdel,
+      </if>
+      <if test="rankOther1 != null">
+        rank_other1,
+      </if>
+      <if test="rankOther2 != null">
+        rank_other2,
+      </if>
+      <if test="rankOther3 != null">
+        rank_other3,
+      </if>
+      <if test="rankOther4 != null">
+        rank_other4,
+      </if>
+      <if test="rankOther5 != null">
+        rank_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rankId != null">
+        #{rankId,jdbcType=VARCHAR},
+      </if>
+      <if test="rankName != null">
+        #{rankName,jdbcType=VARCHAR},
+      </if>
+      <if test="rankImages != null">
+        #{rankImages,jdbcType=VARCHAR},
+      </if>
+      <if test="rankCreatetime != null">
+        #{rankCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rankCreatrebyid != null">
+        #{rankCreatrebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="rankIsdel != null">
+        #{rankIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="rankOther1 != null">
+        #{rankOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther2 != null">
+        #{rankOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther3 != null">
+        #{rankOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther4 != null">
+        #{rankOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther5 != null">
+        #{rankOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体添加-->
+
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashRank">
+    update wash_rank
+    <set>
+      <if test="rankName != null">
+        rank_name = #{rankName,jdbcType=VARCHAR},
+      </if>
+      <if test="rankImages != null">
+        rank_images = #{rankImages,jdbcType=VARCHAR},
+      </if>
+      <if test="rankCreatetime != null">
+        rank_createtime = #{rankCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rankCreatrebyid != null">
+        rank_creatrebyid = #{rankCreatrebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="rankIsdel != null">
+        rank_isdel = #{rankIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="rankOther1 != null">
+        rank_other1 = #{rankOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther2 != null">
+        rank_other2 = #{rankOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther3 != null">
+        rank_other3 = #{rankOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther4 != null">
+        rank_other4 = #{rankOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="rankOther5 != null">
+        rank_other5 = #{rankOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rank_id = #{rankId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体更新-->
+
+  <!--根据实体准确查询-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashRank" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_rank
+    <where>
+      <if test="rankId != null">
+        and rank_id = #{rankId,jdbcType=VARCHAR}
+      </if>
+      <if test="rankName != null">
+        and rank_name = #{rankName,jdbcType=VARCHAR}
+      </if>
+      <if test="rankImages != null">
+        and rank_images = #{rankImages,jdbcType=VARCHAR}
+      </if>
+      <if test="rankCreatetime != null">
+        and rank_createtime = #{rankCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="rankCreatrebyid != null">
+        and rank_creatrebyid = #{rankCreatrebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="rankIsdel != null">
+        and rank_isdel = #{rankIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="rankOther1 != null">
+        and rank_other1 = #{rankOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther2 != null">
+        and rank_other2 = #{rankOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther3 != null">
+        and rank_other3 = #{rankOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther4 != null">
+        and rank_other4 = #{rankOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther5 != null">
+        and rank_other5 = #{rankOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY rank_createtime DESC
+  </select>
+  <!--根据实体准确查询-->
+
+  <!--根据实体模糊查询-->
+  <select id="selectByConditionData" parameterType="com.lovelyz.washcar.entity.WashRank" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_rank
+    <where>
+      <if test="rankId != null">
+        and rank_id = #{rankId,jdbcType=VARCHAR}
+      </if>
+      <if test="rankName != null">
+        and rank_name like CONCAT('%', #{rankName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="rankImages != null">
+        and rank_images = #{rankImages,jdbcType=VARCHAR}
+      </if>
+      <if test="rankCreatetime != null">
+        and rank_createtime = #{rankCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="rankCreatrebyid != null">
+        and rank_creatrebyid = #{rankCreatrebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="rankIsdel != null">
+        and rank_isdel = #{rankIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="rankOther1 != null">
+        and rank_other1 = #{rankOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther2 != null">
+        and rank_other2 = #{rankOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther3 != null">
+        and rank_other3 = #{rankOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther4 != null">
+        and rank_other4 = #{rankOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther5 != null">
+        and rank_other5 = #{rankOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY rank_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--根据实体模糊查询-->
+
+  <!--根据实体分页查询-->
+  <select id="selectByPage" parameterType="com.lovelyz.washcar.entity.WashRank" resultMap="BaseResultMap">
+    select rank_id, rank_name, rank_images, rank_createtime, rank_creatrebyid, rank_isdel, 
+    rank_other1, rank_other2, rank_other3, rank_other4, rank_other5
+    from wash_rank
+      <where>
+        <if test="rankName != null">
+          and rank_name = #{rankName,jdbcType=VARCHAR}
+        </if>
+        <if test="rankImages != null">
+          and rank_images = #{rankImages,jdbcType=VARCHAR}
+        </if>
+        <if test="rankCreatetime != null">
+          and rank_createtime = #{rankCreatetime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="rankCreatrebyid != null">
+          and rank_creatrebyid = #{rankCreatrebyid,jdbcType=VARCHAR}
+        </if>
+        <if test="rankIsdel != null">
+          and rank_isdel = #{rankIsdel,jdbcType=INTEGER}
+        </if>
+        <if test="rankOther1 != null">
+          and rank_other1 = #{rankOther1,jdbcType=VARCHAR}
+        </if>
+        <if test="rankOther2 != null">
+          and rank_other2 = #{rankOther2,jdbcType=VARCHAR}
+        </if>
+        <if test="rankOther3 != null">
+          and rank_other3 = #{rankOther3,jdbcType=VARCHAR}
+        </if>
+        <if test="rankOther4 != null">
+          and rank_other4 = #{rankOther4,jdbcType=VARCHAR}
+        </if>
+        <if test="rankOther5 != null">
+          and rank_other5 = #{rankOther5,jdbcType=VARCHAR}
+        </if>
+      </where>
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+    ORDER BY rank_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--根据实体分页查询-->
+
+  <!--根据实体查询数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashRank" resultType="java.lang.Integer">
+    select count(1) from wash_rank
+    <where>
+      <if test="rankName != null">
+        and rank_name = #{rankName,jdbcType=VARCHAR}
+      </if>
+      <if test="rankImages != null">
+        and rank_images = #{rankImages,jdbcType=VARCHAR}
+      </if>
+      <if test="rankCreatetime != null">
+        and rank_createtime = #{rankCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="rankCreatrebyid != null">
+        and rank_creatrebyid = #{rankCreatrebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="rankIsdel != null">
+        and rank_isdel = #{rankIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="rankOther1 != null">
+        and rank_other1 = #{rankOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther2 != null">
+        and rank_other2 = #{rankOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther3 != null">
+        and rank_other3 = #{rankOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther4 != null">
+        and rank_other4 = #{rankOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther5 != null">
+        and rank_other5 = #{rankOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询数量-->
+  <!--根据实体模糊查询数量-->
+  <select id="countData" parameterType="com.lovelyz.washcar.entity.WashRank" resultType="java.lang.Integer">
+    select count(1) from wash_rank
+    <where>
+      <if test="rankName != null">
+        and rank_name like CONCAT('%', #{rankName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="rankImages != null">
+        and rank_images = #{rankImages,jdbcType=VARCHAR}
+      </if>
+      <if test="rankCreatetime != null">
+        and rank_createtime = #{rankCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="rankCreatrebyid != null">
+        and rank_creatrebyid = #{rankCreatrebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="rankIsdel != null">
+        and rank_isdel = #{rankIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="rankOther1 != null">
+        and rank_other1 = #{rankOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther2 != null">
+        and rank_other2 = #{rankOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther3 != null">
+        and rank_other3 = #{rankOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther4 != null">
+        and rank_other4 = #{rankOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther5 != null">
+        and rank_other5 = #{rankOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体模糊查询数量-->
+
+<!--根据实体假删除-->
+  <update id="updatebydel" parameterType="java.lang.String">
+    update wash_rank
+    <set>
+        rank_isdel = 0,
+    </set>
+    where rank_id = #{rankId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体假删除-->
+
+  <!--根据实体删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashRank">
+    delete from wash_rank
+    <where>
+      <if test="rankId != null">
+        and rank_id = #{rankId,jdbcType=VARCHAR}
+      </if>
+      <if test="rankName != null">
+        and rank_name = #{rankName,jdbcType=VARCHAR}
+      </if>
+      <if test="rankImages != null">
+        and rank_images = #{rankImages,jdbcType=VARCHAR}
+      </if>
+      <if test="rankCreatetime != null">
+        and rank_createtime = #{rankCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="rankCreatrebyid != null">
+        and rank_creatrebyid = #{rankCreatrebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="rankIsdel != null">
+        and rank_isdel = #{rankIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="rankOther1 != null">
+        and rank_other1 = #{rankOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther2 != null">
+        and rank_other2 = #{rankOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther3 != null">
+        and rank_other3 = #{rankOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther4 != null">
+        and rank_other4 = #{rankOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="rankOther5 != null">
+        and rank_other5 = #{rankOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <!--根据实体删除-->
+</mapper>

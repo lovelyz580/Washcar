@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashCouponuseMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashCouponuse">
+    <id column="couponuse_id" jdbcType="VARCHAR" property="couponuseId" />
+    <result column="couponuse_money" jdbcType="DOUBLE" property="couponuseMoney" />
+    <result column="couponuse_remoney" jdbcType="DOUBLE" property="couponuseRemoney" />
+    <result column="couponuse_createtime" jdbcType="TIMESTAMP" property="couponuseCreatetime" />
+    <result column="couponuse_starttime" jdbcType="TIMESTAMP" property="couponuseStarttime" />
+    <result column="couponuse_endtime" jdbcType="TIMESTAMP" property="couponuseEndtime" />
+    <result column="couponuse_userid" jdbcType="VARCHAR" property="couponuseUserid" />
+    <result column="couponuse_orderid" jdbcType="VARCHAR" property="couponuseOrderid" />
+    <result column="couponuse_updatetime" jdbcType="TIMESTAMP" property="couponuseUpdatetime" />
+    <result column="couponuse_isuse" jdbcType="INTEGER" property="couponuseIsuse" />
+    <result column="couponuse_isdel" jdbcType="INTEGER" property="couponuseIsdel" />
+    <result column="couponuse_other1" jdbcType="VARCHAR" property="couponuseOther1" />
+    <result column="couponuse_other2" jdbcType="VARCHAR" property="couponuseOther2" />
+    <result column="couponuse_other3" jdbcType="VARCHAR" property="couponuseOther3" />
+    <result column="couponuse_other4" jdbcType="VARCHAR" property="couponuseOther4" />
+    <result column="couponuse_other5" jdbcType="VARCHAR" property="couponuseOther5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    couponuse_id, couponuse_money, couponuse_remoney, couponuse_createtime, couponuse_starttime, 
+    couponuse_endtime, couponuse_userid, couponuse_orderid, couponuse_updatetime, couponuse_isuse, 
+    couponuse_isdel, couponuse_other1, couponuse_other2, couponuse_other3, couponuse_other4, 
+    couponuse_other5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_couponuse
+    where couponuse_id = #{couponuseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_couponuse
+    where couponuse_id = #{couponuseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashCouponuse">
+    insert into wash_couponuse (couponuse_id, couponuse_money, couponuse_remoney, 
+      couponuse_createtime, couponuse_starttime, 
+      couponuse_endtime, couponuse_userid, couponuse_orderid, 
+      couponuse_updatetime, couponuse_isuse, 
+      couponuse_isdel, couponuse_other1, couponuse_other2, 
+      couponuse_other3, couponuse_other4, couponuse_other5
+      )
+    values (#{couponuseId,jdbcType=VARCHAR}, #{couponuseMoney,jdbcType=DOUBLE}, #{couponuseRemoney,jdbcType=DOUBLE}, 
+      #{couponuseCreatetime,jdbcType=TIMESTAMP}, #{couponuseStarttime,jdbcType=TIMESTAMP}, 
+      #{couponuseEndtime,jdbcType=TIMESTAMP}, #{couponuseUserid,jdbcType=VARCHAR}, #{couponuseOrderid,jdbcType=VARCHAR}, 
+      #{couponuseUpdatetime,jdbcType=TIMESTAMP}, #{couponuseIsuse,jdbcType=INTEGER}, 
+      #{couponuseIsdel,jdbcType=INTEGER}, #{couponuseOther1,jdbcType=VARCHAR}, #{couponuseOther2,jdbcType=VARCHAR}, 
+      #{couponuseOther3,jdbcType=VARCHAR}, #{couponuseOther4,jdbcType=VARCHAR}, #{couponuseOther5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashCouponuse">
+    update wash_couponuse
+    set couponuse_money = #{couponuseMoney,jdbcType=DOUBLE},
+      couponuse_remoney = #{couponuseRemoney,jdbcType=DOUBLE},
+      couponuse_createtime = #{couponuseCreatetime,jdbcType=TIMESTAMP},
+      couponuse_starttime = #{couponuseStarttime,jdbcType=TIMESTAMP},
+      couponuse_endtime = #{couponuseEndtime,jdbcType=TIMESTAMP},
+      couponuse_userid = #{couponuseUserid,jdbcType=VARCHAR},
+      couponuse_orderid = #{couponuseOrderid,jdbcType=VARCHAR},
+      couponuse_updatetime = #{couponuseUpdatetime,jdbcType=TIMESTAMP},
+      couponuse_isuse = #{couponuseIsuse,jdbcType=INTEGER},
+      couponuse_isdel = #{couponuseIsdel,jdbcType=INTEGER},
+      couponuse_other1 = #{couponuseOther1,jdbcType=VARCHAR},
+      couponuse_other2 = #{couponuseOther2,jdbcType=VARCHAR},
+      couponuse_other3 = #{couponuseOther3,jdbcType=VARCHAR},
+      couponuse_other4 = #{couponuseOther4,jdbcType=VARCHAR},
+      couponuse_other5 = #{couponuseOther5,jdbcType=VARCHAR}
+    where couponuse_id = #{couponuseId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select couponuse_id, couponuse_money, couponuse_remoney, couponuse_createtime, couponuse_starttime,
+    couponuse_endtime, couponuse_userid, couponuse_orderid, couponuse_updatetime, couponuse_isuse,
+    couponuse_isdel, couponuse_other1, couponuse_other2, couponuse_other3, couponuse_other4,
+    couponuse_other5
+    from wash_couponuse
+  </select>
+  <!--分界线-->
+
+
+  <!--根据实体添加-->
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashCouponuse">
+    insert into wash_couponuse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponuseId != null">
+        couponuse_id,
+      </if>
+      <if test="couponuseMoney != null">
+        couponuse_money,
+      </if>
+      <if test="couponuseRemoney != null">
+        couponuse_remoney,
+      </if>
+      <if test="couponuseCreatetime != null">
+        couponuse_createtime,
+      </if>
+      <if test="couponuseStarttime != null">
+        couponuse_starttime,
+      </if>
+      <if test="couponuseEndtime != null">
+        couponuse_endtime,
+      </if>
+      <if test="couponuseUserid != null">
+        couponuse_userid,
+      </if>
+      <if test="couponuseOrderid != null">
+        couponuse_orderid,
+      </if>
+      <if test="couponuseUpdatetime != null">
+        couponuse_updatetime,
+      </if>
+      <if test="couponuseIsuse != null">
+        couponuse_isuse,
+      </if>
+      <if test="couponuseIsdel != null">
+        couponuse_isdel,
+      </if>
+      <if test="couponuseOther1 != null">
+        couponuse_other1,
+      </if>
+      <if test="couponuseOther2 != null">
+        couponuse_other2,
+      </if>
+      <if test="couponuseOther3 != null">
+        couponuse_other3,
+      </if>
+      <if test="couponuseOther4 != null">
+        couponuse_other4,
+      </if>
+      <if test="couponuseOther5 != null">
+        couponuse_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponuseId != null">
+        #{couponuseId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseMoney != null">
+        #{couponuseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponuseRemoney != null">
+        #{couponuseRemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponuseCreatetime != null">
+        #{couponuseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseStarttime != null">
+        #{couponuseStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseEndtime != null">
+        #{couponuseEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseUserid != null">
+        #{couponuseUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOrderid != null">
+        #{couponuseOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseUpdatetime != null">
+        #{couponuseUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseIsuse != null">
+        #{couponuseIsuse,jdbcType=INTEGER},
+      </if>
+      <if test="couponuseIsdel != null">
+        #{couponuseIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="couponuseOther1 != null">
+        #{couponuseOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther2 != null">
+        #{couponuseOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther3 != null">
+        #{couponuseOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther4 != null">
+        #{couponuseOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther5 != null">
+        #{couponuseOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体添加-->
+
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashCouponuse">
+    update wash_couponuse
+    <set>
+      <if test="couponuseMoney != null">
+        couponuse_money = #{couponuseMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponuseRemoney != null">
+        couponuse_remoney = #{couponuseRemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponuseCreatetime != null">
+        couponuse_createtime = #{couponuseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseStarttime != null">
+        couponuse_starttime = #{couponuseStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseEndtime != null">
+        couponuse_endtime = #{couponuseEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseUserid != null">
+        couponuse_userid = #{couponuseUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOrderid != null">
+        couponuse_orderid = #{couponuseOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseUpdatetime != null">
+        couponuse_updatetime = #{couponuseUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponuseIsuse != null">
+        couponuse_isuse = #{couponuseIsuse,jdbcType=INTEGER},
+      </if>
+      <if test="couponuseIsdel != null">
+        couponuse_isdel = #{couponuseIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="couponuseOther1 != null">
+        couponuse_other1 = #{couponuseOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther2 != null">
+        couponuse_other2 = #{couponuseOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther3 != null">
+        couponuse_other3 = #{couponuseOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther4 != null">
+        couponuse_other4 = #{couponuseOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="couponuseOther5 != null">
+        couponuse_other5 = #{couponuseOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where couponuse_id = #{couponuseId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体更新-->
+
+
+<!--根据实体查询-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashCouponuse" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_couponuse
+    <where>
+      <if test="couponuseId != null">
+        and couponuse_id = #{couponuseId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseMoney != null">
+        and couponuse_money = #{couponuseMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponuseRemoney != null">
+        and couponuse_remoney = #{couponuseRemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponuseCreatetime != null">
+        and couponuse_createtime = #{couponuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseStarttime != null">
+        and couponuse_starttime = #{couponuseStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseEndtime != null">
+        and couponuse_endtime = #{couponuseEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseUserid != null">
+        and couponuse_userid = #{couponuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOrderid != null">
+        and couponuse_orderid = #{couponuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseUpdatetime != null">
+        and couponuse_updatetime = #{couponuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseIsuse != null">
+        and couponuse_isuse = #{couponuseIsuse,jdbcType=INTEGER}
+      </if>
+      <if test="couponuseIsdel != null">
+        and couponuse_isdel = #{couponuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="couponuseOther1 != null">
+        and couponuse_other1 = #{couponuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther2 != null">
+        and couponuse_other2 = #{couponuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther3 != null">
+        and couponuse_other3 = #{couponuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther4 != null">
+        and couponuse_other4 = #{couponuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther5 != null">
+        and couponuse_other5 = #{couponuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询-->
+
+
+
+  <!--根据实体假删除-->
+  <update id="updatebydel" parameterType="com.lovelyz.washcar.entity.WashCouponuse">
+    update wash_couponuse
+    <set>
+      <if test="couponuseIsdel != null">
+        couponuse_isdel = 0,
+      </if>
+    </set>
+    where couponuse_id = #{couponuseId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体更新-->
+
+  <!--根据实体查询数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashCouponuse" resultType="java.lang.Integer">
+    select count(1) from wash_couponuse
+    <where>
+      <if test="couponuseMoney != null">
+        and couponuse_money = #{couponuseMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponuseRemoney != null">
+        and couponuse_remoney = #{couponuseRemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponuseCreatetime != null">
+        and couponuse_createtime = #{couponuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseStarttime != null">
+        and couponuse_starttime = #{couponuseStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseEndtime != null">
+        and couponuse_endtime = #{couponuseEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseUserid != null">
+        and couponuse_userid = #{couponuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOrderid != null">
+        and couponuse_orderid = #{couponuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseUpdatetime != null">
+        and couponuse_updatetime = #{couponuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseIsuse != null">
+        and couponuse_isuse = #{couponuseIsuse,jdbcType=INTEGER}
+      </if>
+      <if test="couponuseIsdel != null">
+        and couponuse_isdel = #{couponuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="couponuseOther1 != null">
+        and couponuse_other1 = #{couponuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther2 != null">
+        and couponuse_other2 = #{couponuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther3 != null">
+        and couponuse_other3 = #{couponuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther4 != null">
+        and couponuse_other4 = #{couponuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther5 != null">
+        and couponuse_other5 = #{couponuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询数量-->
+
+  <!--根据实体删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashCouponuse">
+    delete from wash_couponuse
+    <where>
+      <if test="couponuseId != null">
+        and couponuse_id = #{couponuseId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseMoney != null">
+        and couponuse_money = #{couponuseMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponuseRemoney != null">
+        and couponuse_remoney = #{couponuseRemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponuseCreatetime != null">
+        and couponuse_createtime = #{couponuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseStarttime != null">
+        and couponuse_starttime = #{couponuseStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseEndtime != null">
+        and couponuse_endtime = #{couponuseEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseUserid != null">
+        and couponuse_userid = #{couponuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOrderid != null">
+        and couponuse_orderid = #{couponuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseUpdatetime != null">
+        and couponuse_updatetime = #{couponuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponuseIsuse != null">
+        and couponuse_isuse = #{couponuseIsuse,jdbcType=INTEGER}
+      </if>
+      <if test="couponuseIsdel != null">
+        and couponuse_isdel = #{couponuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="couponuseOther1 != null">
+        and couponuse_other1 = #{couponuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther2 != null">
+        and couponuse_other2 = #{couponuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther3 != null">
+        and couponuse_other3 = #{couponuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther4 != null">
+        and couponuse_other4 = #{couponuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="couponuseOther5 != null">
+        and couponuse_other5 = #{couponuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <!--根据实体删除-->
+</mapper>

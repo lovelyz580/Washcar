@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>后台管理员登录</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../layuiadmin/style/admin.css" media="all">
+  <link rel="stylesheet" href="../layuiadmin/style/login.css" media="all">
+  <style type="text/css">
+    html,body{overflow-y: hidden;overflow-x: hidden}
+    .layui-form-item input{height: 25px;}
+    .layui-form-item input{height: 25px;border: none;border-bottom: 1px solid #C0C0C0;}
+    .layui-form input[type=checkbox]{display: inline-block;}
+  </style>
+</head>
+<body>
+
+<div id="app" class="pos-re wid-1000 hei-1000">
+  <!-- 占位 -->
+  <div class=" hei-100">
+
+  </div>
+  <!-- 标题 -->
+  <div class="layadmin-user-login-box layadmin-user-login-header">
+    <h2>洗洗车后台</h2>
+    <p>洗洗车后台管理系统</p>
+  </div>
+  <!-- 表单 -->
+  <form class="layui-form pad-l-15 pad-r-15 layui-col-sm4 layui-col-sm-offset4 bg-color-fff pad-20 layui-col-xs10 bor-rad-5 layui-col-xs-offset1" action="">
+    <div class="layui-form-item pos-re">
+      <i class="layui-icon layui-icon-username pos-abs left-15" style="top: 5px;"></i>
+      <input type="text" name="uname" id="uname" required   placeholder="登录ID" autocomplete="off" class="layui-input pad-l-45">
+    </div>
+    <div class="layui-form-item pos-re">
+      <i class="layui-icon layui-icon-password pos-abs left-15" style="top: 5px;"></i>
+      <input type="password" name="upwd" id="upwd" required  lay-verify="required" placeholder="登录密码" autocomplete="off" class="layui-input pad-l-45">
+    </div>
+    <div class="layui-form-item">
+      <input type="checkbox" name="" id="" value="记住我" />
+      <span class="dis-ib txta-top">记住我</span>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block mar-0">
+        <button class="layui-btn wid-1000 bg-color-f43 bor-rad-10" type="button" lay-submit lay-filter="formDemo" onclick="login()">登录</button>
+      </div>
+    </div>
+  </form>
+  <!-- 底部 -->
+  <!--<div class="pos-fix bottom-0 txta-c wid-1000 color-889-hf fsiz-12 lnh-40">-->
+  <!--&copy;2019&nbsp;-->
+  <!--<a href="" class="color-889-hf">文化部艺术发展中心</a>-->
+  <!--&nbsp;冀ICP备00000000号-->
+  <!--</div>-->
+</div>
+  <script src="../layuiadmin/layui/layui.js"></script>
+<script src="../plugins/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../layuiadmin/lib/js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="../layuiadmin/lib/js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../layuiadmin/lib/js/jQuery.print.js"></script>
+  <script type="text/javascript">
+    document.onkeydown = function(e){
+      if(e.keyCode == 13){
+        login()
+      }
+    }
+    $(function(){
+      $("input:password").bind("copy cut paste",function(e){
+        return false;
+      })
+    })
+    /**
+     * 设置cookie
+     */
+    function setCookie(name, value, day) {
+      var date = new Date();
+      date.setDate(date.getDate() + day);
+      document.cookie = name + '=' + value + ';expires=' + date+';path=/';
+    };
+
+    /**
+     * 获取cookie
+     */
+    function getCookie(name) {
+      var reg = RegExp(name + '=([^;]+)');
+      var arr = document.cookie.match(reg);
+      if (arr) {
+        return arr[1];
+      } else {
+        return '';
+      }
+    };
+    /**
+     * 删除cookie
+     */
+    function delCookie(name) {
+      setCookie(name, null, -1);
+    };
+    // $("#addPrice2").click(function(){
+    function login(){
+      layui.use('layer', function() {
+        var layer =layui.layer;
+
+        // window.location.href = 'kit/index1.html'; // 跳转主页面
+        var data={};
+
+        data.tel=$("#uname").val();
+        data.userpass=$("#upwd").val();
+        setCookie('userloginname', data.userloginname, 7); // 保存帐号到cookie，默认有效期7天
+        $.ajax({
+          url:"../washStaff/login",
+          type:"POST",
+          data:JSON.stringify(data),
+          contentType : "application/json;charset=UTF-8",
+          async:false,
+
+          success : function(result) {
+            console.log(result)
+            if(result.data==null||result.data.length==0){
+              delCookie('userloginname');
+              layer.open({
+                title: '登录失败'
+                ,content: '您的账号或密码有误'
+              });
+            }else if (result.data[0].username == "ADMIN"){
+              console.log("主管理员")
+              setCookie('username',"ADMIN", 7);
+              setCookie('tel',data.tel, 7);
+              setCookie('userid', encodeURI(result.data[0].staffname), 7); // 保存帐号到cookie，默认有效期7天
+              //setCookie('userid', result.data[0].staffname, 7); // 保存帐号到cookie，默认有效期7天
+              window.location.assign('../index1.html') //当前页面跳转，会存到历史列表中
+            }else if (result.data[0].username == "KEFU"){
+              console.log("客服查看订单")
+              setCookie('username',"KEFU", 7);
+              setCookie('tel',data.tel, 7);
+              //setCookie('userid', encodeURI(result.data[0].staffname), 7); // 保存帐号到cookie，默认有效期7天
+              setCookie('userid', result.data[0].staffname, 7); // 保存帐号到cookie，默认有效期7天
+              window.location.assign('../index3.html') //当前页面跳转，会存到历史列表中
+            }else if (result.data[0].username == "CAIWU"){
+              console.log("财务查看订单")
+              setCookie('username',"CAIWU", 7);
+              setCookie('tel',data.tel, 7);
+              //setCookie('userid', encodeURI(result.data[0].staffname), 7); // 保存帐号到cookie，默认有效期7天
+              setCookie('userid', result.data[0].staffname, 7); // 保存帐号到cookie，默认有效期7天
+              window.location.assign('../index2.html') //当前页面跳转，会存到历史列表中
+            }
+          },
+          error : function(result) {
+            alert("error");
+            alert(result.msg);
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

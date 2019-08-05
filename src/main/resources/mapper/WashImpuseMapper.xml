@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashImpuseMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashImpuse">
+    <id column="impuse_id" jdbcType="INTEGER" property="impuseId" />
+    <result column="impuse_orderid" jdbcType="VARCHAR" property="impuseOrderid" />
+    <result column="impuse_userid" jdbcType="VARCHAR" property="impuseUserid" />
+    <result column="impuse_importantid" jdbcType="VARCHAR" property="impuseImportantid" />
+    <result column="impuse_createtime" jdbcType="TIMESTAMP" property="impuseCreatetime" />
+    <result column="impuse_createbyuserid" jdbcType="VARCHAR" property="impuseCreatebyuserid" />
+    <result column="impuse_updatetime" jdbcType="TIMESTAMP" property="impuseUpdatetime" />
+    <result column="impuse_updatebyuserid" jdbcType="VARCHAR" property="impuseUpdatebyuserid" />
+    <result column="impuse_isdel" jdbcType="INTEGER" property="impuseIsdel" />
+    <result column="impuse_other1" jdbcType="VARCHAR" property="impuseOther1" />
+    <result column="impuse_other2" jdbcType="VARCHAR" property="impuseOther2" />
+    <result column="impuse_other3" jdbcType="VARCHAR" property="impuseOther3" />
+    <result column="impuse_other4" jdbcType="VARCHAR" property="impuseOther4" />
+    <result column="impuse_other5" jdbcType="VARCHAR" property="impuseOther5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    impuse_id, impuse_orderid, impuse_userid, impuse_importantid, impuse_createtime, 
+    impuse_createbyuserid, impuse_updatetime, impuse_updatebyuserid, impuse_isdel, impuse_other1, 
+    impuse_other2, impuse_other3, impuse_other4, impuse_other5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_impuse
+    where impuse_id = #{impuseId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wash_impuse
+    where impuse_id = #{impuseId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashImpuse">
+    insert into wash_impuse (impuse_id, impuse_orderid, impuse_userid, 
+      impuse_importantid, impuse_createtime, 
+      impuse_createbyuserid, impuse_updatetime, 
+      impuse_updatebyuserid, impuse_isdel, impuse_other1, 
+      impuse_other2, impuse_other3, impuse_other4, 
+      impuse_other5)
+    values (#{impuseId,jdbcType=INTEGER}, #{impuseOrderid,jdbcType=VARCHAR}, #{impuseUserid,jdbcType=VARCHAR}, 
+      #{impuseImportantid,jdbcType=VARCHAR}, #{impuseCreatetime,jdbcType=TIMESTAMP}, 
+      #{impuseCreatebyuserid,jdbcType=VARCHAR}, #{impuseUpdatetime,jdbcType=TIMESTAMP}, 
+      #{impuseUpdatebyuserid,jdbcType=VARCHAR}, #{impuseIsdel,jdbcType=INTEGER}, #{impuseOther1,jdbcType=VARCHAR}, 
+      #{impuseOther2,jdbcType=VARCHAR}, #{impuseOther3,jdbcType=VARCHAR}, #{impuseOther4,jdbcType=VARCHAR}, 
+      #{impuseOther5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashImpuse">
+    insert into wash_impuse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="impuseId != null">
+        impuse_id,
+      </if>
+      <if test="impuseOrderid != null">
+        impuse_orderid,
+      </if>
+      <if test="impuseUserid != null">
+        impuse_userid,
+      </if>
+      <if test="impuseImportantid != null">
+        impuse_importantid,
+      </if>
+      <if test="impuseCreatetime != null">
+        impuse_createtime,
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        impuse_createbyuserid,
+      </if>
+      <if test="impuseUpdatetime != null">
+        impuse_updatetime,
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        impuse_updatebyuserid,
+      </if>
+      <if test="impuseIsdel != null">
+        impuse_isdel,
+      </if>
+      <if test="impuseOther1 != null">
+        impuse_other1,
+      </if>
+      <if test="impuseOther2 != null">
+        impuse_other2,
+      </if>
+      <if test="impuseOther3 != null">
+        impuse_other3,
+      </if>
+      <if test="impuseOther4 != null">
+        impuse_other4,
+      </if>
+      <if test="impuseOther5 != null">
+        impuse_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="impuseId != null">
+        #{impuseId,jdbcType=INTEGER},
+      </if>
+      <if test="impuseOrderid != null">
+        #{impuseOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseUserid != null">
+        #{impuseUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseImportantid != null">
+        #{impuseImportantid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseCreatetime != null">
+        #{impuseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        #{impuseCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseUpdatetime != null">
+        #{impuseUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        #{impuseUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseIsdel != null">
+        #{impuseIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="impuseOther1 != null">
+        #{impuseOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther2 != null">
+        #{impuseOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther3 != null">
+        #{impuseOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther4 != null">
+        #{impuseOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther5 != null">
+        #{impuseOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashImpuse">
+    update wash_impuse
+    <set>
+      <if test="impuseOrderid != null">
+        impuse_orderid = #{impuseOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseUserid != null">
+        impuse_userid = #{impuseUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseImportantid != null">
+        impuse_importantid = #{impuseImportantid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseCreatetime != null">
+        impuse_createtime = #{impuseCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        impuse_createbyuserid = #{impuseCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseUpdatetime != null">
+        impuse_updatetime = #{impuseUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        impuse_updatebyuserid = #{impuseUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseIsdel != null">
+        impuse_isdel = #{impuseIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="impuseOther1 != null">
+        impuse_other1 = #{impuseOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther2 != null">
+        impuse_other2 = #{impuseOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther3 != null">
+        impuse_other3 = #{impuseOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther4 != null">
+        impuse_other4 = #{impuseOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="impuseOther5 != null">
+        impuse_other5 = #{impuseOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where impuse_id = #{impuseId,jdbcType=INTEGER}
+  </update>
+  <!--根据实体更新-->
+
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashImpuse">
+    update wash_impuse
+    set impuse_orderid = #{impuseOrderid,jdbcType=VARCHAR},
+      impuse_userid = #{impuseUserid,jdbcType=VARCHAR},
+      impuse_importantid = #{impuseImportantid,jdbcType=VARCHAR},
+      impuse_createtime = #{impuseCreatetime,jdbcType=TIMESTAMP},
+      impuse_createbyuserid = #{impuseCreatebyuserid,jdbcType=VARCHAR},
+      impuse_updatetime = #{impuseUpdatetime,jdbcType=TIMESTAMP},
+      impuse_updatebyuserid = #{impuseUpdatebyuserid,jdbcType=VARCHAR},
+      impuse_isdel = #{impuseIsdel,jdbcType=INTEGER},
+      impuse_other1 = #{impuseOther1,jdbcType=VARCHAR},
+      impuse_other2 = #{impuseOther2,jdbcType=VARCHAR},
+      impuse_other3 = #{impuseOther3,jdbcType=VARCHAR},
+      impuse_other4 = #{impuseOther4,jdbcType=VARCHAR},
+      impuse_other5 = #{impuseOther5,jdbcType=VARCHAR}
+    where impuse_id = #{impuseId,jdbcType=INTEGER}
+  </update>
+
+  <!--根据实体模糊查询返回集合-->
+  <select id="selectByConditionData" parameterType="com.lovelyz.washcar.entity.WashImpuse" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_impuse
+    <where>
+      <if test="impuseId != null">
+        and impuse_id = #{impuseId,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOrderid != null">
+        and impuse_orderid = #{impuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUserid != null">
+        and impuse_userid = #{impuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseImportantid != null">
+        and impuse_importantid = #{impuseImportantid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseCreatetime != null">
+        and impuse_createtime = #{impuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        and impuse_createbyuserid = #{impuseCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUpdatetime != null">
+        and impuse_updatetime = #{impuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        and impuse_updatebyuserid = #{impuseUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseIsdel != null">
+        and impuse_isdel = #{impuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOther1 != null">
+        and impuse_other1 = #{impuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther2 != null">
+        and impuse_other2 = #{impuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther3 != null">
+        and impuse_other3 = #{impuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther4 != null">
+        and impuse_other4 = #{impuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther5 != null">
+        and impuse_other5 = #{impuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体模糊查询返回集合-->
+
+
+  <!--根据实体查询返回集合-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashImpuse" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_impuse
+    <where>
+      <if test="impuseId != null">
+        and impuse_id = #{impuseId,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOrderid != null">
+        and impuse_orderid = #{impuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUserid != null">
+        and impuse_userid = #{impuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseImportantid != null">
+        and impuse_importantid = #{impuseImportantid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseCreatetime != null">
+        and impuse_createtime = #{impuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        and impuse_createbyuserid = #{impuseCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUpdatetime != null">
+        and impuse_updatetime = #{impuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        and impuse_updatebyuserid = #{impuseUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseIsdel != null">
+        and impuse_isdel = #{impuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOther1 != null">
+        and impuse_other1 = #{impuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther2 != null">
+        and impuse_other2 = #{impuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther3 != null">
+        and impuse_other3 = #{impuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther4 != null">
+        and impuse_other4 = #{impuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther5 != null">
+        and impuse_other5 = #{impuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询返回集合-->
+
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select impuse_id, impuse_orderid, impuse_userid, impuse_importantid, impuse_createtime, 
+    impuse_createbyuserid, impuse_updatetime, impuse_updatebyuserid, impuse_isdel, impuse_other1, 
+    impuse_other2, impuse_other3, impuse_other4, impuse_other5
+    from wash_impuse
+  </select>
+
+  <!--根据实体查询数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashImpuse" resultType="java.lang.Integer">
+    select count(1) from wash_impuse
+    <where>
+      <if test="impuseOrderid != null">
+        and impuse_orderid = #{impuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUserid != null">
+        and impuse_userid = #{impuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseImportantid != null">
+        and impuse_importantid = #{impuseImportantid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseCreatetime != null">
+        and impuse_createtime = #{impuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        and impuse_createbyuserid = #{impuseCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUpdatetime != null">
+        and impuse_updatetime = #{impuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        and impuse_updatebyuserid = #{impuseUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseIsdel != null">
+        and impuse_isdel = #{impuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOther1 != null">
+        and impuse_other1 = #{impuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther2 != null">
+        and impuse_other2 = #{impuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther3 != null">
+        and impuse_other3 = #{impuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther4 != null">
+        and impuse_other4 = #{impuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther5 != null">
+        and impuse_other5 = #{impuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询数量-->
+
+  <!--根据实体模糊查询数量-->
+  <select id="countData" parameterType="com.lovelyz.washcar.entity.WashImpuse" resultType="java.lang.Integer">
+    select count(1) from wash_impuse
+    <where>
+      <if test="impuseOrderid != null">
+        and impuse_orderid = #{impuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUserid != null">
+        and impuse_userid = #{impuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseImportantid != null">
+        and impuse_importantid = #{impuseImportantid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseCreatetime != null">
+        and impuse_createtime = #{impuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        and impuse_createbyuserid = #{impuseCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUpdatetime != null">
+        and impuse_updatetime = #{impuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        and impuse_updatebyuserid = #{impuseUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseIsdel != null">
+        and impuse_isdel = #{impuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOther1 != null">
+        and impuse_other1 = #{impuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther2 != null">
+        and impuse_other2 = #{impuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther3 != null">
+        and impuse_other3 = #{impuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther4 != null">
+        and impuse_other4 = #{impuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther5 != null">
+        and impuse_other5 = #{impuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体模糊查询数量-->
+
+  <!--根据实体删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashImpuse">
+    delete from wash_impuse
+    <where>
+      <if test="impuseId != null">
+        and impuse_id = #{impuseId,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOrderid != null">
+        and impuse_orderid = #{impuseOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUserid != null">
+        and impuse_userid = #{impuseUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseImportantid != null">
+        and impuse_importantid = #{impuseImportantid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseCreatetime != null">
+        and impuse_createtime = #{impuseCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseCreatebyuserid != null">
+        and impuse_createbyuserid = #{impuseCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseUpdatetime != null">
+        and impuse_updatetime = #{impuseUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="impuseUpdatebyuserid != null">
+        and impuse_updatebyuserid = #{impuseUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseIsdel != null">
+        and impuse_isdel = #{impuseIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="impuseOther1 != null">
+        and impuse_other1 = #{impuseOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther2 != null">
+        and impuse_other2 = #{impuseOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther3 != null">
+        and impuse_other3 = #{impuseOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther4 != null">
+        and impuse_other4 = #{impuseOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="impuseOther5 != null">
+        and impuse_other5 = #{impuseOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <!--根据实体删除-->
+</mapper>

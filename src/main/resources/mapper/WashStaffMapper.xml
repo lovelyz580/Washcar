@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashStaffMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashStaff">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="did" jdbcType="INTEGER" property="did" />
+    <result column="staffName" jdbcType="VARCHAR" property="staffname" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userPass" jdbcType="VARCHAR" property="userpass" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, did, staffName, post, tel, userName, userPass
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_staff
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wash_staff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashStaff">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into wash_staff (did, staffName, post, 
+      tel, userName, userPass
+      )
+    values (#{did,jdbcType=INTEGER}, #{staffname,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userpass,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashStaff">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into wash_staff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="did != null">
+        did,
+      </if>
+      <if test="staffname != null">
+        staffName,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="userpass != null">
+        userPass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="did != null">
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="staffname != null">
+        #{staffname,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpass != null">
+        #{userpass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashStaff">
+    update wash_staff
+    <set>
+      <if test="did != null">
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="staffname != null">
+        staffName = #{staffname,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpass != null">
+        userPass = #{userpass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashStaff">
+    update wash_staff
+    set did = #{did,jdbcType=INTEGER},
+      staffName = #{staffname,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      userPass = #{userpass,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashStaff" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_staff
+    <where>
+      <if test="id != null">
+        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="did != null">
+        and did = #{did,jdbcType=INTEGER}
+      </if>
+      <if test="staffname != null">
+        and staffName = #{staffname,jdbcType=VARCHAR}
+      </if>
+      <if test="post != null">
+        and post = #{post,jdbcType=VARCHAR}
+      </if>
+      <if test="tel != null">
+        and tel = #{tel,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null">
+        and userName = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="userpass != null">
+        and userPass = #{userpass,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, did, staffName, post, tel, userName, userPass
+    from wash_staff
+  </select>
+
+  <select id="selectByPage"  parameterType="com.lovelyz.washcar.entity.WashStaff" resultMap="BaseResultMap">
+    select id, did, staffName, post, tel, userName, userPass
+    from wash_staff
+      <where>
+        <if test="did != null">
+          and did = #{did,jdbcType=INTEGER}
+        </if>
+        <if test="staffname != null">
+          and staffName = #{staffname,jdbcType=VARCHAR}
+        </if>
+        <if test="post != null">
+          and post = #{post,jdbcType=VARCHAR}
+        </if>
+        <if test="tel != null">
+          and tel = #{tel,jdbcType=VARCHAR}
+        </if>
+        <if test="username != null">
+          and userName = #{username,jdbcType=VARCHAR}
+        </if>
+        <if test="userpass != null">
+          and userPass = #{userpass,jdbcType=VARCHAR}
+        </if>
+      </where>
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashStaff" resultType="java.lang.Integer">
+    select count(1) from wash_staff
+    <where>
+      <if test="did != null">
+        and did = #{did,jdbcType=INTEGER}
+      </if>
+      <if test="staffname != null">
+        and staffName = #{staffname,jdbcType=VARCHAR}
+      </if>
+      <if test="post != null">
+        and post = #{post,jdbcType=VARCHAR}
+      </if>
+      <if test="tel != null">
+        and tel = #{tel,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null">
+        and userName = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="userpass != null">
+        and userPass = #{userpass,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashStaff">
+    delete from wash_staff
+    <where>
+      <if test="id != null">
+        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="did != null">
+        and did = #{did,jdbcType=INTEGER}
+      </if>
+      <if test="staffname != null">
+        and staffName = #{staffname,jdbcType=VARCHAR}
+      </if>
+      <if test="post != null">
+        and post = #{post,jdbcType=VARCHAR}
+      </if>
+      <if test="tel != null">
+        and tel = #{tel,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null">
+        and userName = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="userpass != null">
+        and userPass = #{userpass,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+</mapper>

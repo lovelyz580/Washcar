@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashImportantMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashImportant">
+    <id column="Important_id" jdbcType="INTEGER" property="importantId" />
+    <result column="Important_userid" jdbcType="VARCHAR" property="importantUserid" />
+    <result column="user_rname" jdbcType="VARCHAR" property="userRname" />
+    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+    <result column="Important_typeid" jdbcType="VARCHAR" property="importantTypeid" />
+    <result column="Important_mark" jdbcType="VARCHAR" property="importantMark" />
+    <result column="Important_createtime" jdbcType="TIMESTAMP" property="importantCreatetime" />
+    <result column="Important_createbyuserid" jdbcType="VARCHAR" property="importantCreatebyuserid" />
+    <result column="Important_updatetime" jdbcType="TIMESTAMP" property="importantUpdatetime" />
+    <result column="Important_updatebyuserid" jdbcType="VARCHAR" property="importantUpdatebyuserid" />
+    <result column="Important_isdel" jdbcType="INTEGER" property="importantIsdel" />
+    <result column="Important_other1" jdbcType="VARCHAR" property="importantOther1" />
+    <result column="Important_other2" jdbcType="VARCHAR" property="importantOther2" />
+    <result column="Important_other3" jdbcType="VARCHAR" property="importantOther3" />
+    <result column="Important_other4" jdbcType="VARCHAR" property="importantOther4" />
+    <result column="Important_other5" jdbcType="VARCHAR" property="importantOther5" />
+
+    <!--会员套餐使用记录表-->
+    <result column="Importanttype_name" jdbcType="VARCHAR" property="importanttypeName" />
+    <result column="Importanttype_type" jdbcType="VARCHAR" property="importanttypeType" />
+    <result column="Importanttype_userid" jdbcType="VARCHAR" property="importanttypeUserid" />
+    <result column="Importanttype_ptnum" jdbcType="INTEGER" property="importanttypePtnum" />
+    <result column="Importanttype_ptusenum" jdbcType="INTEGER" property="importanttypePtusenum" />
+    <result column="Importanttype_fdnum" jdbcType="INTEGER" property="importanttypeFdnum" />
+    <result column="Importanttype_fdusenum" jdbcType="INTEGER" property="importanttypeFdusenum" />
+    <result column="Importanttype_ktnum" jdbcType="INTEGER" property="importanttypeKtnum" />
+    <result column="Importanttype_ktusenum" jdbcType="INTEGER" property="importanttypeKtusenum" />
+    <result column="Importanttype_nsnum" jdbcType="INTEGER" property="importanttypeNsnum" />
+    <result column="Importanttype_nsusenum" jdbcType="INTEGER" property="importanttypeNsusenum" />
+    <result column="Importanttype_createtime" jdbcType="TIMESTAMP" property="importanttypeCreatetime" />
+    <result column="Importanttype_createbyuserid" jdbcType="VARCHAR" property="importanttypeCreatebyuserid" />
+    <result column="Importanttype_updatetime" jdbcType="TIMESTAMP" property="importanttypeUpdatetime" />
+    <result column="Importanttype_updatebyuserid" jdbcType="VARCHAR" property="importanttypeUpdatebyuserid" />
+    <result column="Importanttype_validtime" jdbcType="TIMESTAMP" property="importanttypeValidtime" />
+    <result column="Importanttype_isvalid" jdbcType="INTEGER" property="importanttypeIsvalid" />
+    <result column="Importanttype_isdel" jdbcType="INTEGER" property="importanttypeIsdel" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    Important_id, Important_userid,user_rname,user_phone, Important_typeid,
+    Important_mark, Important_createtime, Important_createbyuserid, Important_updatetime, 
+    Important_updatebyuserid, Important_isdel, Important_other1, Important_other2, Important_other3, 
+    Important_other4, Important_other5,Importanttype_id,Importanttype_name, Importanttype_type, Importanttype_userid, Importanttype_ptnum,
+    Importanttype_ptusenum, Importanttype_fdnum, Importanttype_fdusenum, Importanttype_ktnum,
+    Importanttype_ktusenum, Importanttype_nsnum, Importanttype_nsusenum, Importanttype_createtime,
+    Importanttype_createbyuserid, Importanttype_updatetime, Importanttype_updatebyuserid,
+    Importanttype_validtime, Importanttype_isvalid, Importanttype_isdel
+  </sql>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wash_important
+    where Important_id = #{importantId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashImportant">
+    insert into wash_important (Important_id, Important_userid, Important_typeid,
+       Important_mark,
+      Important_createtime, Important_createbyuserid, 
+      Important_updatetime, Important_updatebyuserid, 
+      Important_isdel, Important_other1, Important_other2, 
+      Important_other3, Important_other4, Important_other5
+      )
+    values (#{importantId,jdbcType=INTEGER}, #{importantUserid,jdbcType=VARCHAR}, #{importantTypeid,jdbcType=VARCHAR},
+       #{importantMark,jdbcType=VARCHAR},
+      #{importantCreatetime,jdbcType=TIMESTAMP}, #{importantCreatebyuserid,jdbcType=VARCHAR}, 
+      #{importantUpdatetime,jdbcType=TIMESTAMP}, #{importantUpdatebyuserid,jdbcType=VARCHAR}, 
+      #{importantIsdel,jdbcType=INTEGER}, #{importantOther1,jdbcType=VARCHAR}, #{importantOther2,jdbcType=VARCHAR}, 
+      #{importantOther3,jdbcType=VARCHAR}, #{importantOther4,jdbcType=VARCHAR}, #{importantOther5,jdbcType=VARCHAR}
+      )
+  </insert>
+
+
+
+
+
+  <!--根据主键查询实体-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wash_important
+    JOIN wash_importanttype ON wash_importanttype.Importanttype_id = wash_important.Important_typeid
+    JOIN wash_user ON wash_user.user_id = wash_important.Important_userid
+    <where>
+      Important_id = #{importantId,jdbcType=INTEGER}
+    </where>
+  </select>
+  <!--根据主键查询实体-->
+
+
+  <!--根据实体添加-->
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashImportant">
+    insert into wash_important
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="importantId != null">
+        Important_id,
+      </if>
+      <if test="importantUserid != null">
+        Important_userid,
+      </if>
+      <if test="importantTypeid != null">
+        Important_typeid,
+      </if>
+      <if test="importantMark != null">
+        Important_mark,
+      </if>
+      <if test="importantCreatetime != null">
+        Important_createtime,
+      </if>
+      <if test="importantCreatebyuserid != null">
+        Important_createbyuserid,
+      </if>
+      <if test="importantUpdatetime != null">
+        Important_updatetime,
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        Important_updatebyuserid,
+      </if>
+      <if test="importantIsdel != null">
+        Important_isdel,
+      </if>
+      <if test="importantOther1 != null">
+        Important_other1,
+      </if>
+      <if test="importantOther2 != null">
+        Important_other2,
+      </if>
+      <if test="importantOther3 != null">
+        Important_other3,
+      </if>
+      <if test="importantOther4 != null">
+        Important_other4,
+      </if>
+      <if test="importantOther5 != null">
+        Important_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="importantId != null">
+        #{importantId,jdbcType=INTEGER},
+      </if>
+      <if test="importantUserid != null">
+        #{importantUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantTypeid != null">
+        #{importantTypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantMark != null">
+        #{importantMark,jdbcType=VARCHAR},
+      </if>
+      <if test="importantCreatetime != null">
+        #{importantCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importantCreatebyuserid != null">
+        #{importantCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantUpdatetime != null">
+        #{importantUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        #{importantUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantIsdel != null">
+        #{importantIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="importantOther1 != null">
+        #{importantOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther2 != null">
+        #{importantOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther3 != null">
+        #{importantOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther4 != null">
+        #{importantOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther5 != null">
+        #{importantOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体添加-->
+
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashImportant">
+    update wash_important
+    <set>
+      <if test="importantUserid != null">
+        Important_userid = #{importantUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantTypeid != null">
+        Important_type = #{importantTypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantMark != null">
+        Important_mark = #{importantMark,jdbcType=VARCHAR},
+      </if>
+      <if test="importantCreatetime != null">
+        Important_createtime = #{importantCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importantCreatebyuserid != null">
+        Important_createbyuserid = #{importantCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantUpdatetime != null">
+        Important_updatetime = #{importantUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        Important_updatebyuserid = #{importantUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importantIsdel != null">
+        Important_isdel = #{importantIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="importantOther1 != null">
+        Important_other1 = #{importantOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther2 != null">
+        Important_other2 = #{importantOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther3 != null">
+        Important_other3 = #{importantOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther4 != null">
+        Important_other4 = #{importantOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="importantOther5 != null">
+        Important_other5 = #{importantOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Important_id = #{importantId,jdbcType=INTEGER}
+  </update>
+  <!--根据实体更新-->
+
+ <!--根据实体查询返回集合-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashImportant" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wash_important
+    JOIN wash_importanttype ON wash_importanttype.Importanttype_id = wash_important.Important_typeid
+    JOIN wash_user ON wash_user.user_id = wash_important.Important_userid
+    <where>
+      <if test="importantId != null">
+        and Important_id = #{importantId,jdbcType=INTEGER}
+      </if>
+      <if test="importantUserid != null">
+        and Important_userid = #{importantUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantTypeid != null">
+        and Important_type = #{importantTypeid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantMark != null">
+        and Important_mark = #{importantMark,jdbcType=VARCHAR}
+      </if>
+      <if test="importantCreatetime != null">
+        and Important_createtime = #{importantCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantCreatebyuserid != null">
+        and Important_createbyuserid = #{importantCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantUpdatetime != null">
+        and Important_updatetime = #{importantUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        and Important_updatebyuserid = #{importantUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantIsdel != null">
+        and Important_isdel = #{importantIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="importantOther1 != null">
+        and Important_other1 = #{importantOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther2 != null">
+        and Important_other2 = #{importantOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther3 != null">
+        and Important_other3 = #{importantOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther4 != null">
+        and Important_other4 = #{importantOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther5 != null">
+        and Important_other5 = #{importantOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询返回集合-->
+
+  <!--根据实体模糊查询返回集合-->
+  <select id="selectByConditionData" parameterType="com.lovelyz.washcar.entity.WashImportant" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wash_important
+    JOIN wash_importanttype ON wash_importanttype.Importanttype_id = wash_important.Important_typeid
+    JOIN wash_user ON wash_user.user_id = wash_important.Important_userid
+    <where>
+      <if test="importantId != null">
+        and Important_id = #{importantId,jdbcType=INTEGER}
+      </if>
+      <if test="importantUserid != null">
+        and Important_userid = #{importantUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantTypeid != null">
+        and Important_type = #{importantTypeid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantMark != null">
+        and Important_mark = #{importantMark,jdbcType=VARCHAR}
+      </if>
+      <if test="importantCreatetime != null">
+        and Important_createtime = #{importantCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantCreatebyuserid != null">
+        and Important_createbyuserid = #{importantCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantUpdatetime != null">
+        and Important_updatetime = #{importantUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        and Important_updatebyuserid = #{importantUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantIsdel != null">
+        and Important_isdel = #{importantIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="importantOther1 != null">
+        and Important_other1 = #{importantOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther2 != null">
+        and Important_other2 = #{importantOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther3 != null">
+        and Important_other3 = #{importantOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther4 != null">
+        and Important_other4 = #{importantOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther5 != null">
+        and Important_other5 = #{importantOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体模糊查询返回集合-->
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select Important_id, Important_userid, Important_type,
+    Important_mark, Important_createtime, Important_createbyuserid, Important_updatetime, 
+    Important_updatebyuserid, Important_isdel, Important_other1, Important_other2, Important_other3, 
+    Important_other4, Important_other5
+    from wash_important
+  </select>
+
+  <!--根据实体查询 数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashImportant" resultType="java.lang.Integer">
+    select count(1) from wash_important
+    <where>
+      <if test="importantUserid != null">
+        and Important_userid = #{importantUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantTypeid != null">
+        and Important_type = #{importantTypeid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantMark != null">
+        and Important_mark = #{importantMark,jdbcType=VARCHAR}
+      </if>
+      <if test="importantCreatetime != null">
+        and Important_createtime = #{importantCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantCreatebyuserid != null">
+        and Important_createbyuserid = #{importantCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantUpdatetime != null">
+        and Important_updatetime = #{importantUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        and Important_updatebyuserid = #{importantUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantIsdel != null">
+        and Important_isdel = #{importantIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="importantOther1 != null">
+        and Important_other1 = #{importantOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther2 != null">
+        and Important_other2 = #{importantOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther3 != null">
+        and Important_other3 = #{importantOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther4 != null">
+        and Important_other4 = #{importantOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther5 != null">
+        and Important_other5 = #{importantOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询 数量-->
+
+  <!--根据实体模糊查询数量-->
+  <select id="countData" parameterType="com.lovelyz.washcar.entity.WashImportant" resultType="java.lang.Integer">
+    select count(1) from wash_important
+    <where>
+      <if test="importantUserid != null">
+        and Important_userid = #{importantUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantTypeid != null">
+        and Important_type = #{importantTypeid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantMark != null">
+        and Important_mark = #{importantMark,jdbcType=VARCHAR}
+      </if>
+      <if test="importantCreatetime != null">
+        and Important_createtime = #{importantCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantCreatebyuserid != null">
+        and Important_createbyuserid = #{importantCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantUpdatetime != null">
+        and Important_updatetime = #{importantUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        and Important_updatebyuserid = #{importantUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantIsdel != null">
+        and Important_isdel = #{importantIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="importantOther1 != null">
+        and Important_other1 = #{importantOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther2 != null">
+        and Important_other2 = #{importantOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther3 != null">
+        and Important_other3 = #{importantOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther4 != null">
+        and Important_other4 = #{importantOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther5 != null">
+        and Important_other5 = #{importantOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体模糊查询数量-->
+
+  <!--根据实体假删除-->
+  <update id="updatebydel" parameterType="com.lovelyz.washcar.entity.WashImportant">
+    update wash_important
+    <set>
+        Important_isdel = 0,
+    </set>
+    where Important_id = #{importantId,jdbcType=INTEGER}
+  </update>
+  <!--根据实体假删除-->
+
+  <!--根据实体删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashImportant">
+    delete from wash_important
+    <where>
+      <if test="importantId != null">
+        and Important_id = #{importantId,jdbcType=INTEGER}
+      </if>
+      <if test="importantUserid != null">
+        and Important_userid = #{importantUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantTypeid != null">
+        and Important_type = #{importantTypeid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantMark != null">
+        and Important_mark = #{importantMark,jdbcType=VARCHAR}
+      </if>
+      <if test="importantCreatetime != null">
+        and Important_createtime = #{importantCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantCreatebyuserid != null">
+        and Important_createbyuserid = #{importantCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantUpdatetime != null">
+        and Important_updatetime = #{importantUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="importantUpdatebyuserid != null">
+        and Important_updatebyuserid = #{importantUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="importantIsdel != null">
+        and Important_isdel = #{importantIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="importantOther1 != null">
+        and Important_other1 = #{importantOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther2 != null">
+        and Important_other2 = #{importantOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther3 != null">
+        and Important_other3 = #{importantOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther4 != null">
+        and Important_other4 = #{importantOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="importantOther5 != null">
+        and Important_other5 = #{importantOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <!--根据实体删除-->
+</mapper>

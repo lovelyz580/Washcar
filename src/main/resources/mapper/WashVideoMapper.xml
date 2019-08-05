@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashVideoMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashVideo">
+    <id column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="video_name" jdbcType="VARCHAR" property="videoName" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+    <result column="video_info" jdbcType="VARCHAR" property="videoInfo" />
+    <result column="video_createtime" jdbcType="TIMESTAMP" property="videoCreatetime" />
+    <result column="video_updatetime" jdbcType="TIMESTAMP" property="videoUpdatetime" />
+    <result column="video_isdel" jdbcType="INTEGER" property="videoIsdel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    video_id, video_name, video_url, video_info, video_createtime, video_updatetime, 
+    video_isdel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wash_video
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashVideo">
+    insert into wash_video (video_id, video_name, video_url, 
+      video_info, video_createtime, video_updatetime, 
+      video_isdel)
+    values (#{videoId,jdbcType=INTEGER}, #{videoName,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{videoInfo,jdbcType=VARCHAR}, #{videoCreatetime,jdbcType=TIMESTAMP}, #{videoUpdatetime,jdbcType=TIMESTAMP}, 
+      #{videoIsdel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashVideo">
+    insert into wash_video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="videoName != null">
+        video_name,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="videoInfo != null">
+        video_info,
+      </if>
+      <if test="videoCreatetime != null">
+        video_createtime,
+      </if>
+      <if test="videoUpdatetime != null">
+        video_updatetime,
+      </if>
+      <if test="videoIsdel != null">
+        video_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="videoName != null">
+        #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoInfo != null">
+        #{videoInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCreatetime != null">
+        #{videoCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoUpdatetime != null">
+        #{videoUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoIsdel != null">
+        #{videoIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashVideo">
+    update wash_video
+    <set>
+      <if test="videoName != null">
+        video_name = #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoInfo != null">
+        video_info = #{videoInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCreatetime != null">
+        video_createtime = #{videoCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoUpdatetime != null">
+        video_updatetime = #{videoUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="videoIsdel != null">
+        video_isdel = #{videoIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashVideo">
+    update wash_video
+    set video_name = #{videoName,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      video_info = #{videoInfo,jdbcType=VARCHAR},
+      video_createtime = #{videoCreatetime,jdbcType=TIMESTAMP},
+      video_updatetime = #{videoUpdatetime,jdbcType=TIMESTAMP},
+      video_isdel = #{videoIsdel,jdbcType=INTEGER}
+    where video_id = #{videoId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashVideo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_video
+    <where>
+      <if test="videoId != null">
+        and video_id = #{videoId,jdbcType=INTEGER}
+      </if>
+      <if test="videoName != null">
+        and video_name = #{videoName,jdbcType=VARCHAR}
+      </if>
+      <if test="videoUrl != null">
+        and video_url = #{videoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="videoInfo != null">
+        and video_info = #{videoInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="videoCreatetime != null">
+        and video_createtime = #{videoCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="videoUpdatetime != null">
+        and video_updatetime = #{videoUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="videoIsdel != null">
+        and video_isdel = #{videoIsdel,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select video_id, video_name, video_url, video_info, video_createtime, video_updatetime, 
+    video_isdel
+    from wash_video
+  </select>
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashVideo" resultType="java.lang.Integer">
+    select count(1) from wash_video
+    <where>
+      <if test="videoName != null">
+        and video_name = #{videoName,jdbcType=VARCHAR}
+      </if>
+      <if test="videoUrl != null">
+        and video_url = #{videoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="videoInfo != null">
+        and video_info = #{videoInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="videoCreatetime != null">
+        and video_createtime = #{videoCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="videoUpdatetime != null">
+        and video_updatetime = #{videoUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="videoIsdel != null">
+        and video_isdel = #{videoIsdel,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashVideo">
+    delete from wash_video
+    <where>
+      <if test="videoId != null">
+        and video_id = #{videoId,jdbcType=INTEGER}
+      </if>
+      <if test="videoName != null">
+        and video_name = #{videoName,jdbcType=VARCHAR}
+      </if>
+      <if test="videoUrl != null">
+        and video_url = #{videoUrl,jdbcType=VARCHAR}
+      </if>
+      <if test="videoInfo != null">
+        and video_info = #{videoInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="videoCreatetime != null">
+        and video_createtime = #{videoCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="videoUpdatetime != null">
+        and video_updatetime = #{videoUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="videoIsdel != null">
+        and video_isdel = #{videoIsdel,jdbcType=INTEGER}
+      </if>
+    </where>
+  </delete>
+</mapper>

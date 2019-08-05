@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashVipMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashVip">
+    <id column="vip_id" jdbcType="VARCHAR" property="vipId" />
+    <id column="vip_name" jdbcType="VARCHAR" property="vipName" />
+    <result column="vip_type" jdbcType="VARCHAR" property="vipType" />
+    <result column="vip_money" jdbcType="DOUBLE" property="vipMoney" />
+    <result column="vip_ptnum" jdbcType="INTEGER" property="vipPtnum" />
+    <result column="vip_fdnum" jdbcType="INTEGER" property="vipFdnum" />
+    <result column="vip_ktnum" jdbcType="INTEGER" property="vipKtnum" />
+    <result column="vip_nsnum" jdbcType="INTEGER" property="vipNsnum" />
+    <result column="vip_createtime" jdbcType="TIMESTAMP" property="vipCreatetime" />
+    <result column="vip_createbyuserid" jdbcType="VARCHAR" property="vipCreatebyuserid" />
+    <result column="vip_updatetime" jdbcType="TIMESTAMP" property="vipUpdatetime" />
+    <result column="vip_updatebyuserid" jdbcType="VARCHAR" property="vipUpdatebyuserid" />
+    <result column="vip_isvalid" jdbcType="INTEGER" property="vipIsvalid" />
+    <result column="vip_isdel" jdbcType="INTEGER" property="vipIsdel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    vip_id,vip_name, vip_type, vip_money, vip_ptnum, vip_fdnum, vip_ktnum, vip_nsnum, vip_createtime,
+    vip_createbyuserid, vip_updatetime, vip_updatebyuserid, vip_isvalid, vip_isdel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_vip
+    where vip_id = #{vipId,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_vip
+    where vip_id = #{vipId,jdbcType=VARCHAR}
+  </delete>
+
+  <!--添加-->
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashVip">
+    insert into wash_vip (vip_id,vip_name, vip_type, vip_money,
+      vip_ptnum, vip_fdnum, vip_ktnum, 
+      vip_nsnum, vip_createtime, vip_createbyuserid, 
+      vip_updatetime, vip_updatebyuserid, vip_isvalid, 
+      vip_isdel)
+    values (#{vipId,jdbcType=VARCHAR},#{vipName,jdbcType=VARCHAR}, #{vipType,jdbcType=VARCHAR}, #{vipMoney,jdbcType=DOUBLE},
+      #{vipPtnum,jdbcType=INTEGER}, #{vipFdnum,jdbcType=INTEGER}, #{vipKtnum,jdbcType=INTEGER}, 
+      #{vipNsnum,jdbcType=INTEGER}, #{vipCreatetime,jdbcType=TIMESTAMP}, #{vipCreatebyuserid,jdbcType=VARCHAR}, 
+      #{vipUpdatetime,jdbcType=TIMESTAMP}, #{vipUpdatebyuserid,jdbcType=VARCHAR}, #{vipIsvalid,jdbcType=INTEGER}, 
+      #{vipIsdel,jdbcType=INTEGER})
+  </insert>
+  <!--添加-->
+
+  <!--根据实体添加-->
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashVip">
+    insert into wash_vip
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="vipId != null">
+        vip_id,
+      </if>
+      <if test="vipName != null">
+        vip_name,
+      </if>
+      <if test="vipType != null">
+        vip_type,
+      </if>
+      <if test="vipMoney != null">
+        vip_money,
+      </if>
+      <if test="vipPtnum != null">
+        vip_ptnum,
+      </if>
+      <if test="vipFdnum != null">
+        vip_fdnum,
+      </if>
+      <if test="vipKtnum != null">
+        vip_ktnum,
+      </if>
+      <if test="vipNsnum != null">
+        vip_nsnum,
+      </if>
+      <if test="vipCreatetime != null">
+        vip_createtime,
+      </if>
+      <if test="vipCreatebyuserid != null">
+        vip_createbyuserid,
+      </if>
+      <if test="vipUpdatetime != null">
+        vip_updatetime,
+      </if>
+      <if test="vipUpdatebyuserid != null">
+        vip_updatebyuserid,
+      </if>
+      <if test="vipIsvalid != null">
+        vip_isvalid,
+      </if>
+      <if test="vipIsdel != null">
+        vip_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="vipId != null">
+        #{vipId,jdbcType=VARCHAR},
+      </if>
+      <if test="vipName != null">
+        #{vipName,jdbcType=VARCHAR},
+      </if>
+      <if test="vipType != null">
+        #{vipType,jdbcType=VARCHAR},
+      </if>
+      <if test="vipMoney != null">
+        #{vipMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="vipPtnum != null">
+        #{vipPtnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipFdnum != null">
+        #{vipFdnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipKtnum != null">
+        #{vipKtnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipNsnum != null">
+        #{vipNsnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipCreatetime != null">
+        #{vipCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipCreatebyuserid != null">
+        #{vipCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="vipUpdatetime != null">
+        #{vipUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipUpdatebyuserid != null">
+        #{vipUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="vipIsvalid != null">
+        #{vipIsvalid,jdbcType=INTEGER},
+      </if>
+      <if test="vipIsdel != null">
+        #{vipIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体添加-->
+
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashVip">
+    update wash_vip
+    <set>
+      <if test="vipName != null">
+        vip_type = #{vipName,jdbcType=VARCHAR},
+      </if>
+      <if test="vipType != null">
+        vip_type = #{vipType,jdbcType=VARCHAR},
+      </if>
+      <if test="vipMoney != null">
+        vip_money = #{vipMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="vipPtnum != null">
+        vip_ptnum = #{vipPtnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipFdnum != null">
+        vip_fdnum = #{vipFdnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipKtnum != null">
+        vip_ktnum = #{vipKtnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipNsnum != null">
+        vip_nsnum = #{vipNsnum,jdbcType=INTEGER},
+      </if>
+      <if test="vipCreatetime != null">
+        vip_createtime = #{vipCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipCreatebyuserid != null">
+        vip_createbyuserid = #{vipCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="vipUpdatetime != null">
+        vip_updatetime = #{vipUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="vipUpdatebyuserid != null">
+        vip_updatebyuserid = #{vipUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="vipIsvalid != null">
+        vip_isvalid = #{vipIsvalid,jdbcType=INTEGER},
+      </if>
+      <if test="vipIsdel != null">
+        vip_isdel = #{vipIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where vip_id = #{vipId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体更新-->
+
+
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashVip">
+    update wash_vip
+    set vip_name = #{vipName,jdbcType=VARCHAR},
+      vip_type = #{vipType,jdbcType=VARCHAR},
+      vip_money = #{vipMoney,jdbcType=DOUBLE},
+      vip_ptnum = #{vipPtnum,jdbcType=INTEGER},
+      vip_fdnum = #{vipFdnum,jdbcType=INTEGER},
+      vip_ktnum = #{vipKtnum,jdbcType=INTEGER},
+      vip_nsnum = #{vipNsnum,jdbcType=INTEGER},
+      vip_createtime = #{vipCreatetime,jdbcType=TIMESTAMP},
+      vip_createbyuserid = #{vipCreatebyuserid,jdbcType=VARCHAR},
+      vip_updatetime = #{vipUpdatetime,jdbcType=TIMESTAMP},
+      vip_updatebyuserid = #{vipUpdatebyuserid,jdbcType=VARCHAR},
+      vip_isvalid = #{vipIsvalid,jdbcType=INTEGER},
+      vip_isdel = #{vipIsdel,jdbcType=INTEGER}
+    where vip_id = #{vipId,jdbcType=VARCHAR}
+  </update>
+
+
+  <!--根据实体查询集合-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashVip" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_vip
+    <where>
+      <if test="vipName != null">
+        and vip_name = #{vipName,jdbcType=VARCHAR}
+      </if>
+      <if test="vipId != null">
+        and vip_id = #{vipId,jdbcType=VARCHAR}
+      </if>
+      <if test="vipType != null">
+        and vip_type = #{vipType,jdbcType=VARCHAR}
+      </if>
+      <if test="vipMoney != null">
+        and vip_money = #{vipMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="vipPtnum != null">
+        and vip_ptnum = #{vipPtnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipFdnum != null">
+        and vip_fdnum = #{vipFdnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipKtnum != null">
+        and vip_ktnum = #{vipKtnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipNsnum != null">
+        and vip_nsnum = #{vipNsnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipCreatetime != null">
+        and vip_createtime = #{vipCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="vipCreatebyuserid != null">
+        and vip_createbyuserid = #{vipCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="vipUpdatetime != null">
+        and vip_updatetime = #{vipUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="vipUpdatebyuserid != null">
+        and vip_updatebyuserid = #{vipUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="vipIsvalid != null">
+        and vip_isvalid = #{vipIsvalid,jdbcType=INTEGER}
+      </if>
+      <if test="vipIsdel != null">
+        and vip_isdel = #{vipIsdel,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <!--根据实体查询集合-->
+
+
+  <!--查询全部  返回集合-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select vip_id, vip_type, vip_money, vip_ptnum, vip_fdnum, vip_ktnum, vip_nsnum, vip_createtime, 
+    vip_createbyuserid, vip_updatetime, vip_updatebyuserid, vip_isvalid, vip_isdel
+    from wash_vip
+  </select>
+  <!--查询全部  返回集合-->
+
+
+
+  <!--查询数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashVip" resultType="java.lang.Integer">
+    select count(1) from wash_vip
+    <where>
+      <if test="vipName != null">
+        and vip_name = #{vipName,jdbcType=VARCHAR}
+      </if>
+      <if test="vipType != null">
+        and vip_type = #{vipType,jdbcType=VARCHAR}
+      </if>
+      <if test="vipMoney != null">
+        and vip_money = #{vipMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="vipPtnum != null">
+        and vip_ptnum = #{vipPtnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipFdnum != null">
+        and vip_fdnum = #{vipFdnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipKtnum != null">
+        and vip_ktnum = #{vipKtnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipNsnum != null">
+        and vip_nsnum = #{vipNsnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipCreatetime != null">
+        and vip_createtime = #{vipCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="vipCreatebyuserid != null">
+        and vip_createbyuserid = #{vipCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="vipUpdatetime != null">
+        and vip_updatetime = #{vipUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="vipUpdatebyuserid != null">
+        and vip_updatebyuserid = #{vipUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="vipIsvalid != null">
+        and vip_isvalid = #{vipIsvalid,jdbcType=INTEGER}
+      </if>
+      <if test="vipIsdel != null">
+        and vip_isdel = #{vipIsdel,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <!--查询数量-->
+
+
+  <!--假删除-->
+  <update id="updatebydel" parameterType="java.lang.String">
+    update wash_vip
+    <set>
+        vip_isdel = 0
+    </set>
+    where vip_id = #{vipId,jdbcType=VARCHAR}
+  </update>
+  <!--假删除-->
+
+
+
+  <!--真删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashVip">
+    delete from wash_vip
+    <where>
+      <if test="vipId != null">
+        and vip_id = #{vipId,jdbcType=VARCHAR}
+      </if>
+      <if test="vipType != null">
+        and vip_type = #{vipType,jdbcType=VARCHAR}
+      </if>
+      <if test="vipMoney != null">
+        and vip_money = #{vipMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="vipPtnum != null">
+        and vip_ptnum = #{vipPtnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipFdnum != null">
+        and vip_fdnum = #{vipFdnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipKtnum != null">
+        and vip_ktnum = #{vipKtnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipNsnum != null">
+        and vip_nsnum = #{vipNsnum,jdbcType=INTEGER}
+      </if>
+      <if test="vipCreatetime != null">
+        and vip_createtime = #{vipCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="vipCreatebyuserid != null">
+        and vip_createbyuserid = #{vipCreatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="vipUpdatetime != null">
+        and vip_updatetime = #{vipUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="vipUpdatebyuserid != null">
+        and vip_updatebyuserid = #{vipUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="vipIsvalid != null">
+        and vip_isvalid = #{vipIsvalid,jdbcType=INTEGER}
+      </if>
+      <if test="vipIsdel != null">
+        and vip_isdel = #{vipIsdel,jdbcType=INTEGER}
+      </if>
+    </where>
+  </delete>
+  <!--真删除-->
+
+</mapper>

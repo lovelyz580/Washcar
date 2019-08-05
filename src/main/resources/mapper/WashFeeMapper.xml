@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashFeeMapper">
+    <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashFee">
+        <id column="fee_id" jdbcType="VARCHAR" property="feeId"/>
+        <result column="rank_name" jdbcType="VARCHAR" property="rankName" />
+        <result column="fee_name" jdbcType="VARCHAR" property="feeName"/>
+
+        <result column="fee_renkid" jdbcType="VARCHAR" property="feeRenkid"/>
+        <result column="fee_info" jdbcType="VARCHAR" property="feeInfo"/>
+        <result column="fee_images" jdbcType="VARCHAR" property="feeImages"/>
+        <result column="fee_money" jdbcType="DOUBLE" property="feeMoney"/>
+        <result column="fee_iedel" jdbcType="INTEGER" property="feeIedel"/>
+        <result column="fee_other1" jdbcType="VARCHAR" property="feeOther1"/>
+        <result column="fee_other2" jdbcType="VARCHAR" property="feeOther2"/>
+        <result column="fee_other3" jdbcType="VARCHAR" property="feeOther3"/>
+        <result column="fee_other4" jdbcType="VARCHAR" property="feeOther4"/>
+        <result column="fee_other5" jdbcType="VARCHAR" property="feeOther5"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    fee_id, fee_name,rank_name,  fee_renkid, fee_info, fee_images, fee_money, fee_iedel, fee_other1,
+    fee_other2, fee_other3, fee_other4, fee_other5
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from wash_fee
+        where fee_id = #{feeId,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_fee
+    where fee_id = #{feeId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashFee">
+    insert into wash_fee (fee_id, fee_name, fee_renkid, 
+      fee_info, fee_images, fee_money, 
+      fee_iedel, fee_other1, fee_other2, 
+      fee_other3, fee_other4, fee_other5
+      )
+    values (#{feeId,jdbcType=VARCHAR}, #{feeName,jdbcType=VARCHAR}, #{feeRenkid,jdbcType=VARCHAR}, 
+      #{feeInfo,jdbcType=VARCHAR}, #{feeImages,jdbcType=VARCHAR}, #{feeMoney,jdbcType=DOUBLE}, 
+      #{feeIedel,jdbcType=INTEGER}, #{feeOther1,jdbcType=VARCHAR}, #{feeOther2,jdbcType=VARCHAR}, 
+      #{feeOther3,jdbcType=VARCHAR}, #{feeOther4,jdbcType=VARCHAR}, #{feeOther5,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashFee">
+        insert into wash_fee
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="feeId != null">
+                fee_id,
+            </if>
+            <if test="feeName != null">
+                fee_name,
+            </if>
+            <if test="feeRenkid != null">
+                fee_renkid,
+            </if>
+            <if test="feeInfo != null">
+                fee_info,
+            </if>
+            <if test="feeImages != null">
+                fee_images,
+            </if>
+            <if test="feeMoney != null">
+                fee_money,
+            </if>
+            <if test="feeIedel != null">
+                fee_iedel,
+            </if>
+            <if test="feeOther1 != null">
+                fee_other1,
+            </if>
+            <if test="feeOther2 != null">
+                fee_other2,
+            </if>
+            <if test="feeOther3 != null">
+                fee_other3,
+            </if>
+            <if test="feeOther4 != null">
+                fee_other4,
+            </if>
+            <if test="feeOther5 != null">
+                fee_other5,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="feeId != null">
+                #{feeId,jdbcType=VARCHAR},
+            </if>
+            <if test="feeName != null">
+                #{feeName,jdbcType=VARCHAR},
+            </if>
+            <if test="feeRenkid != null">
+                #{feeRenkid,jdbcType=VARCHAR},
+            </if>
+            <if test="feeInfo != null">
+                #{feeInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="feeImages != null">
+                #{feeImages,jdbcType=VARCHAR},
+            </if>
+            <if test="feeMoney != null">
+                #{feeMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="feeIedel != null">
+                #{feeIedel,jdbcType=INTEGER},
+            </if>
+            <if test="feeOther1 != null">
+                #{feeOther1,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther2 != null">
+                #{feeOther2,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther3 != null">
+                #{feeOther3,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther4 != null">
+                #{feeOther4,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther5 != null">
+                #{feeOther5,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashFee">
+        update wash_fee
+        <set>
+            <if test="feeName != null">
+                fee_name = #{feeName,jdbcType=VARCHAR},
+            </if>
+            <if test="feeRenkid != null">
+                fee_renkid = #{feeRenkid,jdbcType=VARCHAR},
+            </if>
+            <if test="feeInfo != null">
+                fee_info = #{feeInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="feeImages != null">
+                fee_images = #{feeImages,jdbcType=VARCHAR},
+            </if>
+            <if test="feeMoney != null">
+                fee_money = #{feeMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="feeIedel != null">
+                fee_iedel = #{feeIedel,jdbcType=INTEGER},
+            </if>
+            <if test="feeOther1 != null">
+                fee_other1 = #{feeOther1,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther2 != null">
+                fee_other2 = #{feeOther2,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther3 != null">
+                fee_other3 = #{feeOther3,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther4 != null">
+                fee_other4 = #{feeOther4,jdbcType=VARCHAR},
+            </if>
+            <if test="feeOther5 != null">
+                fee_other5 = #{feeOther5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where fee_id = #{feeId,jdbcType=VARCHAR}
+    </update>
+
+    <!--精准查询-->
+    <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashFee" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        wash_fee,
+        wash_rank
+        <where>
+            wash_rank.rank_id = wash_fee.fee_renkid
+            <if test="feeId != null">
+                and fee_id = #{feeId,jdbcType=VARCHAR}
+            </if>
+            <if test="feeName != null">
+                and fee_name = #{feeName,jdbcType=VARCHAR}
+            </if>
+            <if test="feeRenkid != null">
+                and fee_renkid = #{feeRenkid,jdbcType=VARCHAR}
+            </if>
+            <if test="feeInfo != null">
+                and fee_info = #{feeInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="feeImages != null">
+                and fee_images = #{feeImages,jdbcType=VARCHAR}
+            </if>
+            <if test="feeMoney != null">
+                and fee_money = #{feeMoney,jdbcType=DOUBLE}
+            </if>
+            <if test="feeIedel != null">
+                and fee_iedel = #{feeIedel,jdbcType=INTEGER}
+            </if>
+            <if test="feeOther1 != null">
+                and fee_other1 = #{feeOther1,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther2 != null">
+                and fee_other2 = #{feeOther2,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther3 != null">
+                and fee_other3 = #{feeOther3,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther4 != null">
+                and fee_other4 = #{feeOther4,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther5 != null">
+                and fee_other5 = #{feeOther5,jdbcType=VARCHAR}
+            </if>
+        </where>
+        <if test="pagenumber != -1">
+            limit #{pagenumber,jdbcType=INTEGER},
+            #{pagesize,jdbcType=INTEGER}
+        </if>
+    </select>
+    <!--精准查询-->
+    <!--模糊查询-->
+    <select id="selectByConditionData" parameterType="com.lovelyz.washcar.entity.WashFee" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        wash_fee,
+        wash_rank
+        <where>
+            wash_rank.rank_id = wash_fee.fee_renkid
+            <if test="feeId != null">
+                and fee_id = #{feeId,jdbcType=VARCHAR}
+            </if>
+            <if test="feeName != null">
+                and fee_name like CONCAT('%', #{feeName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="feeRenkid != null">
+                and fee_renkid = #{feeRenkid,jdbcType=VARCHAR}
+            </if>
+            <if test="feeInfo != null">
+                and fee_info like CONCAT('%', #{feeInfo,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="feeImages != null">
+                and fee_images = #{feeImages,jdbcType=VARCHAR}
+            </if>
+            <if test="feeMoney != null">
+                and fee_money = #{feeMoney,jdbcType=DOUBLE}
+            </if>
+            <if test="feeIedel != null">
+                and fee_iedel = #{feeIedel,jdbcType=INTEGER}
+            </if>
+            <if test="feeOther1 != null">
+                and fee_other1 = #{feeOther1,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther2 != null">
+                and fee_other2 = #{feeOther2,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther3 != null">
+                and fee_other3 = #{feeOther3,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther4 != null">
+                and fee_other4 = #{feeOther4,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther5 != null">
+                and fee_other5 = #{feeOther5,jdbcType=VARCHAR}
+            </if>
+        </where>
+        <if test="pagenumber != -1">
+            limit #{pagenumber,jdbcType=INTEGER},
+            #{pagesize,jdbcType=INTEGER}
+        </if>
+    </select>
+    <!--模糊查询-->
+    <select id="selectAll" resultMap="BaseResultMap">
+    select fee_id, fee_name, fee_renkid, fee_info, fee_images, fee_money, fee_iedel, 
+    fee_other1, fee_other2, fee_other3, fee_other4, fee_other5
+    from wash_fee
+  </select>
+    <select id="selectByPage" parameterType="com.lovelyz.washcar.entity.WashFee" resultMap="BaseResultMap">
+        select fee_id, fee_name, fee_renkid, fee_info, fee_images, fee_money, fee_iedel,
+        fee_other1, fee_other2, fee_other3, fee_other4, fee_other5
+        from wash_fee
+        <if test="obj != null">
+            <where>
+                <if test="obj.feeName != null">
+                    and fee_name = #{obj.feeName,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeRenkid != null">
+                    and fee_renkid = #{obj.feeRenkid,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeInfo != null">
+                    and fee_info = #{obj.feeInfo,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeImages != null">
+                    and fee_images = #{obj.feeImages,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeMoney != null">
+                    and fee_money = #{obj.feeMoney,jdbcType=DOUBLE}
+                </if>
+                <if test="obj.feeIedel != null">
+                    and fee_iedel = #{obj.feeIedel,jdbcType=INTEGER}
+                </if>
+                <if test="obj.feeOther1 != null">
+                    and fee_other1 = #{obj.feeOther1,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeOther2 != null">
+                    and fee_other2 = #{obj.feeOther2,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeOther3 != null">
+                    and fee_other3 = #{obj.feeOther3,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeOther4 != null">
+                    and fee_other4 = #{obj.feeOther4,jdbcType=VARCHAR}
+                </if>
+                <if test="obj.feeOther5 != null">
+                    and fee_other5 = #{obj.feeOther5,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </if>
+        limit #{offset,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+    <!--准确查询数量-->
+    <select id="count" parameterType="com.lovelyz.washcar.entity.WashFee" resultType="java.lang.Integer">
+        select count(1) from wash_fee
+        <where>
+            <if test="feeName != null">
+                and fee_name = #{feeName,jdbcType=VARCHAR}
+            </if>
+            <if test="feeRenkid != null">
+                and fee_renkid = #{feeRenkid,jdbcType=VARCHAR}
+            </if>
+            <if test="feeInfo != null">
+                and fee_info = #{feeInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="feeImages != null">
+                and fee_images = #{feeImages,jdbcType=VARCHAR}
+            </if>
+            <if test="feeMoney != null">
+                and fee_money = #{feeMoney,jdbcType=DOUBLE}
+            </if>
+            <if test="feeIedel != null">
+                and fee_iedel = #{feeIedel,jdbcType=INTEGER}
+            </if>
+            <if test="feeOther1 != null">
+                and fee_other1 = #{feeOther1,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther2 != null">
+                and fee_other2 = #{feeOther2,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther3 != null">
+                and fee_other3 = #{feeOther3,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther4 != null">
+                and fee_other4 = #{feeOther4,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther5 != null">
+                and fee_other5 = #{feeOther5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <!--准确查询数量-->
+    <!--模糊查询数量-->
+    <select id="countData" parameterType="com.lovelyz.washcar.entity.WashFee" resultType="java.lang.Integer">
+        select count(1) from wash_fee
+        <where>
+            <if test="feeName != null">
+                and fee_name like CONCAT('%', #{feeName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="feeRenkid != null">
+                and fee_renkid = #{feeRenkid,jdbcType=VARCHAR}
+            </if>
+            <if test="feeInfo != null">
+                and fee_info like CONCAT('%', #{feeInfo,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="feeImages != null">
+                and fee_images = #{feeImages,jdbcType=VARCHAR}
+            </if>
+            <if test="feeMoney != null">
+                and fee_money = #{feeMoney,jdbcType=DOUBLE}
+            </if>
+            <if test="feeIedel != null">
+                and fee_iedel = #{feeIedel,jdbcType=INTEGER}
+            </if>
+            <if test="feeOther1 != null">
+                and fee_other1 = #{feeOther1,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther2 != null">
+                and fee_other2 = #{feeOther2,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther3 != null">
+                and fee_other3 = #{feeOther3,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther4 != null">
+                and fee_other4 = #{feeOther4,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther5 != null">
+                and fee_other5 = #{feeOther5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <!--模糊查询数量-->
+    <!--根据实体假删除-->
+
+    <update id="updatebydel" parameterType="java.lang.String">
+        update wash_fee
+        <set>
+            fee_iedel = 0,
+        </set>
+        where fee_id = #{feeId,jdbcType=VARCHAR}
+    </update>
+    <!--根据实体假删除-->
+    <!--根据实体删除-->
+    <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashFee">
+        delete from wash_fee
+        <where>
+            <if test="feeId != null">
+                and fee_id = #{feeId,jdbcType=VARCHAR}
+            </if>
+            <if test="feeName != null">
+                and fee_name = #{feeName,jdbcType=VARCHAR}
+            </if>
+            <if test="feeRenkid != null">
+                and fee_renkid = #{feeRenkid,jdbcType=VARCHAR}
+            </if>
+            <if test="feeInfo != null">
+                and fee_info = #{feeInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="feeImages != null">
+                and fee_images = #{feeImages,jdbcType=VARCHAR}
+            </if>
+            <if test="feeMoney != null">
+                and fee_money = #{feeMoney,jdbcType=DOUBLE}
+            </if>
+            <if test="feeIedel != null">
+                and fee_iedel = #{feeIedel,jdbcType=INTEGER}
+            </if>
+            <if test="feeOther1 != null">
+                and fee_other1 = #{feeOther1,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther2 != null">
+                and fee_other2 = #{feeOther2,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther3 != null">
+                and fee_other3 = #{feeOther3,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther4 != null">
+                and fee_other4 = #{feeOther4,jdbcType=VARCHAR}
+            </if>
+            <if test="feeOther5 != null">
+                and fee_other5 = #{feeOther5,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </delete>
+    <!--根据实体删除-->
+</mapper>

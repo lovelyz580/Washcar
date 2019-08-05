@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashEvaluateMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashEvaluate">
+    <id column="evaluate_id" jdbcType="VARCHAR" property="evaluateId" />
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
+    <result column="evaluate_content" jdbcType="VARCHAR" property="evaluateContent" />
+    <result column="evaluate_orderid" jdbcType="VARCHAR" property="evaluateOrderid" />
+    <result column="evaluate_createbyid" jdbcType="VARCHAR" property="evaluateCreatebyid" />
+    <result column="evaluate_touserid" jdbcType="VARCHAR" property="evaluateTouserid" />
+    <result column="evaluate_createtime" jdbcType="TIMESTAMP" property="evaluateCreatetime" />
+    <result column="evaluate_updatebyid" jdbcType="VARCHAR" property="evaluateUpdatebyid" />
+    <result column="evaluate_updatebytime" jdbcType="TIMESTAMP" property="evaluateUpdatebytime" />
+    <result column="evaluate_isgood" jdbcType="INTEGER" property="evaluateIsgood" />
+    <result column="evaluate_ie_del" jdbcType="INTEGER" property="evaluateIeDel" />
+    <result column="evaluate_other1" jdbcType="VARCHAR" property="evaluateOther1" />
+    <result column="evaluate_other2" jdbcType="VARCHAR" property="evaluateOther2" />
+    <result column="evaluate_other3" jdbcType="VARCHAR" property="evaluateOther3" />
+    <result column="evaluate_other4" jdbcType="VARCHAR" property="evaluateOther4" />
+    <result column="evaluate_other5" jdbcType="VARCHAR" property="evaluateOther5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    evaluate_id, evaluate_content, evaluate_orderid, evaluate_createbyid, evaluate_touserid, order_number,
+    evaluate_createtime, evaluate_updatebyid, evaluate_updatebytime, evaluate_isgood, 
+    evaluate_ie_del, evaluate_other1, evaluate_other2, evaluate_other3, evaluate_other4, 
+    evaluate_other5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_evaluate,
+    wash_order
+    where
+    wash_order.order_id = wash_evaluate.evaluate_orderid AND
+     evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_evaluate
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashEvaluate">
+    insert into wash_evaluate (evaluate_id, evaluate_content, evaluate_orderid, 
+      evaluate_createbyid, evaluate_touserid, evaluate_createtime, 
+      evaluate_updatebyid, evaluate_updatebytime, 
+      evaluate_isgood, evaluate_ie_del, evaluate_other1, 
+      evaluate_other2, evaluate_other3, evaluate_other4, 
+      evaluate_other5)
+    values (#{evaluateId,jdbcType=VARCHAR}, #{evaluateContent,jdbcType=VARCHAR}, #{evaluateOrderid,jdbcType=VARCHAR}, 
+      #{evaluateCreatebyid,jdbcType=VARCHAR}, #{evaluateTouserid,jdbcType=VARCHAR}, #{evaluateCreatetime,jdbcType=TIMESTAMP}, 
+      #{evaluateUpdatebyid,jdbcType=VARCHAR}, #{evaluateUpdatebytime,jdbcType=TIMESTAMP}, 
+      #{evaluateIsgood,jdbcType=INTEGER}, #{evaluateIeDel,jdbcType=INTEGER}, #{evaluateOther1,jdbcType=VARCHAR}, 
+      #{evaluateOther2,jdbcType=VARCHAR}, #{evaluateOther3,jdbcType=VARCHAR}, #{evaluateOther4,jdbcType=VARCHAR}, 
+      #{evaluateOther5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashEvaluate">
+    insert into wash_evaluate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="evaluateId != null">
+        evaluate_id,
+      </if>
+      <if test="evaluateContent != null">
+        evaluate_content,
+      </if>
+      <if test="evaluateOrderid != null">
+        evaluate_orderid,
+      </if>
+      <if test="evaluateCreatebyid != null">
+        evaluate_createbyid,
+      </if>
+      <if test="evaluateTouserid != null">
+        evaluate_touserid,
+      </if>
+      <if test="evaluateCreatetime != null">
+        evaluate_createtime,
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        evaluate_updatebyid,
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        evaluate_updatebytime,
+      </if>
+      <if test="evaluateIsgood != null">
+        evaluate_isgood,
+      </if>
+      <if test="evaluateIeDel != null">
+        evaluate_ie_del,
+      </if>
+      <if test="evaluateOther1 != null">
+        evaluate_other1,
+      </if>
+      <if test="evaluateOther2 != null">
+        evaluate_other2,
+      </if>
+      <if test="evaluateOther3 != null">
+        evaluate_other3,
+      </if>
+      <if test="evaluateOther4 != null">
+        evaluate_other4,
+      </if>
+      <if test="evaluateOther5 != null">
+        evaluate_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="evaluateId != null">
+        #{evaluateId,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateContent != null">
+        #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOrderid != null">
+        #{evaluateOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateCreatebyid != null">
+        #{evaluateCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateTouserid != null">
+        #{evaluateTouserid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateCreatetime != null">
+        #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        #{evaluateUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        #{evaluateUpdatebytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateIsgood != null">
+        #{evaluateIsgood,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateIeDel != null">
+        #{evaluateIeDel,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateOther1 != null">
+        #{evaluateOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther2 != null">
+        #{evaluateOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther3 != null">
+        #{evaluateOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther4 != null">
+        #{evaluateOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther5 != null">
+        #{evaluateOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashEvaluate">
+    update wash_evaluate
+    <set>
+      <if test="evaluateContent != null">
+        evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOrderid != null">
+        evaluate_orderid = #{evaluateOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateCreatebyid != null">
+        evaluate_createbyid = #{evaluateCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateTouserid != null">
+        evaluate_touserid = #{evaluateTouserid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateCreatetime != null">
+        evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        evaluate_updatebyid = #{evaluateUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        evaluate_updatebytime = #{evaluateUpdatebytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateIsgood != null">
+        evaluate_isgood = #{evaluateIsgood,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateIeDel != null">
+        evaluate_ie_del = #{evaluateIeDel,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateOther1 != null">
+        evaluate_other1 = #{evaluateOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther2 != null">
+        evaluate_other2 = #{evaluateOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther3 != null">
+        evaluate_other3 = #{evaluateOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther4 != null">
+        evaluate_other4 = #{evaluateOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateOther5 != null">
+        evaluate_other5 = #{evaluateOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashEvaluate">
+    update wash_evaluate
+    set evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      evaluate_orderid = #{evaluateOrderid,jdbcType=VARCHAR},
+      evaluate_createbyid = #{evaluateCreatebyid,jdbcType=VARCHAR},
+      evaluate_touserid = #{evaluateTouserid,jdbcType=VARCHAR},
+      evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      evaluate_updatebyid = #{evaluateUpdatebyid,jdbcType=VARCHAR},
+      evaluate_updatebytime = #{evaluateUpdatebytime,jdbcType=TIMESTAMP},
+      evaluate_isgood = #{evaluateIsgood,jdbcType=INTEGER},
+      evaluate_ie_del = #{evaluateIeDel,jdbcType=INTEGER},
+      evaluate_other1 = #{evaluateOther1,jdbcType=VARCHAR},
+      evaluate_other2 = #{evaluateOther2,jdbcType=VARCHAR},
+      evaluate_other3 = #{evaluateOther3,jdbcType=VARCHAR},
+      evaluate_other4 = #{evaluateOther4,jdbcType=VARCHAR},
+      evaluate_other5 = #{evaluateOther5,jdbcType=VARCHAR}
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+  </update>
+  <!--精准查询-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashEvaluate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wash_evaluate,
+    wash_order
+    <where>
+    wash_order.order_id = wash_evaluate.evaluate_orderid
+    <if test="evaluateId != null">
+        and evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateContent != null">
+        and evaluate_content = #{evaluateContent,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOrderid != null">
+        and evaluate_orderid = #{evaluateOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatebyid != null">
+        and evaluate_createbyid = #{evaluateCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateTouserid != null">
+        and evaluate_touserid = #{evaluateTouserid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatetime != null">
+        and evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        and evaluate_updatebyid = #{evaluateUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        and evaluate_updatebytime = #{evaluateUpdatebytime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateIsgood != null">
+        and evaluate_isgood = #{evaluateIsgood,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateIeDel != null">
+        and evaluate_ie_del = #{evaluateIeDel,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateOther1 != null">
+        and evaluate_other1 = #{evaluateOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther2 != null">
+        and evaluate_other2 = #{evaluateOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther3 != null">
+        and evaluate_other3 = #{evaluateOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther4 != null">
+        and evaluate_other4 = #{evaluateOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther5 != null">
+        and evaluate_other5 = #{evaluateOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY evaluate_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--模糊查询-->
+  <select id="selectByConditionData" parameterType="com.lovelyz.washcar.entity.WashEvaluate" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wash_evaluate,
+    wash_order
+    <where>
+    wash_order.order_id = wash_evaluate.evaluate_orderid
+    <if test="evaluateId != null">
+        and evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateContent != null">
+        and evaluate_content = #{evaluateContent,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOrderid != null">
+        and evaluate_orderid = #{evaluateOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatebyid != null">
+        and evaluate_createbyid = #{evaluateCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateTouserid != null">
+        and evaluate_touserid = #{evaluateTouserid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatetime != null">
+        and evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        and evaluate_updatebyid = #{evaluateUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        and evaluate_updatebytime = #{evaluateUpdatebytime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateIsgood != null">
+        and evaluate_isgood = #{evaluateIsgood,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateIeDel != null">
+        and evaluate_ie_del = #{evaluateIeDel,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateOther1 != null">
+        and evaluate_other1 = #{evaluateOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther2 != null">
+        and evaluate_other2 = #{evaluateOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther3 != null">
+        and evaluate_other3 = #{evaluateOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther4 != null">
+        and evaluate_other4 = #{evaluateOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther5 != null">
+        and evaluate_other5 = #{evaluateOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY evaluate_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select evaluate_id, evaluate_content, evaluate_orderid, evaluate_createbyid, evaluate_touserid, 
+    evaluate_createtime, evaluate_updatebyid, evaluate_updatebytime, evaluate_isgood, 
+    evaluate_ie_del, evaluate_other1, evaluate_other2, evaluate_other3, evaluate_other4, 
+    evaluate_other5
+    from wash_evaluate
+  </select>
+  <!--精准查询数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashEvaluate" resultType="java.lang.Integer">
+    select count(1) from wash_evaluate
+    <where>
+      <if test="evaluateContent != null">
+        and evaluate_content = #{evaluateContent,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOrderid != null">
+        and evaluate_orderid = #{evaluateOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatebyid != null">
+        and evaluate_createbyid = #{evaluateCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateTouserid != null">
+        and evaluate_touserid = #{evaluateTouserid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatetime != null">
+        and evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        and evaluate_updatebyid = #{evaluateUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        and evaluate_updatebytime = #{evaluateUpdatebytime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateIsgood != null">
+        and evaluate_isgood = #{evaluateIsgood,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateIeDel != null">
+        and evaluate_ie_del = #{evaluateIeDel,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateOther1 != null">
+        and evaluate_other1 = #{evaluateOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther2 != null">
+        and evaluate_other2 = #{evaluateOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther3 != null">
+        and evaluate_other3 = #{evaluateOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther4 != null">
+        and evaluate_other4 = #{evaluateOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther5 != null">
+        and evaluate_other5 = #{evaluateOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--模糊查询数量-->
+  <select id="countData" parameterType="com.lovelyz.washcar.entity.WashEvaluate" resultType="java.lang.Integer">
+    select count(1) from wash_evaluate
+    <where>
+      <if test="evaluateContent != null">
+        and evaluate_content = #{evaluateContent,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOrderid != null">
+        and evaluate_orderid = #{evaluateOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatebyid != null">
+        and evaluate_createbyid = #{evaluateCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateTouserid != null">
+        and evaluate_touserid = #{evaluateTouserid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatetime != null">
+        and evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        and evaluate_updatebyid = #{evaluateUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        and evaluate_updatebytime = #{evaluateUpdatebytime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateIsgood != null">
+        and evaluate_isgood = #{evaluateIsgood,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateIeDel != null">
+        and evaluate_ie_del = #{evaluateIeDel,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateOther1 != null">
+        and evaluate_other1 = #{evaluateOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther2 != null">
+        and evaluate_other2 = #{evaluateOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther3 != null">
+        and evaluate_other3 = #{evaluateOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther4 != null">
+        and evaluate_other4 = #{evaluateOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther5 != null">
+        and evaluate_other5 = #{evaluateOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <!--根据实体假删除-->
+  <update id="updatebydel" parameterType="com.lovelyz.washcar.entity.WashEvaluate">
+    update wash_evaluate
+    <set>
+        evaluate_ie_del = 0,
+    </set>
+    where evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体真删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashEvaluate">
+    delete from wash_evaluate
+    <where>
+      <if test="evaluateId != null">
+        and evaluate_id = #{evaluateId,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateContent != null">
+        and evaluate_content = #{evaluateContent,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOrderid != null">
+        and evaluate_orderid = #{evaluateOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatebyid != null">
+        and evaluate_createbyid = #{evaluateCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateTouserid != null">
+        and evaluate_touserid = #{evaluateTouserid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateCreatetime != null">
+        and evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateUpdatebyid != null">
+        and evaluate_updatebyid = #{evaluateUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateUpdatebytime != null">
+        and evaluate_updatebytime = #{evaluateUpdatebytime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="evaluateIsgood != null">
+        and evaluate_isgood = #{evaluateIsgood,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateIeDel != null">
+        and evaluate_ie_del = #{evaluateIeDel,jdbcType=INTEGER}
+      </if>
+      <if test="evaluateOther1 != null">
+        and evaluate_other1 = #{evaluateOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther2 != null">
+        and evaluate_other2 = #{evaluateOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther3 != null">
+        and evaluate_other3 = #{evaluateOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther4 != null">
+        and evaluate_other4 = #{evaluateOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="evaluateOther5 != null">
+        and evaluate_other5 = #{evaluateOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+</mapper>

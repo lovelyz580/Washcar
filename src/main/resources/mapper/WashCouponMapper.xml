@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashCouponMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashCoupon">
+    <id column="coupon_id" jdbcType="VARCHAR" property="couponId" />
+    <result column="coupon_money" jdbcType="DOUBLE" property="couponMoney" />
+    <result column="coupon_remoney" jdbcType="DOUBLE" property="couponRemoney" />
+    <result column="coupon_info" jdbcType="VARCHAR" property="couponInfo" />
+    <result column="coupon_createtime" jdbcType="TIMESTAMP" property="couponCreatetime" />
+    <result column="coupon_starttime" jdbcType="TIMESTAMP" property="couponStarttime" />
+    <result column="coupon_endtime" jdbcType="TIMESTAMP" property="couponEndtime" />
+    <result column="coupon_updatetime" jdbcType="TIMESTAMP" property="couponUpdatetime" />
+    <result column="coupon_iseffect" jdbcType="INTEGER" property="couponIseffect" />
+    <result column="coupon_isdel" jdbcType="INTEGER" property="couponIsdel" />
+    <result column="coupon_other1" jdbcType="VARCHAR" property="couponOther1" />
+    <result column="coupon_other2" jdbcType="VARCHAR" property="couponOther2" />
+    <result column="coupon_other3" jdbcType="VARCHAR" property="couponOther3" />
+    <result column="coupon_other4" jdbcType="VARCHAR" property="couponOther4" />
+    <result column="coupon_other5" jdbcType="VARCHAR" property="couponOther5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    coupon_id, coupon_money, coupon_remoney, coupon_info, coupon_createtime, coupon_starttime, 
+    coupon_endtime, coupon_updatetime, coupon_iseffect, coupon_isdel, coupon_other1, 
+    coupon_other2, coupon_other3, coupon_other4, coupon_other5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_coupon
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_coupon
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashCoupon">
+    insert into wash_coupon (coupon_id, coupon_money, coupon_remoney, 
+      coupon_info, coupon_createtime, coupon_starttime, 
+      coupon_endtime, coupon_updatetime, coupon_iseffect, 
+      coupon_isdel, coupon_other1, coupon_other2, 
+      coupon_other3, coupon_other4, coupon_other5
+      )
+    values (#{couponId,jdbcType=VARCHAR}, #{couponMoney,jdbcType=DOUBLE}, #{couponRemoney,jdbcType=DOUBLE}, 
+      #{couponInfo,jdbcType=VARCHAR}, #{couponCreatetime,jdbcType=TIMESTAMP}, #{couponStarttime,jdbcType=TIMESTAMP}, 
+      #{couponEndtime,jdbcType=TIMESTAMP}, #{couponUpdatetime,jdbcType=TIMESTAMP}, #{couponIseffect,jdbcType=INTEGER}, 
+      #{couponIsdel,jdbcType=INTEGER}, #{couponOther1,jdbcType=VARCHAR}, #{couponOther2,jdbcType=VARCHAR}, 
+      #{couponOther3,jdbcType=VARCHAR}, #{couponOther4,jdbcType=VARCHAR}, #{couponOther5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashCoupon">
+    insert into wash_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="couponMoney != null">
+        coupon_money,
+      </if>
+      <if test="couponRemoney != null">
+        coupon_remoney,
+      </if>
+      <if test="couponInfo != null">
+        coupon_info,
+      </if>
+      <if test="couponCreatetime != null">
+        coupon_createtime,
+      </if>
+      <if test="couponStarttime != null">
+        coupon_starttime,
+      </if>
+      <if test="couponEndtime != null">
+        coupon_endtime,
+      </if>
+      <if test="couponUpdatetime != null">
+        coupon_updatetime,
+      </if>
+      <if test="couponIseffect != null">
+        coupon_iseffect,
+      </if>
+      <if test="couponIsdel != null">
+        coupon_isdel,
+      </if>
+      <if test="couponOther1 != null">
+        coupon_other1,
+      </if>
+      <if test="couponOther2 != null">
+        coupon_other2,
+      </if>
+      <if test="couponOther3 != null">
+        coupon_other3,
+      </if>
+      <if test="couponOther4 != null">
+        coupon_other4,
+      </if>
+      <if test="couponOther5 != null">
+        coupon_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponId != null">
+        #{couponId,jdbcType=VARCHAR},
+      </if>
+      <if test="couponMoney != null">
+        #{couponMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponRemoney != null">
+        #{couponRemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponInfo != null">
+        #{couponInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="couponCreatetime != null">
+        #{couponCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponStarttime != null">
+        #{couponStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponEndtime != null">
+        #{couponEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponUpdatetime != null">
+        #{couponUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponIseffect != null">
+        #{couponIseffect,jdbcType=INTEGER},
+      </if>
+      <if test="couponIsdel != null">
+        #{couponIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="couponOther1 != null">
+        #{couponOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther2 != null">
+        #{couponOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther3 != null">
+        #{couponOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther4 != null">
+        #{couponOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther5 != null">
+        #{couponOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashCoupon">
+    update wash_coupon
+    <set>
+      <if test="couponMoney != null">
+        coupon_money = #{couponMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponRemoney != null">
+        coupon_remoney = #{couponRemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponInfo != null">
+        coupon_info = #{couponInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="couponCreatetime != null">
+        coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponStarttime != null">
+        coupon_starttime = #{couponStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponEndtime != null">
+        coupon_endtime = #{couponEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponUpdatetime != null">
+        coupon_updatetime = #{couponUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponIseffect != null">
+        coupon_iseffect = #{couponIseffect,jdbcType=INTEGER},
+      </if>
+      <if test="couponIsdel != null">
+        coupon_isdel = #{couponIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="couponOther1 != null">
+        coupon_other1 = #{couponOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther2 != null">
+        coupon_other2 = #{couponOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther3 != null">
+        coupon_other3 = #{couponOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther4 != null">
+        coupon_other4 = #{couponOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther5 != null">
+        coupon_other5 = #{couponOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </update>
+
+  <!--根据ID  更新数据-->
+  <update id="updataBystatic" parameterType="com.lovelyz.washcar.entity.WashCoupon">
+    update wash_coupon
+    <set>
+      <if test="couponMoney != null">
+        coupon_money = #{couponMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponRemoney != null">
+        coupon_remoney = #{couponRemoney,jdbcType=DOUBLE},
+      </if>
+      <if test="couponInfo != null">
+        coupon_info = #{couponInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="couponCreatetime != null">
+        coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponStarttime != null">
+        coupon_starttime = #{couponStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponEndtime != null">
+        coupon_endtime = #{couponEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponUpdatetime != null">
+        coupon_updatetime = #{couponUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="couponIseffect != null">
+        coupon_iseffect = #{couponIseffect,jdbcType=INTEGER},
+      </if>
+      <if test="couponIsdel != null">
+        coupon_isdel = #{couponIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="couponOther1 != null">
+        coupon_other1 = #{couponOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther2 != null">
+        coupon_other2 = #{couponOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther3 != null">
+        coupon_other3 = #{couponOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther4 != null">
+        coupon_other4 = #{couponOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="couponOther5 != null">
+        coupon_other5 = #{couponOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </update>
+  <!--根据ID  更新数据-->
+
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashCoupon">
+    update wash_coupon
+    set coupon_money = #{couponMoney,jdbcType=DOUBLE},
+      coupon_remoney = #{couponRemoney,jdbcType=DOUBLE},
+      coupon_info = #{couponInfo,jdbcType=VARCHAR},
+      coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP},
+      coupon_starttime = #{couponStarttime,jdbcType=TIMESTAMP},
+      coupon_endtime = #{couponEndtime,jdbcType=TIMESTAMP},
+      coupon_updatetime = #{couponUpdatetime,jdbcType=TIMESTAMP},
+      coupon_iseffect = #{couponIseffect,jdbcType=INTEGER},
+      coupon_isdel = #{couponIsdel,jdbcType=INTEGER},
+      coupon_other1 = #{couponOther1,jdbcType=VARCHAR},
+      coupon_other2 = #{couponOther2,jdbcType=VARCHAR},
+      coupon_other3 = #{couponOther3,jdbcType=VARCHAR},
+      coupon_other4 = #{couponOther4,jdbcType=VARCHAR},
+      coupon_other5 = #{couponOther5,jdbcType=VARCHAR}
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashCoupon" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_coupon
+    <where>
+      <if test="couponId != null">
+        and coupon_id = #{couponId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponMoney != null">
+        and coupon_money = #{couponMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponRemoney != null">
+        and coupon_remoney = #{couponRemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponInfo != null">
+        and coupon_info = #{couponInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="couponCreatetime != null">
+        and coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponStarttime != null">
+        and coupon_starttime = #{couponStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponEndtime != null">
+        and coupon_endtime = #{couponEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponUpdatetime != null">
+        and coupon_updatetime = #{couponUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponIseffect != null">
+        and coupon_iseffect = #{couponIseffect,jdbcType=INTEGER}
+      </if>
+      <if test="couponIsdel != null">
+        and coupon_isdel = #{couponIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="couponOther1 != null">
+        and coupon_other1 = #{couponOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther2 != null">
+        and coupon_other2 = #{couponOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther3 != null">
+        and coupon_other3 = #{couponOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther4 != null">
+        and coupon_other4 = #{couponOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther5 != null">
+        and coupon_other5 = #{couponOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select coupon_id, coupon_money, coupon_remoney, coupon_info, coupon_createtime, coupon_starttime, 
+    coupon_endtime, coupon_updatetime, coupon_iseffect, coupon_isdel, coupon_other1, 
+    coupon_other2, coupon_other3, coupon_other4, coupon_other5
+    from wash_coupon
+  </select>
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashCoupon" resultType="java.lang.Integer">
+    select count(1) from wash_coupon
+    <where>
+      <if test="couponId != null">
+        and coupon_id = #{couponId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponMoney != null">
+        and coupon_money = #{couponMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponRemoney != null">
+        and coupon_remoney = #{couponRemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponInfo != null">
+        and coupon_info = #{couponInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="couponCreatetime != null">
+        and coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponStarttime != null">
+        and coupon_starttime = #{couponStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponEndtime != null">
+        and coupon_endtime = #{couponEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponUpdatetime != null">
+        and coupon_updatetime = #{couponUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponIseffect != null">
+        and coupon_iseffect = #{couponIseffect,jdbcType=INTEGER}
+      </if>
+      <if test="couponIsdel != null">
+        and coupon_isdel = #{couponIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="couponOther1 != null">
+        and coupon_other1 = #{couponOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther2 != null">
+        and coupon_other2 = #{couponOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther3 != null">
+        and coupon_other3 = #{couponOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther4 != null">
+        and coupon_other4 = #{couponOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther5 != null">
+        and coupon_other5 = #{couponOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+
+  <!--根据实体假删除-->
+  <update id="updatebydel" parameterType="com.lovelyz.washcar.entity.WashCoupon">
+    update wash_coupon
+    <set>
+        coupon_isdel = 0,
+    </set>
+    where coupon_id = #{couponId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体假删除-->
+
+  <!--根据实体真删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashCoupon">
+    delete from wash_coupon
+    <where>
+      <if test="couponId != null">
+        and coupon_id = #{couponId,jdbcType=VARCHAR}
+      </if>
+      <if test="couponMoney != null">
+        and coupon_money = #{couponMoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponRemoney != null">
+        and coupon_remoney = #{couponRemoney,jdbcType=DOUBLE}
+      </if>
+      <if test="couponInfo != null">
+        and coupon_info = #{couponInfo,jdbcType=VARCHAR}
+      </if>
+      <if test="couponCreatetime != null">
+        and coupon_createtime = #{couponCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponStarttime != null">
+        and coupon_starttime = #{couponStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponEndtime != null">
+        and coupon_endtime = #{couponEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponUpdatetime != null">
+        and coupon_updatetime = #{couponUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="couponIseffect != null">
+        and coupon_iseffect = #{couponIseffect,jdbcType=INTEGER}
+      </if>
+      <if test="couponIsdel != null">
+        and coupon_isdel = #{couponIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="couponOther1 != null">
+        and coupon_other1 = #{couponOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther2 != null">
+        and coupon_other2 = #{couponOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther3 != null">
+        and coupon_other3 = #{couponOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther4 != null">
+        and coupon_other4 = #{couponOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="couponOther5 != null">
+        and coupon_other5 = #{couponOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+  <!--根据实体真删除-->
+</mapper>

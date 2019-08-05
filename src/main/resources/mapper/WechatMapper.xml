@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 微信相关数据表 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lovelyz.washcar.mapper.WechatMapper">
+	
+	<resultMap id="BaseResultMap" type="com.lovelyz.washcar.wechat.entity.Wechat">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="AppId" jdbcType="VARCHAR" property="appid" />
+		<result column="AppSecret" jdbcType="VARCHAR" property="appsecret" />
+		<result column="MCHID" jdbcType="VARCHAR" property="mchid" />
+		<result column="API" jdbcType="VARCHAR" property="api" />
+		<result column="AccessToken" jdbcType="VARCHAR" property="accesstoken" />
+		<result column="JsapiTicket" jdbcType="VARCHAR" property="jsapiticket" />
+		<result column="TokenBuildTime" jdbcType="TIMESTAMP" property="tokenbuildtime" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		ID, AppId, AppSecret, MCHID, API, AccessToken, JsapiTicket, TokenBuildTime
+	</sql>
+
+	<insert id="insert" parameterType="com.lovelyz.washcar.wechat.entity.Wechat">
+		insert into wash_wechat (ID, AppId, AppSecret, MCHID, API,
+		AccessToken, JsapiTicket, TokenBuildTime)
+		values (#{id,jdbcType=INTEGER},
+		#{appid,jdbcType=VARCHAR}, 
+		#{appsecret,jdbcType=VARCHAR},
+		#{mchid,jdbcType=VARCHAR},
+		#{api,jdbcType=VARCHAR},
+		#{accesstoken,jdbcType=VARCHAR},
+		#{jsapiticket,jdbcType=VARCHAR},
+		#{tokenbuildtime,jdbcType=TIMESTAMP})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.lovelyz.washcar.wechat.entity.Wechat">
+		insert into wash_wechat
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="appid != null">
+				AppId,
+			</if>
+			<if test="appsecret != null">
+				AppSecret,
+			</if>
+			<if test="mchid != null">
+				MCHID,
+			</if>
+			<if test="api != null">
+				API,
+			</if>
+			<if test="accesstoken != null">
+				AccessToken,
+			</if>
+			<if test="jsapiticket != null">
+				JsapiTicket,
+			</if>
+			<if test="tokenbuildtime != null">
+				TokenBuildTime,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="appid != null">
+				#{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="appsecret != null">
+				#{appsecret,jdbcType=VARCHAR},
+			</if>
+			<if test="mchid != null">
+				#{mchid,jdbcType=VARCHAR},
+			</if>
+			<if test="api != null">
+				#{api,jdbcType=VARCHAR},
+			</if>
+			<if test="accesstoken != null">
+				#{accesstoken,jdbcType=VARCHAR},
+			</if>
+			<if test="jsapiticket != null">
+				#{jsapiticket,jdbcType=VARCHAR},
+			</if>
+			<if test="tokenbuildtime != null">
+				#{tokenbuildtime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.wechat.entity.Wechat">
+		update wash_wechat
+		<set>
+			<if test="appid != null">
+				AppId = #{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="appsecret != null">
+				AppSecret = #{appsecret,jdbcType=VARCHAR},
+			</if>
+			<if test="mchid != null">
+				MCHID = #{mchid,jdbcType=VARCHAR},
+			</if>
+			<if test="api != null">
+				API = #{api,jdbcType=VARCHAR},
+			</if>
+			<if test="accesstoken != null">
+				AccessToken = #{accesstoken,jdbcType=VARCHAR},
+			</if>
+			<if test="jsapiticket != null">
+				JsapiTicket = #{jsapiticket,jdbcType=VARCHAR},
+			</if>
+			<if test="tokenbuildtime != null">
+				TokenBuildTime = #{tokenbuildtime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.wechat.entity.Wechat">
+		update wash_wechat
+		set AppId = #{appid,jdbcType=VARCHAR},
+		AppSecret = #{appsecret,jdbcType=VARCHAR},
+		MCHID = #{mchid,jdbcType=VARCHAR},
+		API = #{api,jdbcType=VARCHAR},
+		AccessToken = #{accesstoken,jdbcType=VARCHAR},
+		JsapiTicket = #{jsapiticket,jdbcType=VARCHAR},
+		TokenBuildTime = #{tokenbuildtime,jdbcType=TIMESTAMP}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from wash_wechat
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from wash_wechat
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 根据Wechat实体更新 -->
+	<update id="updateByWechat" parameterType="com.lovelyz.washcar.wechat.entity.Wechat">
+		update wash_wechat
+		<set>
+			<if test="appid != null">
+				AppId = #{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="appsecret != null">
+				AppSecret = #{appsecret,jdbcType=VARCHAR},
+			</if>
+			<if test="mchid != null">
+				MCHID = #{mchid,jdbcType=VARCHAR},
+			</if>
+			<if test="api != null">
+				API = #{api,jdbcType=VARCHAR},
+			</if>
+			<if test="accesstoken != null">
+				AccessToken = #{accesstoken,jdbcType=VARCHAR},
+			</if>
+			<if test="jsapiticket != null">
+				JsapiTicket = #{jsapiticket,jdbcType=VARCHAR},
+			</if>
+			<if test="tokenbuildtime != null">
+				TokenBuildTime = #{tokenbuildtime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		<where>
+			<trim suffixOverrides = "and">
+				<if test="id != null and id != ''">
+					and ID = #{id,jdbcType=INTEGER}
+	      		</if>
+	      	</trim>
+		</where>
+	</update>
+	
+	<!-- 根据Wechat实体查询 -->
+	<select id="selectByWechat" parameterType="com.lovelyz.washcar.wechat.entity.Wechat" resultMap="BaseResultMap">
+		select * from wash_wechat
+		<where>
+			<trim suffixOverrides = "and">
+				<if test="id != null and id != ''">
+					and ID = #{id,jdbcType=INTEGER}
+	      		</if>
+	      	</trim>
+		</where>
+	</select>
+	
+</mapper>

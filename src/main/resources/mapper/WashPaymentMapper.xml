@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashPaymentMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashPayment">
+    <id column="payment_id" jdbcType="VARCHAR" property="paymentId" />
+    <result column="payment_orderid" jdbcType="VARCHAR" property="paymentOrderid" />
+    <result column="payment_createbyid" jdbcType="VARCHAR" property="paymentCreatebyid" />
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
+    <result column="order_userid" jdbcType="VARCHAR" property="orderUserid" />
+    <result column="order_allmoney" jdbcType="DOUBLE" property="orderAllmoney" />
+    <result column="order_username" jdbcType="VARCHAR" property="orderUsername" />
+    <result column="payment_createtime" jdbcType="TIMESTAMP" property="paymentCreatetime" />
+    <result column="payment_updatebyid" jdbcType="VARCHAR" property="paymentUpdatebyid" />
+    <result column="payment_updatetime" jdbcType="TIMESTAMP" property="paymentUpdatetime" />
+    <result column="payment_isdel" jdbcType="INTEGER" property="paymentIsdel" />
+    <result column="payment_other1" jdbcType="VARCHAR" property="paymentOther1" />
+    <result column="payment_othe2" jdbcType="VARCHAR" property="paymentOthe2" />
+    <result column="payment_other3" jdbcType="VARCHAR" property="paymentOther3" />
+    <result column="payment_other4" jdbcType="VARCHAR" property="paymentOther4" />
+    <result column="payment_other5" jdbcType="VARCHAR" property="paymentOther5" />
+    <result column="starttime" jdbcType="TIMESTAMP" property="Starttime" />
+    <result column="endtime" jdbcType="TIMESTAMP" property="Endtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    payment_id, payment_orderid,order_number,order_username, order_userphone,order_allmoney, payment_createbyid, payment_createtime, payment_updatebyid,
+    payment_updatetime, payment_isdel, payment_other1, payment_othe2, payment_other3, 
+    payment_other4, payment_other5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_payment
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_payment
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashPayment">
+    insert into wash_payment (payment_id, payment_orderid, payment_createbyid, 
+      payment_createtime, payment_updatebyid, 
+      payment_updatetime, payment_isdel, payment_other1, 
+      payment_othe2, payment_other3, payment_other4, 
+      payment_other5)
+    values (#{paymentId,jdbcType=VARCHAR}, #{paymentOrderid,jdbcType=VARCHAR}, #{paymentCreatebyid,jdbcType=VARCHAR}, 
+      #{paymentCreatetime,jdbcType=TIMESTAMP}, #{paymentUpdatebyid,jdbcType=VARCHAR}, 
+      #{paymentUpdatetime,jdbcType=TIMESTAMP}, #{paymentIsdel,jdbcType=INTEGER}, #{paymentOther1,jdbcType=VARCHAR}, 
+      #{paymentOthe2,jdbcType=VARCHAR}, #{paymentOther3,jdbcType=VARCHAR}, #{paymentOther4,jdbcType=VARCHAR}, 
+      #{paymentOther5,jdbcType=VARCHAR})
+  </insert>
+  <!--根据实体添加-->
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashPayment">
+    insert into wash_payment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paymentId != null">
+        payment_id,
+      </if>
+      <if test="paymentOrderid != null">
+        payment_orderid,
+      </if>
+      <if test="paymentCreatebyid != null">
+        payment_createbyid,
+      </if>
+      <if test="paymentCreatetime != null">
+        payment_createtime,
+      </if>
+      <if test="paymentUpdatebyid != null">
+        payment_updatebyid,
+      </if>
+      <if test="paymentUpdatetime != null">
+        payment_updatetime,
+      </if>
+      <if test="paymentIsdel != null">
+        payment_isdel,
+      </if>
+      <if test="paymentOther1 != null">
+        payment_other1,
+      </if>
+      <if test="paymentOthe2 != null">
+        payment_othe2,
+      </if>
+      <if test="paymentOther3 != null">
+        payment_other3,
+      </if>
+      <if test="paymentOther4 != null">
+        payment_other4,
+      </if>
+      <if test="paymentOther5 != null">
+        payment_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paymentId != null">
+        #{paymentId,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOrderid != null">
+        #{paymentOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCreatebyid != null">
+        #{paymentCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCreatetime != null">
+        #{paymentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentUpdatebyid != null">
+        #{paymentUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentUpdatetime != null">
+        #{paymentUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentIsdel != null">
+        #{paymentIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="paymentOther1 != null">
+        #{paymentOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOthe2 != null">
+        #{paymentOthe2,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOther3 != null">
+        #{paymentOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOther4 != null">
+        #{paymentOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOther5 != null">
+        #{paymentOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashPayment">
+    update wash_payment
+    <set>
+      <if test="paymentOrderid != null">
+        payment_orderid = #{paymentOrderid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCreatebyid != null">
+        payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCreatetime != null">
+        payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentUpdatebyid != null">
+        payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentUpdatetime != null">
+        payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentIsdel != null">
+        payment_isdel = #{paymentIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="paymentOther1 != null">
+        payment_other1 = #{paymentOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOthe2 != null">
+        payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOther3 != null">
+        payment_other3 = #{paymentOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOther4 != null">
+        payment_other4 = #{paymentOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentOther5 != null">
+        payment_other5 = #{paymentOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashPayment">
+    update wash_payment
+    set payment_orderid = #{paymentOrderid,jdbcType=VARCHAR},
+      payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR},
+      payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP},
+      payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR},
+      payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP},
+      payment_isdel = #{paymentIsdel,jdbcType=INTEGER},
+      payment_other1 = #{paymentOther1,jdbcType=VARCHAR},
+      payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR},
+      payment_other3 = #{paymentOther3,jdbcType=VARCHAR},
+      payment_other4 = #{paymentOther4,jdbcType=VARCHAR},
+      payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </update>
+  <!--精准查询返回集合-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashPayment" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_payment,
+    wash_order
+    <where>
+      wash_order.order_id = wash_payment.payment_orderid
+      <if test="paymentId != null">
+        and payment_id = #{paymentId,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOrderid != null">
+        and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatebyid != null">
+        and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatetime != null">
+        and payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentUpdatebyid != null">
+        and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatetime != null">
+        and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentIsdel != null">
+        and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="paymentOther1 != null">
+        and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOthe2 != null">
+        and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther3 != null">
+        and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther4 != null">
+        and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther5 != null">
+        and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY payment_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+
+  <!--查询报表集合-->
+  <select id="selectByReport" parameterType="com.lovelyz.washcar.entity.WashPayment" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_payment,
+    wash_order
+    <where>
+      wash_order.order_id = wash_payment.payment_orderid
+      <if test="starttime != null">
+        and payment_createtime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null">
+        and payment_createtime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY payment_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--模糊查询返回集合-->
+  <select id="selectByConditionData" parameterType="com.lovelyz.washcar.entity.WashPayment" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_payment,
+    wash_order
+    <where>
+      wash_order.order_id = wash_payment.payment_orderid
+      <if test="paymentId != null">
+        and payment_id = #{paymentId,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOrderid != null">
+        and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatebyid != null">
+        and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatetime != null">
+        and payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentUpdatebyid != null">
+        and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatetime != null">
+        and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentIsdel != null">
+        and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="paymentOther1 != null">
+        and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOthe2 != null">
+        and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther3 != null">
+        and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther4 != null">
+        and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther5 != null">
+        and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY payment_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select payment_id, payment_orderid, payment_createbyid, payment_createtime, payment_updatebyid, 
+    payment_updatetime, payment_isdel, payment_other1, payment_othe2, payment_other3, 
+    payment_other4, payment_other5
+    from wash_payment
+  </select>
+
+  <select id="selectByPage" parameterType="com.lovelyz.washcar.entity.WashPayment" resultMap="BaseResultMap">
+    select payment_id, payment_orderid, payment_createbyid, payment_createtime, payment_updatebyid, 
+    payment_updatetime, payment_isdel, payment_other1, payment_othe2, payment_other3, 
+    payment_other4, payment_other5
+    from wash_payment
+
+      <where>
+        <if test="paymentOrderid != null">
+          and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentCreatebyid != null">
+          and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentCreatetime != null">
+          and payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="paymentUpdatebyid != null">
+          and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentUpdatetime != null">
+          and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="paymentIsdel != null">
+          and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+        </if>
+        <if test="paymentOther1 != null">
+          and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentOthe2 != null">
+          and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentOther3 != null">
+          and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentOther4 != null">
+          and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+        </if>
+        <if test="paymentOther5 != null">
+          and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+        </if>
+      </where>
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--精准查询数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashPayment" resultType="java.lang.Integer">
+    select count(1) from wash_payment
+    <where>
+      <if test="paymentOrderid != null">
+        and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatebyid != null">
+        and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatetime != null">
+        and payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentUpdatebyid != null">
+        and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatetime != null">
+        and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentIsdel != null">
+        and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="paymentOther1 != null">
+        and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOthe2 != null">
+        and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther3 != null">
+        and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther4 != null">
+        and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther5 != null">
+        and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--精准查询数量-->
+
+
+  <!--精准查询 报表数量-->
+  <select id="countByReport" parameterType="com.lovelyz.washcar.entity.WashPayment" resultType="java.lang.Integer">
+    select count(1) from wash_payment
+    <where>
+      <if test="starttime != null">
+        and payment_createtime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null">
+        and payment_createtime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--精准查询报表数量-->
+
+
+  <!--模糊查询数量-->
+  <select id="countData" parameterType="com.lovelyz.washcar.entity.WashPayment" resultType="java.lang.Integer">
+    select count(1) from wash_payment
+    <where>
+      <if test="paymentOrderid != null">
+        and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatebyid != null">
+        and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatetime != null">
+        and payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentUpdatebyid != null">
+        and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatetime != null">
+        and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentIsdel != null">
+        and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="paymentOther1 != null">
+        and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOthe2 != null">
+        and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther3 != null">
+        and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther4 != null">
+        and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther5 != null">
+        and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--模糊查询数量-->
+
+  <!--根据实体删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashPayment">
+    delete from wash_payment
+    <where>
+      <if test="paymentId != null">
+        and payment_id = #{paymentId,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOrderid != null">
+        and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatebyid != null">
+        and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatetime != null">
+        and payment_createtime = #{paymentCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentUpdatebyid != null">
+        and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatetime != null">
+        and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentIsdel != null">
+        and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="paymentOther1 != null">
+        and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOthe2 != null">
+        and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther3 != null">
+        and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther4 != null">
+        and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther5 != null">
+        and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+<!--假删除-->
+  <update id="updatebydel" parameterType="com.lovelyz.washcar.entity.WashPayment">
+    update wash_payment
+    <set>
+        payment_isdel = 0,
+    </set>
+    where payment_id = #{paymentId,jdbcType=VARCHAR}
+  </update>
+  <!--模糊查询洗车人姓名，洗车人电话，付款时间并返回集合-->
+  <select id="selectByConditionVague" parameterType="com.lovelyz.washcar.entity.WashPayment" resultMap="BaseResultMap">
+    select
+    order_number,order_allmoney,order_username,order_userphone,payment_createtime
+    from
+    wash_payment,
+    wash_order
+    <where>
+      wash_order.order_id = wash_payment.payment_orderid
+      <if test="paymentId != null and paymentId!=''">
+        and payment_id = #{paymentId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null and orderUsername!=''">
+        and order_username like concat('%',#{orderUsername,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderUserphone != null and orderUserphone!=''">
+        and order_userphone like concat('%',#{orderUserphone,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="starttime != null and starttime!=''">
+        and payment_createtime &gt;= #{starttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endtime != null and endtime!=''">
+        and payment_createtime &lt;= #{endtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentOrderid != null and paymentOrderid !=''">
+        and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatebyid != null and paymentCreatebyid!=''">
+        and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatebyid != null and paymentUpdatebyid!=''">
+        and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatetime != null and paymentUpdatetime!=''">
+        and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentIsdel != null and paymentIsdel!=''">
+        and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="paymentOther1 != null and paymentOther1!=''">
+        and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOthe2 != null and paymentOthe2!=''">
+        and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther3 != null and paymentOther3!=''">
+        and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther4 != null and paymentOther4!=''">
+        and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther5 != null and paymentOther5!=''">
+        and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY payment_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--模糊查询时间方法使用-->
+  <select id="countsData" parameterType="com.lovelyz.washcar.entity.WashPayment" resultType="java.lang.Integer">
+    select count(1) from wash_payment
+    <where>
+      <if test="paymentOrderid != null">
+        and payment_orderid = #{paymentOrderid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentCreatebyid != null">
+        and payment_createbyid = #{paymentCreatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatebyid != null">
+        and payment_updatebyid = #{paymentUpdatebyid,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentUpdatetime != null">
+        and payment_updatetime = #{paymentUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="paymentIsdel != null">
+        and payment_isdel = #{paymentIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="paymentOther1 != null">
+        and payment_other1 = #{paymentOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOthe2 != null">
+        and payment_othe2 = #{paymentOthe2,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther3 != null">
+        and payment_other3 = #{paymentOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther4 != null">
+        and payment_other4 = #{paymentOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="paymentOther5 != null">
+        and payment_other5 = #{paymentOther5,jdbcType=VARCHAR}
+      </if>
+      <if test="starttime != null and starttime!=''">
+        and payment_createtime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null and endtime!=''">
+        and payment_createtime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

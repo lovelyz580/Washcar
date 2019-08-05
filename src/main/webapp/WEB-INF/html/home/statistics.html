@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>图文报表</title>
+    <link rel="stylesheet" href="../plugins/layui/css/layui.css" media="all">
+</head>
+
+<body>
+
+<blockquote class="layui-elem-quote layui-text">
+    <form class="layui-form"  lay-filter="rightEject">
+        <div class="layui-inline">
+            <label class="layui-form-label">开始时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="starttime" id="starttime" placeholder="yyyy-MM-dd" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-inline">
+            <label class="layui-form-label">结束时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="endtime" id="endtime" placeholder="yyyy-MM-dd" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <button id="finds" class="layui-btn"  lay-submit lay-filter="beginSelect">搜索
+        </button>
+    </form>
+</blockquote>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="height:400px"></div>
+<script src="../plugins/layui/layui.js" charset="utf-8"></script>
+<script src="../plugins/bar.js" charset="utf-8"></script>
+<script src="../layuiadmin/lib/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="../layuiadmin/lib/js/json2.js" type="text/javascript"></script>
+<!-- ECharts单文件引入 -->
+<script src="../plugins/echarts.js"></script>
+<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+<script type="text/javascript">
+
+    var today = getTime();
+    today = new Date(Date.parse(today.replace(/-/g, "/")));
+    var para = {
+        "pagenumber": -1,
+        "starttime": today
+    };
+    var data = selectsun(para);
+    var myChart = null
+    // 路径配置
+
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+    // 使用
+    echarts(data)
+
+    // echarts 图文方法
+    function echarts(dat) {
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function a(ec) {
+                // 基于准备好的dom，初始化echarts图表
+                myChart = ec.init(document.getElementById('main'));
+                var option = {
+                    tooltip: {
+                        show: true
+                    },
+                    legend: {
+                        data: ['统计']
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            data: ["总预约定单", "已完成订单", "进行中订单", "已结束订单", "已取消订单"]
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            "name": "统计",
+                            "type": "bar",
+                            "data": [dat.zLnum, dat.yWCnum, dat.JXZnum, dat.yJSnum, dat.yQXnum]
+                        }
+                    ]
+                };
+
+                // 为echarts对象加载数据 
+                myChart.setOption(option, true);
+            }
+        );
+    }
+
+    layui.use(['form','table', 'layedit', 'laydate'], function () {
+        var form = layui.form,
+            layer = layui.layer,
+            table = layui.table,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+
+        //开始日期
+        laydate.render({
+            elem: '#starttime'
+            ,trigger : 'click'
+        });
+        //结束日期
+        laydate.render({
+            elem: '#endtime'
+            ,trigger : 'click'
+        });
+        //表单提交监听
+        var da = null
+        //按钮事件
+            form.on('submit(beginSelect)', function (e) {
+                para.starttime = e.field.starttime,
+                    para.endtime = e.field.endtime,
+                    da = selectsun(para);
+                // 使用
+                echarts(da)
+                return false;
+            })
+
+    });
+
+    // 获取数据
+    function selectsun(para) {
+        var returnData = {};
+        $.ajax({
+            url: "../washOrder/selecreportcount",
+            type: "POST",
+            data: JSON.stringify(para),
+            contentType: "application/json;charset=UTF-8",
+            async: false,
+            success: function (result) {
+                returnData = result.dataone;
+            },
+            error: function () {
+                layer.alert("网络错误,请重新打开页面");
+            }
+        });
+        return returnData;
+    }
+
+    // 获取当前时间
+    function getTime() {
+        var date = new Date(); //创建时间对象
+        var year = date.getFullYear(); //获取年
+        var month = date.getMonth() + 1;//获取月
+        var day = date.getDate(); //获取当日
+        var time = year + "-" + month + "-" + day; //组合时间
+        return time;
+    }
+</script>
+</body>
+</html>

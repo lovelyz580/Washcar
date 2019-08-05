@@ -1,0 +1,1434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashOrderMapper">
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashOrder">
+    <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="order_number" jdbcType="VARCHAR" property="orderNumber" />
+    <result column="order_userid" jdbcType="VARCHAR" property="orderUserid" />
+    <result column="order_username" jdbcType="VARCHAR" property="orderUsername" />
+    <result column="order_userphone" jdbcType="VARCHAR" property="orderUserphone" />
+    <result column="order_address" jdbcType="VARCHAR" property="orderAddress" />
+    <result column="order_starttime" jdbcType="TIMESTAMP" property="orderStarttime" />
+    <result column="order_endtime" jdbcType="TIMESTAMP" property="orderEndtime" />
+
+    <result column="starttime" jdbcType="TIMESTAMP" property="Starttime" />
+    <result column="endtime" jdbcType="TIMESTAMP" property="Endtime" />
+
+    <result column="order_serviceid" jdbcType="VARCHAR" property="orderServiceid" />
+    <result column="order_static" jdbcType="VARCHAR" property="orderStatic" />
+    <result column="order_rankid" jdbcType="VARCHAR" property="orderRankid" />
+    <result column="order_rankname" jdbcType="VARCHAR" property="orderRankname" />
+    <result column="order_feeid" jdbcType="VARCHAR" property="orderFeeid" />
+    <result column="order_feename" jdbcType="VARCHAR" property="orderFeename" />
+    <result column="order_beforepic" jdbcType="VARCHAR" property="orderBeforepic" />
+    <result column="order_endpic" jdbcType="VARCHAR" property="orderEndpic" />
+    <result column="order_allmoney" jdbcType="DOUBLE" property="orderAllmoney" />
+    <result column="order_isreduced" jdbcType="DOUBLE" property="orderIsreduced" />
+    <result column="order_paymoney" jdbcType="DOUBLE" property="orderPaymoney" />
+    <result column="order_ispay" jdbcType="INTEGER" property="orderIspay" />
+    <result column="order_isdel" jdbcType="INTEGER" property="orderIsdel" />
+    <result column="order_iseva" jdbcType="INTEGER" property="orderIseva" />
+    <result column="order_createtime" jdbcType="TIMESTAMP" property="orderCreatetime" />
+    <result column="order_updatetime" jdbcType="TIMESTAMP" property="orderUpdatetime" />
+    <result column="order_updatebyuserid" jdbcType="VARCHAR" property="orderUpdatebyuserid" />
+    <result column="order_evaluateid" jdbcType="VARCHAR" property="orderEvaluateid" />
+    <result column="order_other1" jdbcType="VARCHAR" property="orderOther1" />
+    <result column="order_other2" jdbcType="VARCHAR" property="orderOther2" />
+    <result column="order_other3" jdbcType="VARCHAR" property="orderOther3" />
+    <result column="order_other4" jdbcType="VARCHAR" property="orderOther4" />
+    <result column="order_other5" jdbcType="VARCHAR" property="orderOther5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_id, order_number, order_userid, order_username, order_userphone, order_address, 
+    order_starttime, order_endtime, order_serviceid, order_static, order_rankid, order_rankname, 
+    order_feeid, order_feename, order_beforepic, order_endpic, order_allmoney, order_isreduced, 
+    order_paymoney, order_ispay, order_isdel, order_iseva, order_createtime, order_updatetime, 
+    order_updatebyuserid, order_evaluateid, order_other1, order_other2, order_other3, 
+    order_other4, order_other5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from wash_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lovelyz.washcar.entity.WashOrder">
+    insert into wash_order (order_id, order_number, order_userid, 
+      order_username, order_userphone, order_address, 
+      order_starttime, order_endtime, order_serviceid, 
+      order_static, order_rankid, order_rankname, 
+      order_feeid, order_feename, order_beforepic, 
+      order_endpic, order_allmoney, order_isreduced, 
+      order_paymoney, order_ispay, order_isdel, 
+      order_iseva, order_createtime, order_updatetime, 
+      order_updatebyuserid, order_evaluateid, order_other1, 
+      order_other2, order_other3, order_other4, 
+      order_other5)
+    values (#{orderId,jdbcType=VARCHAR}, #{orderNumber,jdbcType=VARCHAR}, #{orderUserid,jdbcType=VARCHAR}, 
+      #{orderUsername,jdbcType=VARCHAR}, #{orderUserphone,jdbcType=VARCHAR}, #{orderAddress,jdbcType=VARCHAR},
+      #{orderStarttime,jdbcType=TIMESTAMP}, #{orderEndtime,jdbcType=TIMESTAMP}, #{orderServiceid,jdbcType=VARCHAR}, 
+      #{orderStatic,jdbcType=VARCHAR}, #{orderRankid,jdbcType=VARCHAR}, #{orderRankname,jdbcType=VARCHAR}, 
+      #{orderFeeid,jdbcType=VARCHAR}, #{orderFeename,jdbcType=VARCHAR}, #{orderBeforepic,jdbcType=VARCHAR}, 
+      #{orderEndpic,jdbcType=VARCHAR}, #{orderAllmoney,jdbcType=DOUBLE}, #{orderIsreduced,jdbcType=DOUBLE}, 
+      #{orderPaymoney,jdbcType=DOUBLE}, #{orderIspay,jdbcType=INTEGER}, #{orderIsdel,jdbcType=INTEGER}, 
+      #{orderIseva,jdbcType=INTEGER}, #{orderCreatetime,jdbcType=TIMESTAMP}, #{orderUpdatetime,jdbcType=TIMESTAMP}, 
+      #{orderUpdatebyuserid,jdbcType=VARCHAR}, #{orderEvaluateid,jdbcType=VARCHAR}, #{orderOther1,jdbcType=VARCHAR}, 
+      #{orderOther2,jdbcType=VARCHAR}, #{orderOther3,jdbcType=VARCHAR}, #{orderOther4,jdbcType=VARCHAR}, 
+      #{orderOther5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashOrder">
+    insert into wash_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNumber != null">
+        order_number,
+      </if>
+      <if test="orderUserid != null">
+        order_userid,
+      </if>
+      <if test="orderUsername != null">
+        order_username,
+      </if>
+      <if test="orderUserphone != null">
+        order_userphone,
+      </if>
+      <if test="orderAddress != null">
+        order_address,
+      </if>
+      <if test="orderStarttime != null">
+        order_starttime,
+      </if>
+      <if test="orderEndtime != null">
+        order_endtime,
+      </if>
+      <if test="orderServiceid != null">
+        order_serviceid,
+      </if>
+      <if test="orderStatic != null">
+        order_static,
+      </if>
+      <if test="orderRankid != null">
+        order_rankid,
+      </if>
+      <if test="orderRankname != null">
+        order_rankname,
+      </if>
+      <if test="orderFeeid != null">
+        order_feeid,
+      </if>
+      <if test="orderFeename != null">
+        order_feename,
+      </if>
+      <if test="orderBeforepic != null">
+        order_beforepic,
+      </if>
+      <if test="orderEndpic != null">
+        order_endpic,
+      </if>
+      <if test="orderAllmoney != null">
+        order_allmoney,
+      </if>
+      <if test="orderIsreduced != null">
+        order_isreduced,
+      </if>
+      <if test="orderPaymoney != null">
+        order_paymoney,
+      </if>
+      <if test="orderIspay != null">
+        order_ispay,
+      </if>
+      <if test="orderIsdel != null">
+        order_isdel,
+      </if>
+      <if test="orderIseva != null">
+        order_iseva,
+      </if>
+      <if test="orderCreatetime != null">
+        order_createtime,
+      </if>
+      <if test="orderUpdatetime != null">
+        order_updatetime,
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        order_updatebyuserid,
+      </if>
+      <if test="orderEvaluateid != null">
+        order_evaluateid,
+      </if>
+      <if test="orderOther1 != null">
+        order_other1,
+      </if>
+      <if test="orderOther2 != null">
+        order_other2,
+      </if>
+      <if test="orderOther3 != null">
+        order_other3,
+      </if>
+      <if test="orderOther4 != null">
+        order_other4,
+      </if>
+      <if test="orderOther5 != null">
+        order_other5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null">
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUserid != null">
+        #{orderUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUsername != null">
+        #{orderUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUserphone != null">
+        #{orderUserphone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAddress != null">
+        #{orderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStarttime != null">
+        #{orderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderEndtime != null">
+        #{orderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderServiceid != null">
+        #{orderServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatic != null">
+        #{orderStatic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRankid != null">
+        #{orderRankid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRankname != null">
+        #{orderRankname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFeeid != null">
+        #{orderFeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFeename != null">
+        #{orderFeename,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBeforepic != null">
+        #{orderBeforepic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEndpic != null">
+        #{orderEndpic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAllmoney != null">
+        #{orderAllmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderIsreduced != null">
+        #{orderIsreduced,jdbcType=DOUBLE},
+      </if>
+      <if test="orderPaymoney != null">
+        #{orderPaymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderIspay != null">
+        #{orderIspay,jdbcType=INTEGER},
+      </if>
+      <if test="orderIsdel != null">
+        #{orderIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="orderIseva != null">
+        #{orderIseva,jdbcType=INTEGER},
+      </if>
+      <if test="orderCreatetime != null">
+        #{orderCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdatetime != null">
+        #{orderUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        #{orderUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEvaluateid != null">
+        #{orderEvaluateid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther1 != null">
+        #{orderOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther2 != null">
+        #{orderOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther3 != null">
+        #{orderOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther4 != null">
+        #{orderOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther5 != null">
+        #{orderOther5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashOrder">
+    update wash_order
+    <set>
+      <if test="orderNumber != null">
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUserid != null">
+        order_userid = #{orderUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUsername != null">
+        order_username = #{orderUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUserphone != null">
+        order_userphone = #{orderUserphone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAddress != null">
+        order_address = #{orderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStarttime != null">
+        order_starttime = #{orderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderEndtime != null">
+        order_endtime = #{orderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderServiceid != null">
+        order_serviceid = #{orderServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatic != null">
+        order_static = #{orderStatic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRankid != null">
+        order_rankid = #{orderRankid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRankname != null">
+        order_rankname = #{orderRankname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFeeid != null">
+        order_feeid = #{orderFeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFeename != null">
+        order_feename = #{orderFeename,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBeforepic != null">
+        order_beforepic = #{orderBeforepic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEndpic != null">
+        order_endpic = #{orderEndpic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAllmoney != null">
+        order_allmoney = #{orderAllmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderIsreduced != null">
+        order_isreduced = #{orderIsreduced,jdbcType=DOUBLE},
+      </if>
+      <if test="orderPaymoney != null">
+        order_paymoney = #{orderPaymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderIspay != null">
+        order_ispay = #{orderIspay,jdbcType=INTEGER},
+      </if>
+      <if test="orderIsdel != null">
+        order_isdel = #{orderIsdel,jdbcType=INTEGER},
+      </if>
+      <if test="orderIseva != null">
+        order_iseva = #{orderIseva,jdbcType=INTEGER},
+      </if>
+      <if test="orderCreatetime != null">
+        order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdatetime != null">
+        order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEvaluateid != null">
+        order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther1 != null">
+        order_other1 = #{orderOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther2 != null">
+        order_other2 = #{orderOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther3 != null">
+        order_other3 = #{orderOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther4 != null">
+        order_other4 = #{orderOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther5 != null">
+        order_other5 = #{orderOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lovelyz.washcar.entity.WashOrder">
+    update wash_order
+    set order_number = #{orderNumber,jdbcType=VARCHAR},
+      order_userid = #{orderUserid,jdbcType=VARCHAR},
+      order_username = #{orderUsername,jdbcType=VARCHAR},
+      order_userphone = #{orderUserphone,jdbcType=VARCHAR},
+      order_address = #{orderAddress,jdbcType=VARCHAR},
+      order_starttime = #{orderStarttime,jdbcType=TIMESTAMP},
+      order_endtime = #{orderEndtime,jdbcType=TIMESTAMP},
+      order_serviceid = #{orderServiceid,jdbcType=VARCHAR},
+      order_static = #{orderStatic,jdbcType=VARCHAR},
+      order_rankid = #{orderRankid,jdbcType=VARCHAR},
+      order_rankname = #{orderRankname,jdbcType=VARCHAR},
+      order_feeid = #{orderFeeid,jdbcType=VARCHAR},
+      order_feename = #{orderFeename,jdbcType=VARCHAR},
+      order_beforepic = #{orderBeforepic,jdbcType=VARCHAR},
+      order_endpic = #{orderEndpic,jdbcType=VARCHAR},
+      order_allmoney = #{orderAllmoney,jdbcType=DOUBLE},
+      order_isreduced = #{orderIsreduced,jdbcType=DOUBLE},
+      order_paymoney = #{orderPaymoney,jdbcType=DOUBLE},
+      order_ispay = #{orderIspay,jdbcType=INTEGER},
+      order_isdel = #{orderIsdel,jdbcType=INTEGER},
+      order_iseva = #{orderIseva,jdbcType=INTEGER},
+      order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP},
+      order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP},
+      order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR},
+      order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR},
+      order_other1 = #{orderOther1,jdbcType=VARCHAR},
+      order_other2 = #{orderOther2,jdbcType=VARCHAR},
+      order_other3 = #{orderOther3,jdbcType=VARCHAR},
+      order_other4 = #{orderOther4,jdbcType=VARCHAR},
+      order_other5 = #{orderOther5,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体 返回集合-->
+  <select id="selectByCondition" parameterType="com.lovelyz.washcar.entity.WashOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_order
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNumber != null">
+        and order_number = #{orderNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserid != null">
+        and order_userid = #{orderUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null">
+        and order_username = #{orderUsername,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserphone != null">
+        and order_userphone = #{orderUserphone,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAddress != null">
+        and order_address = #{orderAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStarttime != null">
+        and order_starttime = #{orderStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderEndtime != null">
+        and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderServiceid != null">
+        and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankid != null">
+        and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankname != null">
+        and order_rankname = #{orderRankname,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeeid != null">
+        and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeename != null">
+        and order_feename = #{orderFeename,jdbcType=VARCHAR}
+      </if>
+      <if test="orderBeforepic != null">
+        and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEndpic != null">
+        and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAllmoney != null">
+        and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIsreduced != null">
+        and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+      </if>
+      <if test="orderPaymoney != null">
+        and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIspay != null">
+        and order_ispay = #{orderIspay,jdbcType=INTEGER}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="orderIseva != null">
+        and order_iseva = #{orderIseva,jdbcType=INTEGER}
+      </if>
+      <if test="orderCreatetime != null">
+        and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatetime != null">
+        and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEvaluateid != null">
+        and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther1 != null">
+        and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther2 != null">
+        and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther3 != null">
+        and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther4 != null">
+        and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther5 != null">
+        and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+      </if>
+      <if test="starttime != null and starttime != ''">
+        and order_starttime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null and endtime !=''">
+        and order_starttime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY order_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+<!--根据实体模糊查询返回集合-->
+  <select id="selectByConditionData" parameterType="com.lovelyz.washcar.entity.WashOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    wash_order
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNumber != null and orderNumber!=''">
+        and order_number = #{orderNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserid != null">
+        and order_userid = #{orderUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null and orderUsername!=''">
+        and order_username like CONCAT('%', #{orderUsername,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderUserphone != null and orderUserphone!=''">
+        and order_userphone = #{orderUserphone,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAddress != null">
+        and order_address like CONCAT('%', #{orderAddress,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderStarttime != null and orderStarttime!=''">
+        and order_starttime = #{orderStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderEndtime != null">
+        and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderServiceid != null">
+        and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankid != null">
+        and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankname != null">
+        and order_rankname like CONCAT('%', #{orderRankname,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderFeeid != null">
+        and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeename != null">
+        and order_feename like CONCAT('%', #{orderFeename,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderBeforepic != null">
+        and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEndpic != null">
+        and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAllmoney != null">
+        and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIsreduced != null">
+        and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+      </if>
+      <if test="orderPaymoney != null">
+        and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIspay != null">
+        and order_ispay = #{orderIspay,jdbcType=INTEGER}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="orderIseva != null">
+        and order_iseva = #{orderIseva,jdbcType=INTEGER}
+      </if>
+      <if test="orderCreatetime != null">
+        and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatetime != null">
+        and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEvaluateid != null">
+        and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther1 != null">
+        and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther2 != null">
+        and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther3 != null">
+        and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther4 != null">
+        and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther5 != null">
+        and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY order_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select order_id, order_number, order_userid, order_username, order_userphone, order_address, 
+    order_starttime, order_endtime, order_serviceid, order_static, order_rankid, order_rankname, 
+    order_feeid, order_feename, order_beforepic, order_endpic, order_allmoney, order_isreduced, 
+    order_paymoney, order_ispay, order_isdel, order_iseva, order_createtime, order_updatetime, 
+    order_updatebyuserid, order_evaluateid, order_other1, order_other2, order_other3, 
+    order_other4, order_other5
+    from wash_order
+  </select>
+
+  <!--分页查询-->
+  <select id="selectByPage" parameterType="com.lovelyz.washcar.entity.WashOrder" resultMap="BaseResultMap">
+    select order_id, order_number, order_userid, order_username, order_userphone, order_address, 
+    order_starttime, order_endtime, order_serviceid, order_static, order_rankid, order_rankname, 
+    order_feeid, order_feename, order_beforepic, order_endpic, order_allmoney, order_isreduced, 
+    order_paymoney, order_ispay, order_isdel, order_iseva, order_createtime, order_updatetime, 
+    order_updatebyuserid, order_evaluateid, order_other1, order_other2, order_other3, 
+    order_other4, order_other5
+    from wash_order
+
+      <where>
+        <if test="orderNumber != null">
+          and order_number = #{orderNumber,jdbcType=VARCHAR}
+        </if>
+        <if test="orderUserid != null">
+          and order_userid = #{orderUserid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderUsername != null">
+          and order_username = #{orderUsername,jdbcType=VARCHAR}
+        </if>
+        <if test="orderUserphone != null">
+          and order_userphone = #{orderUserphone,jdbcType=VARCHAR}
+        </if>
+        <if test="orderAddress != null">
+          and order_address = #{orderAddress,jdbcType=VARCHAR}
+        </if>
+        <if test="orderStarttime != null">
+          and order_starttime = #{orderStarttime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="orderEndtime != null">
+          and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="orderServiceid != null">
+          and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderStatic != null">
+          and order_static = #{orderStatic,jdbcType=VARCHAR}
+        </if>
+        <if test="orderRankid != null">
+          and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderRankname != null">
+          and order_rankname = #{orderRankname,jdbcType=VARCHAR}
+        </if>
+        <if test="orderFeeid != null">
+          and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderFeename != null">
+          and order_feename = #{orderFeename,jdbcType=VARCHAR}
+        </if>
+        <if test="orderBeforepic != null">
+          and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+        </if>
+        <if test="orderEndpic != null">
+          and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+        </if>
+        <if test="orderAllmoney != null">
+          and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+        </if>
+        <if test="orderIsreduced != null">
+          and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+        </if>
+        <if test="orderPaymoney != null">
+          and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+        </if>
+        <if test="orderIspay != null">
+          and order_ispay = #{orderIspay,jdbcType=INTEGER}
+        </if>
+        <if test="orderIsdel != null">
+          and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+        </if>
+        <if test="orderIseva != null">
+          and order_iseva = #{orderIseva,jdbcType=INTEGER}
+        </if>
+        <if test="orderCreatetime != null">
+          and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="orderUpdatetime != null">
+          and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="orderUpdatebyuserid != null">
+          and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderEvaluateid != null">
+          and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+        </if>
+        <if test="orderOther1 != null">
+          and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+        </if>
+        <if test="orderOther2 != null">
+          and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+        </if>
+        <if test="orderOther3 != null">
+          and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+        </if>
+        <if test="orderOther4 != null">
+          and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+        </if>
+        <if test="orderOther5 != null">
+          and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+        </if>
+      </where>
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--查询未处理的订单-->
+  <select id="untreated" parameterType="com.lovelyz.washcar.entity.WashOrder" resultType="java.lang.Integer">
+    select count(1) from wash_order
+    <where>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="starttime != null">
+        and order_createtime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--查询未处理的订单-->
+  <!--根据实体查询数量-->
+  <select id="count" parameterType="com.lovelyz.washcar.entity.WashOrder" resultType="java.lang.Integer">
+    select count(1) from wash_order
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNumber != null">
+        and order_number = #{orderNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserid != null">
+        and order_userid = #{orderUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null">
+        and order_username = #{orderUsername,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserphone != null">
+        and order_userphone = #{orderUserphone,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAddress != null">
+        and order_address = #{orderAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStarttime != null">
+        and order_starttime = #{orderStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderEndtime != null">
+        and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderServiceid != null">
+        and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankid != null">
+        and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankname != null">
+        and order_rankname = #{orderRankname,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeeid != null">
+        and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeename != null">
+        and order_feename = #{orderFeename,jdbcType=VARCHAR}
+      </if>
+      <if test="orderBeforepic != null">
+        and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEndpic != null">
+        and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAllmoney != null">
+        and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIsreduced != null">
+        and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+      </if>
+      <if test="orderPaymoney != null">
+        and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIspay != null">
+        and order_ispay = #{orderIspay,jdbcType=INTEGER}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="orderIseva != null">
+        and order_iseva = #{orderIseva,jdbcType=INTEGER}
+      </if>
+      <if test="orderCreatetime != null">
+        and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatetime != null">
+        and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEvaluateid != null">
+        and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther1 != null">
+        and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther2 != null">
+        and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther3 != null">
+        and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther4 != null">
+        and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther5 != null">
+        and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+      </if>
+
+      <if test="starttime != null and starttime != ''">
+        and order_starttime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null and endtime !=''">
+        and order_starttime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体模糊查询数量-->
+  <select id="countData" parameterType="com.lovelyz.washcar.entity.WashOrder" resultType="java.lang.Integer">
+    select count(1) from wash_order
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNumber != null and orderNumber!=''">
+        and order_number = #{orderNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserid != null">
+        and order_userid = #{orderUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null and orderUsername!=''">
+        and order_username like CONCAT('%', #{orderUsername,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderUserphone != null and orderUserphone!=''">
+        and order_userphone = #{orderUserphone,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAddress != null">
+        and order_address like CONCAT('%', #{orderAddress,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderStarttime != null and orderStarttime!=''">
+        and order_starttime = #{orderStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderEndtime != null">
+        and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderServiceid != null">
+        and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankid != null">
+        and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankname != null">
+        and order_rankname like CONCAT('%', #{orderRankname,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderFeeid != null">
+        and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeename != null">
+        and order_feename like CONCAT('%', #{orderFeename,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderBeforepic != null">
+        and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEndpic != null">
+        and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAllmoney != null">
+        and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIsreduced != null">
+        and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+      </if>
+      <if test="orderPaymoney != null">
+        and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIspay != null">
+        and order_ispay = #{orderIspay,jdbcType=INTEGER}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="orderIseva != null">
+        and order_iseva = #{orderIseva,jdbcType=INTEGER}
+      </if>
+      <if test="orderCreatetime != null">
+        and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatetime != null">
+        and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEvaluateid != null">
+        and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther1 != null">
+        and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther2 != null">
+        and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther3 != null">
+        and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther4 != null">
+        and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther5 != null">
+        and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <!--根据实体假删除-->
+
+  <update id="updatebydel" parameterType="com.lovelyz.washcar.entity.WashOrder">
+    update wash_order
+    <set>
+      <if test="orderNumber != null">
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUserid != null">
+        order_userid = #{orderUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUsername != null">
+        order_username = #{orderUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUserphone != null">
+        order_userphone = #{orderUserphone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAddress != null">
+        order_address = #{orderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStarttime != null">
+        order_starttime = #{orderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderEndtime != null">
+        order_endtime = #{orderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderServiceid != null">
+        order_serviceid = #{orderServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatic != null">
+        order_static = #{orderStatic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRankid != null">
+        order_rankid = #{orderRankid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderRankname != null">
+        order_rankname = #{orderRankname,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFeeid != null">
+        order_feeid = #{orderFeeid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFeename != null">
+        order_feename = #{orderFeename,jdbcType=VARCHAR},
+      </if>
+      <if test="orderBeforepic != null">
+        order_beforepic = #{orderBeforepic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEndpic != null">
+        order_endpic = #{orderEndpic,jdbcType=VARCHAR},
+      </if>
+      <if test="orderAllmoney != null">
+        order_allmoney = #{orderAllmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderIsreduced != null">
+        order_isreduced = #{orderIsreduced,jdbcType=DOUBLE},
+      </if>
+      <if test="orderPaymoney != null">
+        order_paymoney = #{orderPaymoney,jdbcType=DOUBLE},
+      </if>
+      <if test="orderIspay != null">
+        order_ispay = #{orderIspay,jdbcType=INTEGER},
+      </if>
+        order_isdel = 0,
+      <if test="orderIseva != null">
+        order_iseva = #{orderIseva,jdbcType=INTEGER},
+      </if>
+      <if test="orderCreatetime != null">
+        order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdatetime != null">
+        order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderEvaluateid != null">
+        order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther1 != null">
+        order_other1 = #{orderOther1,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther2 != null">
+        order_other2 = #{orderOther2,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther3 != null">
+        order_other3 = #{orderOther3,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther4 != null">
+        order_other4 = #{orderOther4,jdbcType=VARCHAR},
+      </if>
+      <if test="orderOther5 != null">
+        order_other5 = #{orderOther5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+
+  <!--根据实体真删除-->
+  <delete id="deleteByCondition" parameterType="com.lovelyz.washcar.entity.WashOrder">
+    delete from wash_order
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNumber != null">
+        and order_number = #{orderNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserid != null">
+        and order_userid = #{orderUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null">
+        and order_username = #{orderUsername,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUserphone != null">
+        and order_userphone = #{orderUserphone,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAddress != null">
+        and order_address = #{orderAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStarttime != null">
+        and order_starttime = #{orderStarttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderEndtime != null">
+        and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderServiceid != null">
+        and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankid != null">
+        and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankname != null">
+        and order_rankname = #{orderRankname,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeeid != null">
+        and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeename != null">
+        and order_feename = #{orderFeename,jdbcType=VARCHAR}
+      </if>
+      <if test="orderBeforepic != null">
+        and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEndpic != null">
+        and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAllmoney != null">
+        and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIsreduced != null">
+        and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+      </if>
+      <if test="orderPaymoney != null">
+        and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIspay != null">
+        and order_ispay = #{orderIspay,jdbcType=INTEGER}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="orderIseva != null">
+        and order_iseva = #{orderIseva,jdbcType=INTEGER}
+      </if>
+      <if test="orderCreatetime != null">
+        and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatetime != null">
+        and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEvaluateid != null">
+        and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther1 != null">
+        and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther2 != null">
+        and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther3 != null">
+        and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther4 != null">
+        and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther5 != null">
+        and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </delete>
+
+
+
+  <!--报表查询数量-->
+  <select id="countReport" parameterType="com.lovelyz.washcar.entity.WashOrder" resultType="java.lang.Integer">
+    select count(1) from wash_order
+    <where>
+      <if test="starttime != null">
+        and order_starttime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null">
+        and order_starttime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <!--查询报表具体数量-->
+  <select id="countReportCount" parameterType="com.lovelyz.washcar.entity.WashOrder" resultType="java.lang.Integer">
+    select count(1) from wash_order
+    <where>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="starttime != null">
+        and order_starttime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null">
+        and order_starttime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <!--报表查询 返回实体集合-->
+  <select id="selectByReport" parameterType="com.lovelyz.washcar.entity.WashOrder" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from wash_order
+    <where>
+      <if test="starttime != null">
+        and order_starttime &gt;= #{starttime,jdbcType=VARCHAR}
+      </if>
+      <if test="endtime != null">
+        and order_starttime &lt;= #{endtime,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+    </where>
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--搜索模糊查询返回集合-->
+  <select id="selectByConditionVague" parameterType="com.lovelyz.washcar.entity.WashOrder" resultMap="BaseResultMap">
+    select
+    order_static,order_ispay,order_number,order_address,order_username,order_userphone,order_starttime,order_endtime,
+    user_name,order_rankname,order_beforepic,order_endpic,order_allmoney
+    from
+    wash_order LEFT JOIN wash_user on wash_order.order_serviceid = wash_user.user_id
+    <where>
+      <if test="orderId != null and orderId!=''">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNumber != null and orderNumber!=''">
+        and order_number like concat('%',#{orderNumber,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderUserid != null and orderUserid!=''">
+        and order_userid = #{orderUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null and orderUsername!=''">
+        and order_username like concat('%',#{orderUsername,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderUserphone != null and orderUserphone!=''">
+        and order_userphone like concat('%',#{orderUserphone,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderAddress != null and orderAddress!=''">
+        and order_address = #{orderAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="starttime != null and starttime!=''">
+        and order_starttime &gt;= #{starttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endtime != null and endtime!=''">
+        and order_starttime &lt;= #{endtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderEndtime != null and orderEndtime!=''">
+        and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderServiceid != null and orderServiceid!=''">
+        and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null and orderStatic!=''">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankid != null and orderRankid!=''">
+        and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankname != null and orderRankname!=''">
+        and order_rankname = #{orderRankname,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeeid != null and orderFeeid!=''">
+        and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeename != null and orderFeename!=''">
+        and order_feename = #{orderFeename,jdbcType=VARCHAR}
+      </if>
+      <if test="orderBeforepic != null and orderBeforepic!=''">
+        and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEndpic != null and orderEndpic!=''">
+        and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAllmoney != null and orderAllmoney!=''">
+        and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIsreduced != null and orderIsreduced!=''">
+        and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+      </if>
+      <if test="orderPaymoney != null and orderPaymoney!=''">
+        and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIspay != null">
+        and order_ispay = #{orderIspay,jdbcType=INTEGER}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="orderIseva != null">
+        and order_iseva = #{orderIseva,jdbcType=INTEGER}
+      </if>
+      <if test="orderCreatetime != null and orderCreatetime!=''">
+        and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatetime != null and orderUpdatetime!=''">
+        and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatebyuserid != null and orderUpdatebyuserid!=''">
+        and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEvaluateid != null">
+        and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther1 != null">
+        and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther2 != null">
+        and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther3 != null">
+        and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther4 != null">
+        and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther5 != null">
+        and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+    ORDER BY order_createtime DESC
+    <if test="pagenumber != -1">
+      limit #{pagenumber,jdbcType=INTEGER},
+      #{pagesize,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--根据实体模糊查询数量时间搜索-->
+  <select id="countsData" parameterType="com.lovelyz.washcar.entity.WashOrder" resultType="java.lang.Integer">
+    select count(1) from wash_order
+    <where>
+      <if test="orderId != null">
+        and order_id = #{orderId,jdbcType=VARCHAR}
+      </if>
+      <if test="orderNumber != null and orderNumber!=''">
+        and order_number like concat('%',#{orderNumber,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderUserid != null">
+        and order_userid = #{orderUserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderUsername != null and orderUsername!=''">
+        and order_username like concat('%',#{orderUsername,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderUserphone != null and orderUserphone!=''">
+        and order_userphone like concat('%',#{orderUserphone,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="orderAddress != null">
+        and order_address = #{orderAddress,jdbcType=VARCHAR}
+      </if>
+      <if test="starttime != null and starttime!=''">
+        and order_starttime &gt;= #{starttime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endtime != null and endtime!=''">
+        and order_starttime &lt;= #{endtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderEndtime != null">
+        and order_endtime = #{orderEndtime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderServiceid != null">
+        and order_serviceid = #{orderServiceid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderStatic != null">
+        and order_static = #{orderStatic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankid != null">
+        and order_rankid = #{orderRankid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderRankname != null">
+        and order_rankname = #{orderRankname,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeeid != null">
+        and order_feeid = #{orderFeeid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderFeename != null">
+        and order_feename = #{orderFeename,jdbcType=VARCHAR}
+      </if>
+      <if test="orderBeforepic != null">
+        and order_beforepic = #{orderBeforepic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEndpic != null">
+        and order_endpic = #{orderEndpic,jdbcType=VARCHAR}
+      </if>
+      <if test="orderAllmoney != null">
+        and order_allmoney = #{orderAllmoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIsreduced != null">
+        and order_isreduced = #{orderIsreduced,jdbcType=DOUBLE}
+      </if>
+      <if test="orderPaymoney != null">
+        and order_paymoney = #{orderPaymoney,jdbcType=DOUBLE}
+      </if>
+      <if test="orderIspay != null">
+        and order_ispay = #{orderIspay,jdbcType=INTEGER}
+      </if>
+      <if test="orderIsdel != null">
+        and order_isdel = #{orderIsdel,jdbcType=INTEGER}
+      </if>
+      <if test="orderIseva != null">
+        and order_iseva = #{orderIseva,jdbcType=INTEGER}
+      </if>
+      <if test="orderCreatetime != null">
+        and order_createtime = #{orderCreatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatetime != null">
+        and order_updatetime = #{orderUpdatetime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="orderUpdatebyuserid != null">
+        and order_updatebyuserid = #{orderUpdatebyuserid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderEvaluateid != null">
+        and order_evaluateid = #{orderEvaluateid,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther1 != null">
+        and order_other1 = #{orderOther1,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther2 != null">
+        and order_other2 = #{orderOther2,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther3 != null">
+        and order_other3 = #{orderOther3,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther4 != null">
+        and order_other4 = #{orderOther4,jdbcType=VARCHAR}
+      </if>
+      <if test="orderOther5 != null">
+        and order_other5 = #{orderOther5,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

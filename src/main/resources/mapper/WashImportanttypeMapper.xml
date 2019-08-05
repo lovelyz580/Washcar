@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lovelyz.washcar.mapper.WashImportanttypeMapper">
+
+
+  <!--返回的实体字段-->
+  <resultMap id="BaseResultMap" type="com.lovelyz.washcar.entity.WashImportanttype">
+    <id column="Importanttype_id" jdbcType="VARCHAR" property="importanttypeId" />
+    <result column="Importanttype_type" jdbcType="VARCHAR" property="importanttypeType" />
+    <result column="Importanttype_name" jdbcType="VARCHAR" property="importanttypeName" />
+    <result column="Importanttype_userid" jdbcType="VARCHAR" property="importanttypeUserid" />
+    <result column="Importanttype_ptnum" jdbcType="INTEGER" property="importanttypePtnum" />
+    <result column="Importanttype_ptusenum" jdbcType="INTEGER" property="importanttypePtusenum" />
+    <result column="Importanttype_fdnum" jdbcType="INTEGER" property="importanttypeFdnum" />
+    <result column="Importanttype_fdusenum" jdbcType="INTEGER" property="importanttypeFdusenum" />
+    <result column="Importanttype_ktnum" jdbcType="INTEGER" property="importanttypeKtnum" />
+    <result column="Importanttype_ktusenum" jdbcType="INTEGER" property="importanttypeKtusenum" />
+    <result column="Importanttype_nsnum" jdbcType="INTEGER" property="importanttypeNsnum" />
+    <result column="Importanttype_nsusenum" jdbcType="INTEGER" property="importanttypeNsusenum" />
+    <result column="Importanttype_createtime" jdbcType="TIMESTAMP" property="importanttypeCreatetime" />
+    <result column="Importanttype_createbyuserid" jdbcType="VARCHAR" property="importanttypeCreatebyuserid" />
+    <result column="Importanttype_updatetime" jdbcType="TIMESTAMP" property="importanttypeUpdatetime" />
+    <result column="Importanttype_updatebyuserid" jdbcType="VARCHAR" property="importanttypeUpdatebyuserid" />
+    <result column="Importanttype_validtime" jdbcType="TIMESTAMP" property="importanttypeValidtime" />
+    <result column="Importanttype_isvalid" jdbcType="INTEGER" property="importanttypeIsvalid" />
+    <result column="Importanttype_isdel" jdbcType="INTEGER" property="importanttypeIsdel" />
+  </resultMap>
+  <!--返回的实体字段-->
+
+  <!--sql  字段-->
+  <sql id="Base_Column_List">
+    Importanttype_id, Importanttype_type,Importanttype_name, Importanttype_userid, Importanttype_ptnum,
+    Importanttype_ptusenum, Importanttype_fdnum, Importanttype_fdusenum, Importanttype_ktnum, 
+    Importanttype_ktusenum, Importanttype_nsnum, Importanttype_nsusenum, Importanttype_createtime, 
+    Importanttype_createbyuserid, Importanttype_updatetime, Importanttype_updatebyuserid, 
+    Importanttype_validtime, Importanttype_isvalid, Importanttype_isdel
+  </sql>
+  <!--sql  字段-->
+
+  <!--根据ID查询 返回实体-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wash_importanttype
+    where Importanttype_id = #{importanttypeId,jdbcType=VARCHAR}
+  </select>
+  <!--根据ID查询 返回实体-->
+
+  <!--根据实体添加-->
+  <insert id="insertSelective" parameterType="com.lovelyz.washcar.entity.WashImportanttype">
+    insert into wash_importanttype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="importanttypeId != null">
+        Importanttype_id,
+      </if>
+      <if test="importanttypeName != null">
+        Importanttype_name,
+      </if>
+      <if test="importanttypeType != null">
+        Importanttype_type,
+      </if>
+      <if test="importanttypeUserid != null">
+        Importanttype_userid,
+      </if>
+      <if test="importanttypePtnum != null">
+        Importanttype_ptnum,
+      </if>
+      <if test="importanttypePtusenum != null">
+        Importanttype_ptusenum,
+      </if>
+      <if test="importanttypeFdnum != null">
+        Importanttype_fdnum,
+      </if>
+      <if test="importanttypeFdusenum != null">
+        Importanttype_fdusenum,
+      </if>
+      <if test="importanttypeKtnum != null">
+        Importanttype_ktnum,
+      </if>
+      <if test="importanttypeKtusenum != null">
+        Importanttype_ktusenum,
+      </if>
+      <if test="importanttypeNsnum != null">
+        Importanttype_nsnum,
+      </if>
+      <if test="importanttypeNsusenum != null">
+        Importanttype_nsusenum,
+      </if>
+      <if test="importanttypeCreatetime != null">
+        Importanttype_createtime,
+      </if>
+      <if test="importanttypeCreatebyuserid != null">
+        Importanttype_createbyuserid,
+      </if>
+      <if test="importanttypeUpdatetime != null">
+        Importanttype_updatetime,
+      </if>
+      <if test="importanttypeUpdatebyuserid != null">
+        Importanttype_updatebyuserid,
+      </if>
+      <if test="importanttypeValidtime != null">
+        Importanttype_validtime,
+      </if>
+      <if test="importanttypeIsvalid != null">
+        Importanttype_isvalid,
+      </if>
+      <if test="importanttypeIsdel != null">
+        Importanttype_isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="importanttypeId != null">
+        #{importanttypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeName != null">
+        #{importanttypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeType != null">
+        #{importanttypeType,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeUserid != null">
+        #{importanttypeUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypePtnum != null">
+        #{importanttypePtnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypePtusenum != null">
+        #{importanttypePtusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeFdnum != null">
+        #{importanttypeFdnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeFdusenum != null">
+        #{importanttypeFdusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeKtnum != null">
+        #{importanttypeKtnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeKtusenum != null">
+        #{importanttypeKtusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeNsnum != null">
+        #{importanttypeNsnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeNsusenum != null">
+        #{importanttypeNsusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeCreatetime != null">
+        #{importanttypeCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importanttypeCreatebyuserid != null">
+        #{importanttypeCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeUpdatetime != null">
+        #{importanttypeUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importanttypeUpdatebyuserid != null">
+        #{importanttypeUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeValidtime != null">
+        #{importanttypeValidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importanttypeIsvalid != null">
+        #{importanttypeIsvalid,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeIsdel != null">
+        #{importanttypeIsdel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!--根据实体添加-->
+
+  <!--根据实体更新-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.lovelyz.washcar.entity.WashImportanttype">
+    update wash_importanttype
+    <set>
+      <if test="importanttypeName != null">
+        Importanttype_name = #{importanttypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeType != null">
+        Importanttype_type = #{importanttypeType,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeUserid != null">
+        Importanttype_userid = #{importanttypeUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypePtnum != null">
+        Importanttype_ptnum = #{importanttypePtnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypePtusenum != null">
+        Importanttype_ptusenum = #{importanttypePtusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeFdnum != null">
+        Importanttype_fdnum = #{importanttypeFdnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeFdusenum != null">
+        Importanttype_fdusenum = #{importanttypeFdusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeKtnum != null">
+        Importanttype_ktnum = #{importanttypeKtnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeKtusenum != null">
+        Importanttype_ktusenum = #{importanttypeKtusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeNsnum != null">
+        Importanttype_nsnum = #{importanttypeNsnum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeNsusenum != null">
+        Importanttype_nsusenum = #{importanttypeNsusenum,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeCreatetime != null">
+        Importanttype_createtime = #{importanttypeCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importanttypeCreatebyuserid != null">
+        Importanttype_createbyuserid = #{importanttypeCreatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeUpdatetime != null">
+        Importanttype_updatetime = #{importanttypeUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importanttypeUpdatebyuserid != null">
+        Importanttype_updatebyuserid = #{importanttypeUpdatebyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="importanttypeValidtime != null">
+        Importanttype_validtime = #{importanttypeValidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="importanttypeIsvalid != null">
+        Importanttype_isvalid = #{importanttypeIsvalid,jdbcType=INTEGER},
+      </if>
+      <if test="importanttypeIsdel != null">
+        Importanttype_isdel = #{importanttypeIsdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Importanttype_id = #{importanttypeId,jdbcType=VARCHAR}
+  </update>
+  <!--根据实体更新-->
+
+
+
+</mapper>

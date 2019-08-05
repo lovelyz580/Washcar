@@ -1,0 +1,62 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+	<context:property-placeholder location="classpath:df.properties"/>
+
+	<!--MySQL数据源-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${mysql.driverClassName}"/>
+		<property name="jdbcUrl" value="${mysql.url}"/>
+		<property name="user" value="${mysql.username}"/>
+		<property name="password" value="${mysql.password}"/>
+		<property name="initialPoolSize" value="3"/>
+		<property name="maxPoolSize" value="10"/>
+		<property name="minPoolSize" value="3"/>
+		<property name="acquireIncrement" value="5"/>
+		<property name="maxIdleTime" value="30"/>
+		<property name="maxStatements" value="500"/>
+		<property name="maxStatementsPerConnection" value="50"/>
+		<property name="numHelperThreads" value="5"/>
+	</bean>
+	<!-- 扫描器mapper -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lovelyz.washcar.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="10"/>
+		<property name="maxPoolSize" value="20"/>
+		<property name="queueCapacity" value="20"/>
+	</bean>
+	<!--sqlSessionFactory-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations" value="classpath:/mapper/*.xml"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	<!-- mapper扫描 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.lovelyz.business.mapper"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean  id ="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<!--配置基于注解的声明式事务-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
