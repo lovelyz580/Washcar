@@ -1,0 +1,84 @@
+<!-- <import src="/tujian-family/family-item/family-item-temp.wxml"/> -->
+<view>
+  <!-- 轮播图  start -->
+  <swiper indicator-dots="true" autoplay="true" interval="5000">
+    <swiper-item>
+      <image src="/img/family/banner.jpg" mode='widthFix'></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图  ens -->
+  <view class='wrap'>
+    <view class='checkbox-con'>
+      <!-- 车辆类型  start -->
+      <view class="menu2">
+        <view class="menu2_view" wx:for="{{cartypes}}" bindtap='radiocar' data-index="{{index}}" wx:key="item.name">
+          <image src="{{url}}{{item.rankImages}}" class='menu2_img'></image>
+          <text class='car_text car1_color'>{{item.rankName}}</text>
+        </view>
+
+      </view>
+      <view class='line'></view>
+      <!-- 新客户首单体验  start -->
+      <view class='new_warp'>
+        <h3>新客户首单体验</h3>
+        <view class='newkehu'>
+          <view class='zs'>
+            <image src="/img/family/zs.png" class='zs_img'></image>
+          </view>
+          <text class='newkehu_text'>新用户首单20元洗车，快来预约上门洗车吧！</text>
+        </view>
+        <view class='newkehu'>
+          <button class='new_btn' bindtap='newdetail'>
+            <view>查看全文</view>
+          </button>
+        </view>
+      </view>
+      <view class='line'></view>
+      <!-- 新客户首单体验  end -->
+
+      <!-- 图片链接  start -->
+      <view class='pic_link'>
+        <view class="pic_view">
+          <image src="/img/family/vip.png" class='pic_img' mode='widthFix' bindtap='newvip'></image>
+        </view>
+        <view class="pic_view">
+          <image src="/img/family/xcg.png" class='pic_img' bindtap='newwasher' mode='widthFix'></image>
+        </view>
+      </view>
+      <view class='line'></view>
+      <!-- 图片链接  end -->
+
+      <!-- 视频  start -->
+      <view class='vod'>
+        <!-- <image src="/img/family/banner.jpg" mode='widthFix'></image> -->
+        <!-- 视频  start -->
+
+        <view class='block'>
+          <view id="{{index}}" class="cover" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+            <!-- 视频图层 -->
+            <image class="videoVideo2" src="{{vedio.img}}" mode="scaleToFill">
+              <!-- 视频按钮 -->
+              <image class="videoPlay" src="/img/family/bf.png" mode="scaleToFill"></image>
+            </image>
+          </view>
+        </view>
+        <!-- 视频 -->
+        <video src="{{vedio.url}}"class='video' wx:if="{{_index == index}}">
+        </video>
+        <!-- 视频  end -->
+
+        <view class='vod_text'>
+          <text class='vod_text_1'>洗洗车介绍</text>
+          <text class='vod_text_2'>播放 156663</text>
+        </view>
+        <view class='newkehu'>
+          <button class='new_btn' bindtap='morevideo'>
+            <view>更多视频</view>
+          </button>
+        </view>
+      </view>
+      <!-- 视频  end -->
+
+    </view>
+  </view>
+</view>

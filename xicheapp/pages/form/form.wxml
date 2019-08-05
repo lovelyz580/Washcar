@@ -1,0 +1,91 @@
+<view class='wrap'>
+  <view class='checkbox-con'>
+    <!--车辆定位-->
+    <view class="section">
+      <view class="section__title">车辆定位</view>
+      <view class='form-group_35' style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">
+        {{orderone.orderAddress}}
+      </view>
+      <view bindtap='chooseLocation' class='map'><image class="map_ico" src="/img/map.png" mode="aspectFill"></image></view>
+    </view>
+    <!--客户姓名-->
+    <view class="section">
+      <view class="section__title">客户姓名</view>
+      <view class='form-group'>
+        {{orderone.orderUsername}}
+      </view>
+    </view>
+    <!--客户电话-->
+    <view class="section">
+      <view class="section__title">客户电话</view>
+      <view class='form-group'>
+        {{orderone.orderUserphone}}
+      </view>
+    </view>
+    <!--日期-->
+    <view class="section">
+      <view class="section__title">日期选择</view>
+      <view class='form-group'>
+        {{Ttime}}
+      </view>
+    </view>
+    <!--车辆信息-->
+    <view class="section">
+      <view class="section__title">车辆信息</view>
+      <view class='form-group'>
+        <input type="text" class="input-text" value='{{orderone.orderNumber}}' bindblur='getcarcode' placeholder="请输入车牌号" />
+      </view>
+    </view>
+
+
+
+    <!--洗前  start-->
+    <view class="section height200">
+      <view class="section__title">洗前拍照</view>
+      <!--上传图片组件-->
+      <view class="picture_list">
+        <view wx:for="{{upload_picture_listago}}" class="picture_item" wx:key="{{index}}">
+          <image src="{{item.path}}" mode="aspectFill" data-src="{{item.path}}" bindtap='previewImage'></image>
+          <text class='del' bindtap='deleteImgago' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+        </view>
+        <view class='picture_item'>
+          <view class="add-image" bindtap='chooseImageago'>
+            <text>+</text>
+          </view>
+        </view>
+        <button class="applyCollect" bindtap='updateImgago' disabled='{{uploadago}}'>前上传图片</button>
+      </view>
+    </view>
+    <!--洗前   end-->
+
+
+
+
+    <!--洗后   start-->
+    <view class="section height200">
+      <view class="section__title">洗后拍照</view>
+      <!--上传图片组件-->
+      <view class="picture_list">
+        <view wx:for="{{upload_picture_listyet}}" class="picture_item" wx:key="{{index}}">
+          <image src="{{item.path}}" mode="aspectFill" bindtap='previewImage' data-src="{{item.path}}"></image>
+          <text class='del' bindtap='deleteImgyet' data-src='{{image}}' style='display:{{isDel}}' data-index="{{index}}">×</text>
+        </view>
+        <view class='picture_item'>
+          <view class="add-image" bindtap='chooseImageyet'>
+            <text>+</text>
+          </view>
+        </view>
+        <button class="applyCollect" bindtap='updateImgyet' disabled='{{uploadyet}}'>后上传图片</button>
+      </view>
+      <!--洗后   end-->
+
+    </view>
+  </view>
+
+  <!---按钮-->
+  <view class="section mt40">
+    <view class='form-group_heji'>
+      <button class='btn' bindtap='present'>提交 </button>
+    </view>
+  </view>
+</view>

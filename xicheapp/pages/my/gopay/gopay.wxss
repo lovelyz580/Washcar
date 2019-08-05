@@ -1,0 +1,215 @@
+/* pages/my/gopay/gopay.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  font-family: "PingFang SC", "Microsoft Yahei", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background-color: #ededed;
+  /* margin: 20rpx; */
+}
+
+.row {
+  height: 260rpx;
+  color: red;
+}
+
+view, image {
+  /*border: 1px #d6d6d6 solid;*/
+}
+
+.coupon-list {
+  margin: 20rpx;
+}
+
+.coupon-list .item {
+  width: 100%;
+  height: 250rpx;
+  margin-bottom: 20rpx;
+  border-radius: 20rpx;
+}
+
+.coupon-list .item .float-li {
+  width: 80%;
+  height: 100%;
+  border-right: 2rpx dashed rgba(255, 255, 255, 0.3);
+  float: left;
+}
+
+.coupon-list .item .float-li-rig {
+  width: 10%;
+  padding-right: 20rpx;
+  height: 100%;
+  color: #fff;
+  float: left;
+}
+
+.coupon-left {
+  position: relative;
+}
+
+.coupon-left .t {
+  position: absolute;
+  color: #fff;
+}
+
+.coupon-left .t1 {
+  left: 50rpx;
+  top: 110rpx;
+}
+
+.coupon-left .t2 {
+  left: 80rpx;
+  top: 50rpx;
+  font-size: 80rpx;
+  font-weight: bold;
+}
+
+.coupon-left .t3 {
+  left: 250rpx;
+  top: 100rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+}
+
+.coupon-left .t4 {
+  left: 50rpx;
+  top: 180rpx;
+}
+/* 付款金额 */
+.paymoney{
+  color: red;
+  font-size: 50rpx;
+}
+.list{
+  display:inline-block;
+  margin-left: 40rpx;
+}
+
+.wrap{
+  /* width: 100%; */
+  margin: 20rpx
+}
+.text{
+  color: red
+}
+ 
+.checkbox-con{
+  margin-top: 40rpx;
+  text-align: center;
+  background: #f8f9fb;
+  border-radius: 20rpx;
+}
+.checkbox{
+  /* width: 45%; */
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 28rpx;
+  color: #888888;
+  border: 1rpx solid #CECECE;
+  border-radius: 20rpx;
+  display: inline-block;
+  margin: 10rpx 20rpx 10rpx 0;
+  padding: 0 30rpx;
+  position: relative;
+  float: left;
+}
+.checked{
+  color: #1A92EC;
+  background: rgba(49,165,253,0.08);
+  border: 1rpx solid #31A5FD;
+}
+.checkbox checkbox{
+  display: none
+}
+.checked-img{
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  top: 0;
+  right: 0
+}
+
+.radio-cl{
+  height: 100rpx;
+  margin-left: 20rpx;
+  display: block;
+}
+.radio-qj{
+  height: 310rpx;
+  margin-left: 20rpx;
+  display: block;
+}
+.thickLine{
+  height: 20rpx;
+  background: #ededed;
+}
+#adduser{
+    background: #f5f5f5;
+}
+.section__title{
+    float: left;
+    width:25%;
+    text-align: left;
+}
+.section__title_heji{
+    float: left;
+    width:100%;
+    text-align: right;
+    margin-right: 10%;
+}
+.form-group{
+    float: right;
+    width: 75%;
+}
+.form-group_name{
+    float: left;
+    width: 30%;
+}
+.form-group_heji{
+    float: right;
+    width: 100%;
+}
+.s_red{
+  color: red!important;
+  font-size: 50rpx!important;
+  margin: 0 10rpx;
+  }
+.section{
+    clear: both;
+    margin: 0 20rpx;
+    height: 120rpx;
+    line-height: 120rpx;
+    font-size:30rpx;
+    color:#666;
+    border-bottom: 1px #ededed solid;
+
+}
+.input-text{
+    border: none;
+    height: 120rpx;
+    text-align: left;
+}
+.button{
+    border: 1px solid #3890f3;
+    background: #3890f3;
+    border-radius: 2px;
+}
+.picker{
+  height: 120rpx;
+  text-align: left;
+  background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADqklEQVR4Xu2bTWgTQRTHu2laUkzBU7VQoZdAE5pv6E0hUOvFgxRBwYMn8SLeBFGsSgsVPepFRD14qZdSUA+K9KB4kZBvQg49CBG/SE8iieTL/4NR4rBqm935sNOFZSchuzv/X96bfW/mrTVg+GYZrn9gF8CuBTgkkM1mL+ASN7BvYL8fi8VuWZbVdXhZaac7coFSqbS/2Wx+QG9/Xafb7a7E4/FTgNCRpsLBjRwBKBaL+1qt1sdeAKwvT/1+//FAIPDdQd+knOoIAPUQLnANh6s2vX3j8XiORKPRb1KU9HkTxwAYhMs4Ltn0Ievz+Q4Hg8HNPvsn/DRXADAIZ3C8y7sDxoQNQDgUCoXIVbTbXANAynK53Hyn03mMAdDLKX2PzwcxOL7TjYCrABiEOUBYA4QRTuyXwcHB2UgkUtQJgusAGIQZmP5LtEc5sV8BZhaxwltdIAgBQOIKhUK43W4ThLFesQBTx9PhGCC80AGCMABsYJzE8TX2CQ5CCxBOAMKqaghCAZC4crk83mg01mH6U5xYCpfPYmC8pxKCcADMEvbi+Bz7DC8WLrGQSCQWVUGQAoDEVavVkVqt9gzNlA2EO7CE8yqSKGkASHQ6nR6C769A6LwNBCVJlFQAJBombyFgeojmaRuzl55ESQfwU3Qmk1mGJVy0gSA1iVIGgITDEs7BIm7bQJCWRCkFwJ4Q5AoPsHu4WEFKEqUcALOEo8gfVuESQ5w1CE+itADAIKTgDk/Q3sNBEJpEaQOAQYgDwjraFDj1bsKSKK0AkGIkUVOYZ6TQeZwbE4QkUdoBINGYbD0ACK/QnOQguJ5EaQmAROfz+TFKp2EJYc4dXE2itAVAoiuVymi9Xqc5BWFJlNYACAJLotbQnOMsgcLqRWSSC/z32/msPQASA6FerD/QZOtvSRS+bw8PD09MT09/2o7o3t/+TwAeAcBJfjzwer3j4XD4844F8A8XWIILXOlXPJ2ntQUYPQga/Rg0OhAyOhTGBIm5yRDE26bDeNZv4lGXErWmqMVTAOL/OCGCiZJUMpmk+iMhm3IAiPDMnRIzelLU2GlxoxdGjF4aM3pxFCO9ucvjRhdI4J+nWV0zS2SMLpJCgGNumRzE2xZKik5q+k0UXM0F/lYqKzqpUQ4AA565xdIQb265PMz+OtX62Zig1FofJS5g984Q64j0ai8lAOzeGTLqpSmi3vPaHK3h3UTF5yUVFZ9KLKDfm+p0nqtxgE7CttqXXQBbJbVTf/cDv+kaXwMHEREAAAAASUVORK5CYII=") right no-repeat; 
+  background-size:30rpx 30rpx;
+}
+.btn{
+  background: #3890f3!important;
+  color: #ffffff;
+  border-radius: 20rpx;
+}
+.mt40{
+  margin-top: 40rpx;
+}
+.parameter-wrap{
+  float: right;
+  /* width: 40%; */
+}

@@ -1,0 +1,93 @@
+<view class="page">
+  <!--顶部图片区-->
+  <view class="page-header">
+    <image src="/img/family/111.jpg" mode='widthFix' class="swiper-image" />
+    <view class="header-info cc">
+      <!-- <image src="{{userInfo.avatarUrl}}" mode="scaleToFill" class="header-icon" />
+      <text class="info-name vc">{{userInfo.nickName}}</text> -->
+      <view class="user" bindtap="mycoupon">
+        <view>
+          <image src="{{userInfo.avatarUrl}}" mode="scaleToFill" class="header-icon" />
+        </view>
+        <view class="info-name">{{userInfo.nickName}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 用户角色显示内容 -->
+  <!-- <view wx:if="{{userrole=='KH'}}"> -->
+  <!--我的优惠券-->
+  <view class="page-item" bindtap="mycoupon">
+    <view class="vc">
+      <image src="/img/my_1.png" mode="scaleToFill" class="p-icon" />
+    </view>
+    <view class="item-name">我的优惠券</view>
+    <view class="vc">
+      <image src="/img/back.png" mode="scaleToFill" class="p-icon" />
+    </view>
+  </view>
+  <!-- 我的会员管理 -->
+  <view class="page-item" bindtap="myvip">
+    <view class="vc">
+      <image src="/img/my_1.png" mode="scaleToFill" class="p-icon" />
+    </view>
+    <view class="item-name">我的套餐</view>
+    <view class="vc">
+      <image src="/img/back.png" mode="scaleToFill" class="p-icon" />
+    </view>
+  </view>
+  <!-- 我的预约记录-->
+  <view class="page-item" bindtap="mymake">
+    <view class="vc">
+      <image src="/img/my_2.png" mode="scaleToFill" class="p-icon" />
+    </view>
+    <view class="item-name">我的预约记录</view>
+    <view class="vc">
+      <image src="/img/back.png" mode="scaleToFill" class="p-icon" />
+    </view>
+  </view>
+  <!--我的评价记录-->
+  <view class="page-item" bindtap="mytoevalu">
+    <view class="vc">
+      <image src="/img/my_3.png" mode="scaleToFill" class="p-icon" />
+    </view>
+    <view class="item-name">我的评价记录</view>
+    <view class="vc">
+      <image src="/img/back.png" mode="scaleToFill" class="p-icon" />
+    </view>
+  </view>
+  <!-- </view> -->
+  <!-- 洗车人员显示内容 -->
+  <view wx:if="{{userrole=='XC'}}">
+    <!--我的订单-->
+    <view class="page-item" bindtap="myxcorder">
+      <view class="vc">
+        <image src="/img/my_1.png" mode="scaleToFill" class="p-icon" />
+      </view>
+      <view class="item-name">我的待执行订单</view>
+      <view class="vc">
+        <image src="/img/back.png" mode="scaleToFill" class="p-icon" />
+      </view>
+    </view>
+    <!-- 我的预约记录-->
+    <view class="page-item" bindtap="myrecord">
+      <view class="vc">
+        <image src="/img/my_2.png" mode="scaleToFill" class="p-icon" />
+      </view>
+      <view class="item-name">洗车记录</view>
+      <view class="vc">
+        <image src="/img/back.png" mode="scaleToFill" class="p-icon" />
+      </view>
+    </view>
+    <!--我的评价记录-->
+    <view class="page-item" bindtap="myevalu">
+      <view class="vc">
+        <image src="/img/my_3.png" mode="scaleToFill" class="p-icon" />
+      </view>
+      <view class="item-name">评价记录</view>
+      <view class="vc">
+        <image src="/img/back.png" mode="scaleToFill" class="p-icon" />
+      </view>
+    </view>
+  </view>
+</view>

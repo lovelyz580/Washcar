@@ -1,0 +1,24 @@
+/* pages/newdetail/newdetail.wxss */
+page {
+  background-color: #fdd000;
+}
+.wrap{
+  /* width: 100%; */
+  margin: 20rpx;
+}
+.checkbox-con{
+  /* margin-top: 40rpx; */
+  text-align: left;
+  background: #f8f9fb;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+text{
+  font-size: 28rpx;
+  display: block;
+  text-indent: 2em;
+  line-height: 60rpx;
+}
+.xcg_img{
+  width: 100%;
+}

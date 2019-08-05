@@ -1,0 +1,79 @@
+<!--pages/my/mymake/mymake.wxml-->
+<view class="order_list">
+  <view class="order_all  {{currentTap ==0?'order_show':''}}">
+    <view wx:if="{{orderlist !=null}}">
+      <view wx:for="{{orderlist}}">
+        <!--一个订单   start-->
+        <view class="order_tlt flexRowBetween">
+          <view class="tlt_left">
+            <text>下单时间:</text>
+            <text>{{item.orderStarttime}}</text>
+          </view>
+          <!-- 状态显示     start-->
+          <!-- 提交 显示派单中 -->
+          <view class="tlt_right" wx:if="{{item.orderStatic=='TJ'}}" style="color:#3890f3">
+            派单中
+          </view>
+          <!-- 提交 显示派单中 -->
+          <view class="tlt_right" wx:if="{{item.orderStatic=='JD'}}" style="color:#3890f3">
+            进行中
+          </view>
+          <!-- 取消订单  显示已取消 -->
+          <view class="tlt_right" wx:if="{{item.orderStatic=='YQX'}}" style="color:#3890f3">
+            已取消
+          </view>
+          <!-- 完成订单  显示待付款 -->
+          <view class="tlt_right" wx:if="{{item.orderStatic=='WC'}}" style="color:#3890f3">
+            待付款
+          </view>
+          <!-- 完成评价  显示已完成 -->
+          <view class="tlt_right" wx:if="{{item.orderStatic=='YWC'}}" style="color:#3890f3">
+            已完成
+          </view>
+
+
+
+          <!-- 状态显示     end-->
+        </view>
+        <view class="same_stroe">
+          <view class="flexRowBetween orderlistShow">
+            <view class="order_name">
+              <view class="text1">{{item.orderRankname}}</view>
+              <view class="orders flexRowBetween">
+                <!-- <text class="order_number"></text> -->
+                <text class="order_type">{{item.orderFeename}}</text>
+                <text class="order_price">¥{{item.orderAllmoney}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+       <view class="handle">
+          <view class="total_order">
+            <view class="flexRowBetween">
+              <view class="total_money">
+                <text>合计:</text>
+                <text class="text2">¥{{item.orderPaymoney}}</text>
+              </view>
+               <view class="user_discount" wx:if="{{item.orderOther3=='新用户'}}"  >
+                (新用户专享优惠)
+              </view>
+                <view class="user_discount" wx:if="{{item.orderOther3==null}}"  >
+                （优惠券：-¥00.00）
+              </view>
+            </view>
+          </view>
+          <view class="handle_order">
+            <view class="flexRowBetween">
+              <view class="handle_orders delete_order" bindtap='orderdetail' data-id='{{item.orderId}}'>订单详情</view>
+              <!-- <view class="handle_orders delete_order" data-id='{{item.orderId}}' bindtap='deleteorder' wx:if="{{item.orderStatic=='TJ'}}">取消订单</view>
+              <view class="handle_orders comment_order" wx:if="{{item.orderStatic=='WC'}}" data-id='{{item.orderId}}' bindtap="payment">付款</view>
+              <view class="handle_orders comment_order" wx:if="{{item.orderStatic=='YFK'}}" data-id='{{item.orderId}}' bindtap="commentOrder">去评价</view> -->
+            </view>
+          </view>
+        </view>
+        <!--一个订单   end-->
+      </view>
+    </view>
+
+  </view>
+</view>

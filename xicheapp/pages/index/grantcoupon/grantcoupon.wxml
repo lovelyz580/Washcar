@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="coupon-list">
+
+    <view class="item stamp stamp{{index+1}} " wx:for="{{coupons}}">
+      <!-- 左侧 -->
+      <view class="float-li t1">
+        <view class="coupon-left">
+          <view class="t t1">￥</view>
+          <view class="t t2">{{item.couponMoney}}</view>
+          <view class="t t3">满{{item.couponRemoney}}减{{item.couponMoney}}</view>
+          <view class="t t4">有效期：{{item.couponStarttime}}-{{item.couponEndtime}}</view>
+        </view>
+      </view>
+      <!-- 右侧 -->
+      <view class="float-li-rig">
+        <view class="coupon-rig">
+          <view class="t3 t">
+            <text>立即领取</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+ 
+</view>

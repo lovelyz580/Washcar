@@ -1,0 +1,8 @@
+<!--pages/newdetail/newdetail.wxml-->
+<image src="/img/family/xinyh.jpg" mode='widthFix' class='xcg_img'></image>
+<view class='wrap'>
+  <view class='checkbox-con'>
+    <text>首单20元洗车</text>
+    <text>第一副：求客观实际之真，务执政为民之实。第二副：深化理论武装求真谛，深入调查研究重实际。第三副：狠抓工作落实动真格，加快浙江发展务实效。第四副：高度关注民生系真情，坚持为民谋利出实招。</text>
+  </view>
+</view>

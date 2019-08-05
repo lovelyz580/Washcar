@@ -1,0 +1,16 @@
+<view class='wrap'>
+  <view class='checkbox-con'>
+    <text class='bt'>{{important.importanttypeName}}</text>
+    <text wx:if="{{important.importanttypeType=='A'}}">洗车13次</text>
+    <text wx:if="{{important.importanttypeType=='B'}}">洗车25次+发动机舱1次+空调清洗1次</text>
+    <text wx:if="{{important.importanttypeType=='C'}}">全年免费洗车+发动机舱2次+空调清洗2次+内饰精洗一次（只限本辆车）</text>
+    <view class='newkehu'>
+      <button class='new_btn' bindtap='toorder' wx:if="{{important.importantIsdel==1}}">
+        <view>使用</view>
+      </button>
+      <button class='new_btn' bindtap='gotopay' wx:if="{{important.importantIsdel==0}}">
+        <view>付款</view>
+      </button>
+    </view>
+  </view>
+</view>

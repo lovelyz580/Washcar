@@ -1,0 +1,104 @@
+<!-- <import src="/tujian-family/family-item/family-item-temp.wxml"/> -->
+<view>
+  <!-- 轮播图  start -->
+  <swiper indicator-dots="true" autoplay="true" interval="5000">
+    <swiper-item>
+      <image src="/img/family/banner.jpg" mode='widthFix'></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/img/family/banner.jpg" mode='widthFix'></image>
+    </swiper-item>
+  </swiper>
+  <!-- 轮播图  ens -->
+  <view class='wrap'>
+    <view class='checkbox-con'>
+      <!-- 清洁类型 start -->
+      <view class="tt">
+        <text>清洁类型</text>
+      </view>
+      <radio-group class="radio-qj">
+        <label class="{{item.checked?'checkbox checked':'checkbox'}}" wx:for="{{cleantypes}}" bindtap='radioclear' data-index="{{index}}" wx:key="item">
+          <checkbox value="{{item.feeName}}" checked="{{item.checked}}" />{{item.feeName}}
+          <text> ￥{{item.feeMoney}}</text>
+        </label>
+      </radio-group>
+      <!-- 清洁类型 end -->
+      <view class='thickLine'></view>
+      <!-- 车辆位置 -->
+      <view class="section">
+        <view class="section__title">车辆定位</view>
+        <view class='form-group'>
+          <input type="text" class="input-text" value="{{address}}" placeholder='车辆所在位置' bindtap="getPosition" disabled='{{positionStatus}}'></input>
+        </view>
+      </view>
+      <view class="section">
+        <view class="section__title">您的贵姓</view>
+        <view class='form-group_name'>
+          <input type="text" value='{{name}}' class="input-text" placeholder="请输入您的贵姓" bindblur='getname' />
+        </view>
+        <view class='parameter-wrap'>
+          <radio-group class="radio-group" data-current="0" bindchange="parameterTap">
+            <label class="radio padding-left" wx:for="{{parameter}}">
+              <radio value="{{item.name}}" color="#00ACFF" checked="{{item.checked}}" /> {{item.name}}
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <!-- 电话信息 -->
+      <view class="section">
+        <view class="section__title">您的电话</view>
+        <view class='form-group'>
+          <input type="text" class="input-text" value='{{phone}}' placeholder="请输入您的电话" bindblur='getphone' />
+        </view>
+      </view>
+      <!--日期选择器-->
+      <view class="section">
+        <view class="section__title">日期选择</view>
+        <picker mode="date" value="{{date}}" start="2015-09-01" end="2029-09-01" bindchange="bindDateChange">
+          <view class="picker">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+      <!--时间选择器-->
+      <view class="section">
+        <view class="section__title">开始时间</view>
+        <picker mode="time" value="{{starttime}}" start="08:00" end="17:00" bindchange="bindTimeChange">
+          <view class="picker">
+            {{starttime}}
+          </view>
+        </picker>
+      </view>
+      <view class="section">
+        <view class="section__title">结束时间</view>
+        <picker mode="time" value="{{endtime}}" start="08:00" end="17:00" bindchange="bindTimeChange1">
+          <view class="picker">
+            {{endtime}}
+          </view>
+        </picker>
+      </view>
+
+
+      <!-- 是否使用会员 start -->
+      <!-- <view class="section" wx:if="{{uservip}}">
+        <view class="section__title">使用会员优惠</view>
+        <view class='form-group' bindtap='isVIP'>
+          <radio checked="{{vip}}" color='#deab8a' />
+        </view>
+      </view> -->
+      <!-- 是否使用会员 end -->
+    </view>
+
+
+    <view class="section mt40">
+      <view class="section__title_heji">
+        <span class="s_red" wx:if="{{userIsfirst==1}}">新专享</span>
+        <span class="s_red">￥{{expense}}</span></view>
+      <view class='form-group_heji'>
+        <!-- <button type='primary' bindtap='confirm' class='btn'>立即预约</button> -->
+        <button class='btn' bindtap='confirm'>立即预约</button>
+      </view>
+    </view>
+  </view>
+
+</view>

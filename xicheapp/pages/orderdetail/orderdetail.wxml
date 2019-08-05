@@ -1,0 +1,100 @@
+<!--pages/orderdetail/orderdetail.wxml-->
+<view class='wrap'>
+  <view class='checkbox-con'>
+    <!--车辆定位-->
+    <view class="section">
+      <view class="section__title">车辆定位</view>
+      <view class='form-group_35' style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">
+        {{orderone.orderAddress}}
+      </view>
+      <view bindtap='chooseLocation' class='map'>
+        <image class="map_ico" src="/img/map.png" mode="aspectFill"></image>
+      </view>
+    </view>
+    <!--客户姓名-->
+    <view class="section">
+      <view class="section__title">客户姓名</view>
+      <view class='form-group'>
+        {{orderone.orderUsername}}
+      </view>
+    </view>
+    <!--客户电话-->
+    <view class="section">
+      <view class="section__title">客户电话</view>
+      <view class='form-group'>
+        {{orderone.orderUserphone}}
+      </view>
+    </view>
+    <!--日期-->
+    <view class="section">
+      <view class="section__title">日期选择</view>
+      <view class='form-group'>
+        {{Ttime}}
+      </view>
+    </view>
+    <!--车辆信息-->
+    <view class="section">
+      <view class="section__title">车辆信息</view>
+      <view class='form-group'>
+        <input type="text" class="input-text" value='{{orderone.orderNumber}}' bindblur='getcarcode' placeholder="请输入车牌号" />
+      </view>
+    </view>
+    <!--洗前  start-->
+    <view class="section height200">
+      <view class="section__title">洗前拍照</view>
+      <!--上传图片组件-->
+      <view class="picture_list">
+        <view wx:for="{{upload_picture_listago}}" class="picture_item" wx:key="{{index}}">
+          <image src="{{url}}{{item}}" mode="aspectFill" data-src="{{url}}{{item}}" bindtap='previewImage'></image>
+        </view>
+      </view>
+    </view>
+    <!--洗前   end-->
+    <!--洗后   start-->
+    <view class="section height200">
+      <view class="section__title">洗后拍照</view>
+      <!--上传图片组件-->
+      <view class="picture_list">
+        <view wx:for="{{upload_picture_listyet}}" class="picture_item" wx:key="{{index}}">
+          <image src="{{url}}{{item}}" mode="aspectFill" bindtap='previewImage' data-src="{{url}}{{item}}"></image>
+        </view>
+      </view>
+      <!--洗后   end-->
+    </view>
+
+    <view  wx:if="{{orderone.orderStatic=='YWC'}}">
+      <!-- 显示评价内容   start -->
+      <view class="section">
+        <view class="section__title">客户评价</view>
+        <view class='form-group'>
+
+          <view class="star-pos" style="display:flex;flex-direction:row;margin-top: 20rpx;">
+            <view class="stars  {{flag>=1? 'on': ''}}" bindtap="changeColor1"></view>
+            <view class="stars  {{flag>=2? 'on': ''}}" bindtap="changeColor2"></view>
+            <view class="stars  {{flag>=3? 'on': ''}}" bindtap="changeColor3"></view>
+            <view class="stars  {{flag>=4? 'on': ''}}" bindtap="changeColor4"></view>
+            <view class="stars  {{flag>=5? 'on': ''}}" bindtap="changeColor5"></view>
+          </view>
+
+        </view>
+      </view>
+      <!--文本域  -->
+      <view class="weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" value="{{info}}" disabled='true' maxlength="{{noteMaxLen}}" focus />
+          </view>
+        </view>
+      </view>
+      <!-- 显示评价内容   end -->
+    </view>
+  </view>
+
+
+  <!---按钮-->
+  <view class="section mt40">
+    <view class='form-group_heji'>
+      <button class='btn' bindtap='updateorder' wx:if="{{orderone.orderStatic !='YQX'}}" data-id='{{orderone.orderId}}'>更新信息 </button>
+    </view>
+  </view>
+</view>

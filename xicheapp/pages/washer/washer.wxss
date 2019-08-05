@@ -1,0 +1,23 @@
+/* pages/washer/washer.wxss */
+page {
+  background-color: #fdd000;
+}
+.wrap{
+  /* width: 100%; */
+  margin: 20rpx;
+}
+text{
+  font-size: 28rpx;
+  display: block;
+  text-indent: 2em;
+  line-height: 60rpx;
+}
+.checkbox-con{
+  background: #f8f9fb;
+  border-radius: 20rpx;
+  height: 100%;
+  padding: 20rpx;
+}
+.xcg_img{
+  width: 100%;
+}

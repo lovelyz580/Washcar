@@ -1,0 +1,20 @@
+<!--pages/washer/washer.wxml-->
+<image src="/img/family/banner1.jpg" mode='widthFix' class='xcg_img'></image>
+<view class='wrap'>
+  <view class='checkbox-con'>
+    <text>洗洗车——是以节能环保为宗旨，以服务客户为主体。运用蒸汽技术，为客户提供更方便快捷的上门洗车服务的公司。</text>
+    <text>现面向社会招聘大批优秀洗车工。</text>
+    <text>公司统一安排培训，合格后上岗。</text>
+    <text>年龄：18-45周岁</text>
+    <text>性别：男女不限</text>
+    <text>驾照：D照（如没有驾照，公司统一安排考试）</text>
+    <text>薪资：4000-10000（根据个人能力，按劳分配提成）</text>
+    <text>要求：吃苦耐劳，有责任心，进取心，无不良嗜好。</text>
+    <text>面试电话：17731836434（史先生）</text>
+    <text>　　　　　15175210014（郑先生）</text>
+
+  </view>
+
+
+
+</view>

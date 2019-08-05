@@ -1,0 +1,23 @@
+<view class='wrap'>
+  <view class='checkbox-con'>
+    <!--优惠券选择器-->
+    <view class="section">
+      <view class="section__title">优惠券</view>
+      <picker bindchange="bindPicker" value="{{index}}" range="{{couponuses}}" range-key="couponuseOther1">
+        <view class="picker">
+          {{onecouponu.couponuseOther1}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view class="section">
+    <view class="section__title_heji">
+      <text class='list'>金额：￥{{orderone.orderAllmoney}}</text>
+      <text class='list'>优惠：￥{{couponmoney}}</text>
+      <text class='list' style="color:red;font-size: 36rpx;">合计：￥{{paymoney}}</text>
+    </view>
+  </view>
+  <view class='form-group_heji mt40'>
+    <button class='btn' bindtap='gotopay'>付款</button>
+  </view>
+</view>

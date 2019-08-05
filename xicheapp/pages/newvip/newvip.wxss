@@ -1,0 +1,55 @@
+/* pages/newvip/newvip.wxss */
+page {
+  background-color: #fdd000;
+}
+.list{
+  height:200rpx;
+  display: block;
+  border-radius: 10rpx;
+  margin:20rpx 0;
+  padding: 20rpx;
+  background: #ffffff;
+}
+.list3{
+  height:270rpx;
+}
+.text_1{
+  text-align: left;
+  font-size: 32rpx;
+  line-height: 60rpx;
+  display: block;
+}
+.text_2{
+  font-size: 28rpx;
+  color: #666;
+  line-height: 52rpx;
+}
+.wrap{
+  /* width: 100%; */
+  margin: 20rpx;
+}
+.vip_img {
+  width:100%;
+}
+.car1_img {
+  width:200rpx;
+  float: right;
+}
+.tc1{
+  float: left;
+  width: 60%;
+}
+.new_btn{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #ffffff;
+  background: #f00;
+  font-size: 28rpx;
+  float: left;
+  margin-top: 20rpx;
+}
+.red{
+  color: #f00;
+  font-weight: bold;
+}

@@ -1,0 +1,31 @@
+<!--pages/newvip/newvip.wxml-->
+<image src="/img/family/vip.jpg" class='vip_img' mode='widthFix'></image>
+<view class='wrap'>
+
+  <view class='list'>
+    <view class='tc1'>
+      <text class='text_1 red'>充值300元</text>
+      <text class='text_1 text_2'>洗车13次</text>
+      <button class='new_btn' data-vipid='VIP32556ee4-a876-4d22-9e03-50ed06141122' bindtap='gotopay'>
+        <view>立刻购买</view>
+      </button>
+    </view>
+    <image src="/img/family/car.png" class='car1_img' mode='widthFix'></image>
+  </view>
+
+  <view class='list' >
+    <text class='text_1 red'>充值500元</text>
+    <text class='text_1 text_2'>洗车25次+发动机舱1次+空调清洗1次</text>
+    <button class='new_btn' data-vipid='VIP32556ee4-a876-4d22-9e03-50ed06143344' bindtap='gotopay'>
+      <view>立刻购买</view>
+    </button>
+  </view>
+
+  <view class='list list3' >
+    <text class='text_1 red'>充值1000元</text>
+    <text class='text_1 text_2'>全年免费洗车+发动机舱2次+空调清洗2次+内饰精洗一次（只限本辆车）</text>
+    <button class='new_btn' data-vipid='VIP32556ee4-a876-4d22-9e03-50ed06145566' bindtap='gotopay'>
+      <view>立刻购买</view>
+    </button>
+  </view>
+</view>

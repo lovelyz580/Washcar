@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/vipindex/vipindex",
+    "pages/indexto/indexto",
+    "pages/newvip/newvip",
+    "pages/my/myvip/myvip",
+    "pages/my/gopay/gopay",
+    "pages/newdetail/newdetail",
+    "pages/washer/washer",
+    "pages/video/video",
+    "pages/new/new",
+    "pages/index/grantcoupon/grantcoupon",
+    "pages/my/coupon/coupon",
+    "pages/my/order/order",
+    "pages/login/login",
+    "pages/my/my",
+    "pages/vipvoucher/vipvoucher",
+    "pages/my/mymake/mymake",
+    "pages/my/myxcorder/myxcorder",
+    "pages/my/myrecord/myrecord",
+    "pages/my/myevalu/myevalu",
+    "pages/my/mytoevalu/mytoevalu",
+    "pages/my/commentOrder/commentOrder",
+    "pages/form/form",
+    "pages/orderdetail/orderdetail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#3890f3"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#3890f3",
+    "borderStyle": "white",
+    "list": [
+      {
+        "iconPath": "/img/yy.png",
+        "selectedIconPath": "/img/yy_1.png",
+        "pagePath": "pages/index/index",
+        "text": "预约"
+      },
+      {
+        "iconPath": "/img/dd.png",
+        "selectedIconPath": "/img/dd_1.png",
+        "pagePath": "pages/my/order/order",
+        "text": "订单"
+      },
+      {
+        "iconPath": "/img/wd.png",
+        "selectedIconPath": "/img/wd_1.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "为了更好地服务与您,请您允许我的请求"
+    }
+  }
+}
