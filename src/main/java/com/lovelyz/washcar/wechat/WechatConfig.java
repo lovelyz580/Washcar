@@ -18,8 +18,8 @@ public class WechatConfig {
 	/**
 	 * 微信相关数据
 	 */
-//	public static final String WECHAT_APPID = "wx81746dd800812c92"; // 微信开发应用ID(AppID)
-//	public static final String WECHAT_APPSECRET = "96acbe4e29e0b0bd6a30469e83e3b43d"; // 微信开发应用秘钥(AppSecret)
+//	public static final String WECHAT_APPID = "wx817c92"; // 微信开发应用ID(AppID)
+//	public static final String WECHAT_APPSECRET = "96acbe4ee3b43d"; // 微信开发应用秘钥(AppSecret)
 	
 	/**
 	 * 微信相关URL
